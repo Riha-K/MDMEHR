@@ -1,0 +1,679 @@
+{
+  "templateId" : "Health Education",
+  "semVer" : "0.1.0",
+  "version" : "2.3",
+  "defaultLanguage" : "en",
+  "languages" : [ "nb", "sv", "de", "zh-cn", "en" ],
+  "tree" : {
+    "id" : "health_education",
+    "name" : "Health Education",
+    "localizedName" : "Health Education",
+    "rmType" : "ACTION",
+    "nodeId" : "openEHR-EHR-ACTION.health_education.v1",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "nb" : "Health Education",
+      "sv" : "Health Education",
+      "de" : "Health Education",
+      "zh-cn" : "Health Education",
+      "en" : "Health Education"
+    },
+    "localizedDescriptions" : {
+      "nb" : "Detaljer om kommunikasjon som har til hensikt å øke evne til å forstå og anvende helseinformasjon, og å mestre praktiske ferdigheter eller livet relatert til helsetilstanden.",
+      "sv" : "Kommunikation avsedd att öka hälsokunskap och praktiska färdigheter (ofta relaterade till hälsotillstånd)",
+      "de" : "Kommunikation zur Verbesserung der Gesundheitskompetenz und der Lebenskompetenzen.",
+      "zh-cn" : "旨在提升健康素养和生活技能的沟通交流。",
+      "en" : "Communication to improve health literacy and life skills."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "ism_transition",
+      "name" : "Ism_transition",
+      "rmType" : "ISM_TRANSITION",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/ism_transition",
+      "children" : [ {
+        "id" : "current_state",
+        "name" : "Current_state",
+        "rmType" : "DV_CODED_TEXT",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/ism_transition/current_state",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "530",
+            "label" : "suspended"
+          }, {
+            "value" : "245",
+            "label" : "active"
+          }, {
+            "value" : "531",
+            "label" : "aborted"
+          }, {
+            "value" : "532",
+            "label" : "completed"
+          }, {
+            "value" : "526",
+            "label" : "planned"
+          }, {
+            "value" : "527",
+            "label" : "postponed"
+          }, {
+            "value" : "528",
+            "label" : "cancelled"
+          }, {
+            "value" : "529",
+            "label" : "scheduled"
+          } ]
+        } ],
+        "inContext" : true
+      }, {
+        "id" : "transition",
+        "name" : "Transition",
+        "rmType" : "DV_CODED_TEXT",
+        "min" : 0,
+        "max" : 1,
+        "aqlPath" : "/ism_transition/transition",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "value",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      }, {
+        "id" : "careflow_step",
+        "name" : "Careflow_step",
+        "rmType" : "DV_CODED_TEXT",
+        "min" : 0,
+        "max" : 1,
+        "aqlPath" : "/ism_transition/careflow_step",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "at0006",
+            "label" : "Education planned",
+            "localizedLabels" : {
+              "nb" : "Helseinformasjon/undervisning planlagt",
+              "sv" : "Rådgivning/utbildning planerad",
+              "de" : "Beratung geplant",
+              "zh-cn" : "已计划的教育",
+              "en" : "Education planned"
+            },
+            "currentStates" : [ "526" ]
+          }, {
+            "value" : "at0018",
+            "label" : "Education recommended",
+            "localizedLabels" : {
+              "nb" : "Helseinformasjon/undervisning anbefalt",
+              "sv" : "Rådgivning/utbildning rekommenderas",
+              "de" : "Beratung empfohlen",
+              "zh-cn" : "已推荐的教育",
+              "en" : "Education recommended"
+            },
+            "currentStates" : [ "526" ]
+          }, {
+            "value" : "at0014",
+            "label" : "Education postponed",
+            "localizedLabels" : {
+              "nb" : "Helseinformasjon/undervisning utsatt",
+              "sv" : "Rådgivning/utbildning uppskjuten",
+              "de" : "Beratung verschoben",
+              "zh-cn" : "已推迟的教育",
+              "en" : "Education postponed"
+            },
+            "currentStates" : [ "527" ]
+          }, {
+            "value" : "at0015",
+            "label" : "Education cancelled",
+            "localizedLabels" : {
+              "nb" : "Helseinformasjon/undervisning er kansellert",
+              "sv" : "Rådgivning/utbildning inställd",
+              "de" : "Beratung abgesagt",
+              "zh-cn" : "已取消的教育",
+              "en" : "Education cancelled"
+            },
+            "currentStates" : [ "528" ]
+          }, {
+            "value" : "at0007",
+            "label" : "Education scheduled",
+            "localizedLabels" : {
+              "nb" : "Helseinformasjon/undervisning tidsfestet",
+              "sv" : "Rådgivning/utbildning inbokad",
+              "de" : "Beratung terminiert",
+              "zh-cn" : "已排程的教育",
+              "en" : "Education scheduled"
+            },
+            "currentStates" : [ "529" ]
+          }, {
+            "value" : "at0008",
+            "label" : "Education provided",
+            "localizedLabels" : {
+              "nb" : "Helseinformasjon/undervisning gjennomført",
+              "sv" : "Rådgivning/utbildning genomförd",
+              "de" : "Beratung angeboten",
+              "zh-cn" : "所提供的教育",
+              "en" : "Education provided"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0017",
+            "label" : "Education suspended",
+            "localizedLabels" : {
+              "nb" : "Helseinformasjon/undervisning midlertidig stanset",
+              "sv" : "Rådgivning/utbildning pausad",
+              "de" : "Beratung unterbrochen",
+              "zh-cn" : "已暂停的教育",
+              "en" : "Education suspended"
+            },
+            "currentStates" : [ "530" ]
+          }, {
+            "value" : "at0016",
+            "label" : "Education not completed",
+            "localizedLabels" : {
+              "nb" : "Helseinformasjon/undervisning ikke fullført",
+              "sv" : "Rådgivning/utbildning ej fullbordad",
+              "de" : "Beratung nicht abgeschlossen",
+              "zh-cn" : "未完成的教育",
+              "en" : "Education not completed"
+            },
+            "currentStates" : [ "531" ]
+          }, {
+            "value" : "at0013",
+            "label" : "Education completed",
+            "localizedLabels" : {
+              "nb" : "Helseinformasjon/undervisning fullført",
+              "sv" : "Rådgivning/utbildning fullbordad",
+              "de" : "Beratung abgeschlossen",
+              "zh-cn" : "所完成的教育",
+              "en" : "Education completed"
+            },
+            "currentStates" : [ "532" ]
+          } ]
+        } ],
+        "inContext" : true
+      } ],
+      "inContext" : true
+    }, {
+      "id" : "topic_name",
+      "name" : "Topic name",
+      "localizedName" : "Topic name",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0002",
+      "min" : 1,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Emne",
+        "sv" : "Ämne",
+        "de" : "Thema",
+        "zh-cn" : "主题名称",
+        "en" : "Topic name"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Navn på tema for helseinformasjonen/undervisningen.",
+        "sv" : "Namn/benämning för rådgivningen/undervisningen",
+        "de" : "Identifizierung des Themas der Gesundheitsberatung mit Namen.",
+        "zh-cn" : "采用名称对于健康教育主题的明确/标识。",
+        "en" : "Identification of the topic of health education, by name."
+      },
+      "annotations" : {
+        "comment" : "The 'Topic' could identify a single piece of information or a single skill, or it may be the name of a training course or program that may be delivered over multiple sessions or visits. The name may indicate that the education was transferred to a group or the individual."
+      },
+      "aqlPath" : "/description[at0001]/items[at0002]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "description",
+      "name" : "Description",
+      "localizedName" : "Description",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0003",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Beskrivelse",
+        "sv" : "Beskrivning",
+        "de" : "Beschreibung",
+        "zh-cn" : "描述",
+        "en" : "Description"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Beskrivelse i fritekst om helseinformasjonen/undervisningen.",
+        "sv" : "Beskrivande text om rådgivningen/utbildningen",
+        "de" : "Beschreibung der Gesundheitsberatung.",
+        "zh-cn" : "关于健康教育的文本叙述型说明。",
+        "en" : "Narrative description about the health education."
+      },
+      "aqlPath" : "/description[at0001]/items[at0003]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "clinical_indication",
+      "name" : "Clinical indication",
+      "localizedName" : "Clinical indication",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0035",
+      "min" : 0,
+      "max" : -1,
+      "localizedNames" : {
+        "nb" : "*Clinical indication (en)",
+        "sv" : "*Clinical indication(en)",
+        "de" : "Klinische Indikation",
+        "zh-cn" : "临床适应证",
+        "en" : "Clinical indication"
+      },
+      "localizedDescriptions" : {
+        "nb" : "*The clinical reason for the education activity. (en)",
+        "sv" : "*The clinical reason for the education activity.(en)",
+        "de" : "Der klinische Grund für die Beratungsaktivität.",
+        "zh-cn" : "教育活动的临床原因。",
+        "en" : "The clinical reason for the education activity."
+      },
+      "annotations" : {
+        "comment" : "For example: 'Diabetes' or 'Cancer management'. Coding of the indication with a terminology is preferred, where possible. This data element allows multiple occurrences."
+      },
+      "aqlPath" : "/description[at0001]/items[at0035]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "method",
+      "name" : "Method",
+      "localizedName" : "Method",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0004",
+      "min" : 0,
+      "max" : -1,
+      "localizedNames" : {
+        "nb" : "Metode",
+        "sv" : "Metod",
+        "de" : "Methode",
+        "zh-cn" : "方法",
+        "en" : "Method"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Hvilken metode som ble brukt da helseinformasjon/undervisning ble kommunisert.",
+        "sv" : "Metod genom vilken rådgivningen/hälsoutbildningen genomförs.",
+        "de" : "Methode, mit der die Gesundheitsberatung der Person erteilt wurde.",
+        "zh-cn" : "对当前人员开展健康教育或者说向其传达健康教育信息时所采用的方法。",
+        "en" : "Method by which the health education was communicated to the individual."
+      },
+      "annotations" : {
+        "comment" : "For example: verbal; demonstration; mobile app; or printed material."
+      },
+      "aqlPath" : "/description[at0001]/items[at0004]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "session_number",
+      "name" : "Session Number",
+      "localizedName" : "Session Number",
+      "rmType" : "DV_COUNT",
+      "nodeId" : "at0020",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Sesjonsnummer",
+        "sv" : "Undervisningstillfälle",
+        "de" : "Sitzungsnummer",
+        "zh-cn" : "服务时段编号",
+        "en" : "Session Number"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Nummeret på sesjonen dersom det er en serie på et antall økter.",
+        "sv" : "Numret i ordningen av antal tillfällen i en kurs med flera tillfällen.",
+        "de" : "Nummer der Beratungssitzung in einem Kurs mit mehreren Sitzungen.",
+        "zh-cn" : "多节课程/讲座之中当前服务时段（一节）的编号。",
+        "en" : "Number of the education session in an multi-session course."
+      },
+      "aqlPath" : "/description[at0001]/items[at0020]/value",
+      "inputs" : [ {
+        "type" : "INTEGER"
+      } ]
+    }, {
+      "id" : "reason",
+      "name" : "Reason",
+      "localizedName" : "Reason",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0010",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Årsak",
+        "sv" : "Orsak",
+        "de" : "Grund",
+        "zh-cn" : "原因",
+        "en" : "Reason"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Årsak til at det aktuelle prosesstrinnet ble utført.",
+        "sv" : "Orsak till att detta processteg nåddes",
+        "de" : "Grund, warum der Pathway-Schritt für die identifizierte Gesundheitsberatung durchgeführt wurde.",
+        "zh-cn" : "关于当时开展所标识的健康教育的这一路径步骤的原因。",
+        "en" : "Reason that the pathway step for the identified health education was carried out."
+      },
+      "annotations" : {
+        "comment" : "For example: 'Suspended - Patient too tired to continue'; or 'Not completed - Patient did not attend all 4 visits'."
+      },
+      "aqlPath" : "/description[at0001]/items[at0010]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "outcome",
+      "name" : "Outcome",
+      "localizedName" : "Outcome",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0019",
+      "min" : 0,
+      "max" : -1,
+      "localizedNames" : {
+        "nb" : "Resultat",
+        "sv" : "Resultat",
+        "de" : "Ergebnis",
+        "zh-cn" : "效果",
+        "en" : "Outcome"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Beskrivelse av resultatet av helseinformasjonen/undervisningen.",
+        "sv" : "Beskrivning av rådgivningens/undervisningens resultat",
+        "de" : "Beschreibung des Ergebnisses der Gesundheitsberatung.",
+        "zh-cn" : "关于健康教育的效果/结果/结局。",
+        "en" : "Description of the outcome of health education."
+      },
+      "annotations" : {
+        "comment" : "Coding with an external terminology is optional. For example: a narrative description about the individual's understanding and skill from the educator's point of view or forwarded by the individual; or 'Passed'/'Not passed' status for an assessment."
+      },
+      "aqlPath" : "/description[at0001]/items[at0019]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "scheduled_date_time",
+      "name" : "Scheduled date/ time",
+      "localizedName" : "Scheduled date/ time",
+      "rmType" : "DV_DATE_TIME",
+      "nodeId" : "at0026",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Planlagt dato/tid",
+        "sv" : "Bokad/schemalagd tidpunkt",
+        "de" : "Termin Datum/Uhrzeit",
+        "zh-cn" : "所安排的日期/时间",
+        "en" : "Scheduled date/ time"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Dato eller dato/tid når undervisningsaktiviteten er planlagt utført.",
+        "sv" : "Datumet och/eller tiden då rådgivnings/undervisningsaktiviteten ska genomföras.",
+        "de" : "Datum und / oder Uhrzeit der Durchführung der Beratungsaktivität.",
+        "zh-cn" : "计划安排开展教育活动的日期和/或时间。",
+        "en" : "The date and/or time on which the education activity is intended to be performed."
+      },
+      "annotations" : {
+        "comment" : "Only for use in association with the 'Education scheduled' pathway step."
+      },
+      "aqlPath" : "/description[at0001]/items[at0026]/value",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ]
+    }, {
+      "id" : "comment",
+      "name" : "Comment",
+      "localizedName" : "Comment",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0027",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Kommentar",
+        "sv" : "Kommentar",
+        "de" : "Kommentar",
+        "zh-cn" : "备注",
+        "en" : "Comment"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Ytterligere fritekst om aktiviteten eller prosesstrinnet som ikke representeres i andre elementer.",
+        "sv" : "Ytterligare beskrivning av aktiviteten eller processteget som inte redan fångats i övriga fält.",
+        "de" : "Zusätzliche Beschreibung über den Aktivitäts- oder Pflegeschritt, der in anderen Feldern nicht erfasst wurde.",
+        "zh-cn" : "关于其他字段之中所未采集的活动或照护服务路径的文本叙述型注释。",
+        "en" : "Additional narrative about the activity or care pathway step not captured in other fields."
+      },
+      "aqlPath" : "/description[at0001]/items[at0027]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "requestor_order_identifier",
+      "name" : "Requestor order identifier",
+      "localizedName" : "Requestor order identifier",
+      "rmType" : "ELEMENT",
+      "nodeId" : "at0030",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "RekvisisjonsID",
+        "sv" : "Beställarens ID för beställningen/remissen",
+        "de" : "Anforderer ID",
+        "zh-cn" : "申请方医嘱标识符",
+        "en" : "Requestor order identifier"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Den lokale IDen tilordnet rekvisisjonen av helsepersonellet eller organisasjonen som har rekvirert helseinformasjonen/undervisningen.",
+        "sv" : "Lokalt beställnings/remiss-ID tilldelat av beställande/remitterande vårdgivare eller organisation som efterfrågar utbildningen/rådgivningen",
+        "de" : "Die lokale ID, die dem Auftrag von dem Gesundheitsdienstleister oder der Organisation, die die Beratung anfordert, zugewiesen wurde.",
+        "zh-cn" : "申请当前教育/宣教[服务]的健康医疗服务人员或组织机构为当前医嘱/申请所指定的本地标识符。",
+        "en" : "The local ID assigned to the order by the healthcare provider or organisation requesting the education."
+      },
+      "annotations" : {
+        "comment" : "This is equivalent to Placer Order Number in HL7 v2 specifications."
+      },
+      "aqlPath" : "/protocol[at0021]/items[at0030]",
+      "children" : [ {
+        "id" : "text_value",
+        "localizedName" : "Requestor order identifier",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "RekvisisjonsID",
+          "sv" : "Beställarens ID för beställningen/remissen",
+          "de" : "Anforderer ID",
+          "zh-cn" : "申请方医嘱标识符",
+          "en" : "Requestor order identifier"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Den lokale IDen tilordnet rekvisisjonen av helsepersonellet eller organisasjonen som har rekvirert helseinformasjonen/undervisningen.",
+          "sv" : "Lokalt beställnings/remiss-ID tilldelat av beställande/remitterande vårdgivare eller organisation som efterfrågar utbildningen/rådgivningen",
+          "de" : "Die lokale ID, die dem Auftrag von dem Gesundheitsdienstleister oder der Organisation, die die Beratung anfordert, zugewiesen wurde.",
+          "zh-cn" : "申请当前教育/宣教[服务]的健康医疗服务人员或组织机构为当前医嘱/申请所指定的本地标识符。",
+          "en" : "The local ID assigned to the order by the healthcare provider or organisation requesting the education."
+        },
+        "aqlPath" : "/protocol[at0021]/items[at0030]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "identifier_value",
+        "localizedName" : "Requestor order identifier",
+        "rmType" : "DV_IDENTIFIER",
+        "nodeId" : "",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "RekvisisjonsID",
+          "sv" : "Beställarens ID för beställningen/remissen",
+          "de" : "Anforderer ID",
+          "zh-cn" : "申请方医嘱标识符",
+          "en" : "Requestor order identifier"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Den lokale IDen tilordnet rekvisisjonen av helsepersonellet eller organisasjonen som har rekvirert helseinformasjonen/undervisningen.",
+          "sv" : "Lokalt beställnings/remiss-ID tilldelat av beställande/remitterande vårdgivare eller organisation som efterfrågar utbildningen/rådgivningen",
+          "de" : "Die lokale ID, die dem Auftrag von dem Gesundheitsdienstleister oder der Organisation, die die Beratung anfordert, zugewiesen wurde.",
+          "zh-cn" : "申请当前教育/宣教[服务]的健康医疗服务人员或组织机构为当前医嘱/申请所指定的本地标识符。",
+          "en" : "The local ID assigned to the order by the healthcare provider or organisation requesting the education."
+        },
+        "aqlPath" : "/protocol[at0021]/items[at0030]/value",
+        "inputs" : [ {
+          "suffix" : "id",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "type",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "issuer",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "assigner",
+          "type" : "TEXT"
+        } ]
+      } ]
+    }, {
+      "id" : "receiver_order_identifier",
+      "name" : "Receiver order identifier",
+      "localizedName" : "Receiver order identifier",
+      "rmType" : "ELEMENT",
+      "nodeId" : "at0031",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Mottakers rekvisisjonsID",
+        "sv" : "Remissmottagarens ID för beställningen/remissen",
+        "de" : "Empfänger ID",
+        "zh-cn" : "接收方医嘱标识符",
+        "en" : "Receiver order identifier"
+      },
+      "localizedDescriptions" : {
+        "nb" : "IDen tilordnet rekvisisjonen av helsepersonellet eller organisasjonen som mottar forespørselen.",
+        "sv" : "Lokalt beställnings/remiss-ID tilldelat av mottagande vårdgivare eller organisation som genomför utbildningen/rådgivningen \r\n",
+        "de" : "Die ID, die dem Antrag von dem Gesundheitsdienstleister oder der Organisation zugewiesen wurde, die den Antrag auf Beratung erhalten hat. Dies wird auch als Filler Order Identifier bezeichnet.",
+        "zh-cn" : "接收/收到关于当前教育/宣教[服务]的申请的健康医疗服务人员或组织机构为当前医嘱/申请所指定的本地标识符。该标识符又称为执行方医嘱标识符（Filler Order Identifier）。",
+        "en" : "The ID assigned to the order by the healthcare provider or organisation receiving the request for education. This is also referred to as Filler Order Identifier."
+      },
+      "annotations" : {
+        "comment" : "This is equivalent to Filler Order Number in HL7 v2 specifications."
+      },
+      "aqlPath" : "/protocol[at0021]/items[at0031]",
+      "children" : [ {
+        "id" : "text_value",
+        "localizedName" : "Receiver order identifier",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Mottakers rekvisisjonsID",
+          "sv" : "Remissmottagarens ID för beställningen/remissen",
+          "de" : "Empfänger ID",
+          "zh-cn" : "接收方医嘱标识符",
+          "en" : "Receiver order identifier"
+        },
+        "localizedDescriptions" : {
+          "nb" : "IDen tilordnet rekvisisjonen av helsepersonellet eller organisasjonen som mottar forespørselen.",
+          "sv" : "Lokalt beställnings/remiss-ID tilldelat av mottagande vårdgivare eller organisation som genomför utbildningen/rådgivningen \r\n",
+          "de" : "Die ID, die dem Antrag von dem Gesundheitsdienstleister oder der Organisation zugewiesen wurde, die den Antrag auf Beratung erhalten hat. Dies wird auch als Filler Order Identifier bezeichnet.",
+          "zh-cn" : "接收/收到关于当前教育/宣教[服务]的申请的健康医疗服务人员或组织机构为当前医嘱/申请所指定的本地标识符。该标识符又称为执行方医嘱标识符（Filler Order Identifier）。",
+          "en" : "The ID assigned to the order by the healthcare provider or organisation receiving the request for education. This is also referred to as Filler Order Identifier."
+        },
+        "aqlPath" : "/protocol[at0021]/items[at0031]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "identifier_value",
+        "localizedName" : "Receiver order identifier",
+        "rmType" : "DV_IDENTIFIER",
+        "nodeId" : "",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Mottakers rekvisisjonsID",
+          "sv" : "Remissmottagarens ID för beställningen/remissen",
+          "de" : "Empfänger ID",
+          "zh-cn" : "接收方医嘱标识符",
+          "en" : "Receiver order identifier"
+        },
+        "localizedDescriptions" : {
+          "nb" : "IDen tilordnet rekvisisjonen av helsepersonellet eller organisasjonen som mottar forespørselen.",
+          "sv" : "Lokalt beställnings/remiss-ID tilldelat av mottagande vårdgivare eller organisation som genomför utbildningen/rådgivningen \r\n",
+          "de" : "Die ID, die dem Antrag von dem Gesundheitsdienstleister oder der Organisation zugewiesen wurde, die den Antrag auf Beratung erhalten hat. Dies wird auch als Filler Order Identifier bezeichnet.",
+          "zh-cn" : "接收/收到关于当前教育/宣教[服务]的申请的健康医疗服务人员或组织机构为当前医嘱/申请所指定的本地标识符。该标识符又称为执行方医嘱标识符（Filler Order Identifier）。",
+          "en" : "The ID assigned to the order by the healthcare provider or organisation receiving the request for education. This is also referred to as Filler Order Identifier."
+        },
+        "aqlPath" : "/protocol[at0021]/items[at0031]/value",
+        "inputs" : [ {
+          "suffix" : "id",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "type",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "issuer",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "assigner",
+          "type" : "TEXT"
+        } ]
+      } ]
+    }, {
+      "id" : "time",
+      "name" : "Time",
+      "rmType" : "DV_DATE_TIME",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/time",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ],
+      "inContext" : true
+    }, {
+      "id" : "language",
+      "name" : "Language",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/language",
+      "inContext" : true
+    }, {
+      "id" : "encoding",
+      "name" : "Encoding",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/encoding",
+      "inContext" : true
+    }, {
+      "id" : "subject",
+      "name" : "Subject",
+      "rmType" : "PARTY_PROXY",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/subject",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_scheme",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_namespace",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "name",
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}

@@ -1,0 +1,1545 @@
+{
+  "templateId" : "Medication Order",
+  "semVer" : "0.1.0",
+  "version" : "2.3",
+  "defaultLanguage" : "en",
+  "languages" : [ "nb", "pt-br", "es-ar", "de", "sv", "en" ],
+  "tree" : {
+    "id" : "medication_order",
+    "name" : "Medication Order",
+    "localizedName" : "Medication Order",
+    "rmType" : "INSTRUCTION",
+    "nodeId" : "openEHR-EHR-INSTRUCTION.medication_order.v3",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "nb" : "Medication Order",
+      "pt-br" : "Medication Order",
+      "es-ar" : "Medication Order",
+      "de" : "Medication Order",
+      "sv" : "Medication Order",
+      "en" : "Medication Order"
+    },
+    "localizedDescriptions" : {
+      "nb" : "Ordinering av et legemiddel, en vaksine, parenteral væske, ernæringsprodukt eller medisinsk forbruksmateriell, for et spesifikt individ.",
+      "pt-br" : "Prescrição de medicamentos, vacina, produtos nutricionais ou outro item de tratamento para um indivíduo identificado.",
+      "es-ar" : "Una orden para un medicamento, vacuna, producto nutricional u otro ítem terapéutico para un individuo identificado.",
+      "de" : "Verschreibung eines Medikaments, Impfstoffs, Ernährungsprodukts oder anderen therapeutischen Mittels für eine bestimmte Person.",
+      "sv" : "En beställning av ett läkemedel, vaccin, näringspreparat eller annat terapeutiskt produkt för en identifierad individ.",
+      "en" : "An order for a medication, vaccine, nutritional product or other therapeutic item for an identified individual."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "order",
+      "name" : "Order",
+      "localizedName" : "Order",
+      "rmType" : "ACTIVITY",
+      "nodeId" : "at0001",
+      "min" : 0,
+      "max" : -1,
+      "localizedNames" : {
+        "nb" : "Ordinering",
+        "pt-br" : "Prescrição",
+        "es-ar" : "Orden",
+        "de" : "Verordnung",
+        "sv" : "Order",
+        "en" : "Order"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Detaljer knyttet til ordineringen.",
+        "pt-br" : "Detalhes da prescrição solicitada.",
+        "es-ar" : "Detalles de la orden requerida.",
+        "de" : "Angaben zur Verordnung.",
+        "sv" : "Information om den begärda ordern.",
+        "en" : "Details of the requested order."
+      },
+      "aqlPath" : "/activities[at0001]",
+      "children" : [ {
+        "id" : "medication_item",
+        "name" : "Medication item",
+        "localizedName" : "Medication item",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0070",
+        "min" : 1,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Legemiddel",
+          "pt-br" : "Item da prescrição de medicamentos",
+          "es-ar" : "Ítem medicamentoso",
+          "de" : "Arzneimittel",
+          "sv" : "Läkemedelsartikel",
+          "en" : "Medication item"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Navnet på legemiddelet, vaksinen eller det medisinske forbruksmateriellet som ordineres.",
+          "pt-br" : "Nome do medicamento, vacina ou outro item terapêutico/prescritível a ser solicitado.",
+          "es-ar" : "Nombre del medicamento, vacuna, u otro ítem terapéutico o prescribible que es ordenado",
+          "de" : "Name des verordneten Medikaments, Impfstoffs oder anderen therapeutischen / verschreibungsfähigen Mittels.",
+          "sv" : "Benämning på det läkemedel, vaccin eller annan terapeutisk/ordinerbar artikel som beställs.\r\n",
+          "en" : "Name of the medication, vaccine or other therapeutic/prescribable item being ordered."
+        },
+        "annotations" : {
+          "comment" : "Depending on the prescribing context this field could be used for either generic- or product-based prescribing. This data field can be used to record tightly bound orders of different medications when they are prescribed as a single pack. It is strongly recommended that the 'Medication item' be coded with a terminology capable of triggering decision support, where possible. The extent of coding may vary from the simple name of the medication item through to structured details about the actual medication pack to be used. Free text entry should only be used if there is no appropriate terminology available."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0070]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "route",
+        "name" : "Route",
+        "localizedName" : "Route",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0091",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "nb" : "Administreringsvei",
+          "pt-br" : "Via de Administração",
+          "es-ar" : "Ruta",
+          "de" : "Verabreichungsweg",
+          "sv" : "Administreringsväg",
+          "en" : "Route"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Administreringsveien for den ordinerte varen.",
+          "pt-br" : "A via de administração pela qual o item prescrito deve ser administrada à pessoa.",
+          "es-ar" : "La ruta o vía de administración a través de la cual el ítem ordenado debe ser administrado en el cuerpo del sujeto.",
+          "de" : "Die Angabe darüber, auf welche Art das verordnete Arzneimittel am Körper des Patienten angewendet wird.",
+          "sv" : "Sättet genom vilken den beställda artikeln ska administreras i patientens kropp.",
+          "en" : "The route by which the ordered item is to be administered into the subject's body."
+        },
+        "annotations" : {
+          "comment" : "For example: 'oral', 'intravenous', or 'topical'.\r\nCoding of the route with a terminology is preferred, where possible. Multiple potential routes may be specified."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0091]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "body_site",
+        "name" : "Body site",
+        "localizedName" : "Body site",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0092",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Anatomisk lokalisering",
+          "pt-br" : "Local do corpo",
+          "es-ar" : "Sitio corporal",
+          "de" : "Körperstelle",
+          "sv" : "Kroppsområde",
+          "en" : "Body site"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Navn på kroppsstedet der den ordinerte varen skal administreres.",
+          "pt-br" : "Nome do local de administração do item prescrito.",
+          "es-ar" : "Nombre del sitio de administración del ítem ordenado.",
+          "de" : "Name der Körperstelle, an der das Arzneimittel verabreicht wird.",
+          "sv" : "Beskrivning av administrationsstället för den beställda artikeln.",
+          "en" : "Name of the site of administration of the ordered item."
+        },
+        "annotations" : {
+          "comment" : "For example: 'left upper arm', 'intravenous catheter right hand'.\r\n Coding of the body site with a terminology is preferred, where possible."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0092]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "administration_method",
+        "name" : "Administration method",
+        "localizedName" : "Administration method",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0094",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "nb" : "Administreringsmetode",
+          "pt-br" : "*Administration method(en)",
+          "es-ar" : "Método de administración",
+          "de" : "Methode der Verabreichung",
+          "sv" : "Administreringsmetod",
+          "en" : "Administration method"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Teknikken eller utstyret som brukes for å administrere den ordinerte varen.",
+          "pt-br" : "*The technique or device by which the ordered item is to be administered.(en)",
+          "es-ar" : "La técnica o dispositivo mediante el cual el ítem ordenado será administrado.",
+          "de" : "Die Technik oder das Gerät mit dem das versordnete Arzneimittel verabreicht werden soll.",
+          "sv" : "Den teknik eller utrustning med vilken den beställda artikeln ska administreras.",
+          "en" : "The technique or device by which the ordered item is to be administered."
+        },
+        "annotations" : {
+          "comment" : "For example: ' via Z-track injection'; 'via nebuliser'. Coding of the method with a terminology is preferred, where possible."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0094]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "overall_directions_description",
+        "name" : "Overall directions description",
+        "localizedName" : "Overall directions description",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0009",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Overordnet anvisningsbeskrivelse",
+          "pt-br" : "Instruções Gerais da Prescrição",
+          "es-ar" : "Descripción de las directivas generales",
+          "de" : "Allgemeine Beschreibung der Anweisungen",
+          "sv" : "Fullständig beskrivning av anvisningar",
+          "en" : "Overall directions description"
+        },
+        "localizedDescriptions" : {
+          "nb" : "En komplett fritekstbeskrivelse av hvordan den ordinerte varen skal brukes.",
+          "pt-br" : "Narrativa completa da descrição de como o item deve ser utilizado.",
+          "es-ar" : "Descripción narrativa completa del modo en que el ítem ordenado debe ser utilizado.",
+          "de" : "Gesamtbeschreibung, wie das verordneten Medikament zu verwenden ist.",
+          "sv" : "Komplett beskrivning om hur den beställda artikeln ska användas.",
+          "en" : "Complete narrative description about how the ordered item is to be used."
+        },
+        "annotations" : {
+          "comment" : "This narrative should normally subsume data captured in 'Dose amount', 'Dose timing' and any additional instructions for use. Where the medication dose directions are fully carried by the structured, computable dose directions, this element should carry the narrative equivalent, generally auto-generated. If it is not possible to represent the intended 'Dose direction' fully in computable form, partial representation is not recommended, and the directions should be only recorded in narrative form using this data element."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0009]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "parsable_directions",
+        "name" : "Parsable directions",
+        "localizedName" : "Parsable directions",
+        "rmType" : "DV_PARSABLE",
+        "nodeId" : "at0047",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Maskinlesbare anvisninger",
+          "pt-br" : "Orientação para parsear texto",
+          "es-ar" : "Directivas parseables",
+          "de" : "Maschinenlesbare Anweisungen",
+          "sv" : "Tolkningsanvisningar",
+          "en" : "Parsable directions"
+        },
+        "localizedDescriptions" : {
+          "nb" : "En maskinlesbar tekstfremstilling av anvisningene.",
+          "pt-br" : "Uma representação em texto parseável das orientações.",
+          "es-ar" : "La de las directivas en forma de texto parseable y computable.",
+          "de" : "Eine maschinenlesbare, berechenbare Textdarstellung der Anweisung.",
+          "sv" : "En tolkbar, computable textrepresentation av anvisningarna.",
+          "en" : "A parsable, computable text representation of the directions."
+        },
+        "annotations" : {
+          "comment" : "Generally this is only used when passing information between legacy systems. For example: '10mg bd; 20mg n' as used by the NHS Dose syntax (in development)."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0047]/value",
+        "inputs" : [ {
+          "suffix" : "value",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "formalism",
+          "type" : "TEXT",
+          "list" : [ {
+            "value" : "text/html",
+            "label" : "text/html"
+          }, {
+            "value" : "text/plain",
+            "label" : "text/plain"
+          }, {
+            "value" : "text/xml",
+            "label" : "text/xml"
+          } ],
+          "listOpen" : false
+        } ]
+      }, {
+        "id" : "specific_directions_description",
+        "name" : "Specific directions description",
+        "localizedName" : "Specific directions description",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0173",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "nb" : "Spesifikk anvisningsbeskrivelse",
+          "pt-br" : "Orientações específicas",
+          "es-ar" : "Descripción de las directivas específicas",
+          "de" : "Beschreibung der spezifischen Anweisungen",
+          "sv" : "Specifika anvisningar",
+          "en" : "Specific directions description"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Fritekstbeskrivelse av en spesifikk del av den overordnede anvisningen.",
+          "pt-br" : "Descrição em texto de uma parte das orientações globais.",
+          "es-ar" : "La descripción narrativa de una parte específica de las directivas generales.",
+          "de" : "Freitextbeschreibung eines bestimmten Teils der Gesamtanweisung.",
+          "sv" : "Beskrivning av en specifik del av de övergripande anvisningarna.",
+          "en" : "A narrative description of a specific part of overall directions."
+        },
+        "annotations" : {
+          "comment" : "In some settings, it is common to split overall narrative directions into more specific segments of narrative. For example in hospital settings, it can be common to split the overall directions into 'Dose amount' and 'Dose timing', both as narrative text. These terms can be applied at template or run-time."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0173]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "dosage_justification",
+        "name" : "Dosage justification",
+        "localizedName" : "Dosage justification",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0174",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "nb" : "Begrunnelse for dose",
+          "pt-br" : "Justificativa da dosagem",
+          "es-ar" : "Justificación de la dosis",
+          "de" : "Begründung der Dosis",
+          "sv" : "Motivering till dos",
+          "en" : "Dosage justification"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Begrunnelsen for hvorfor en spesifikk dose er valgt, der dette er avhengig av en ytre faktor.",
+          "pt-br" : "A descrição da justificativa utilizada para calcular a dose total ou taxa da administração quando esta é dependente de algum outro fator.",
+          "es-ar" : "La descripción de la justificación utilizada para calcular la cantidad o frecuencia de administración de una dosis cuando este depende de otro factor.",
+          "de" : "Eine Beschreibung der Begründung für die Berechnung einer Dosismenge oder Verabreichungsrate, wenn dies von einem anderen Faktor abhängt.",
+          "sv" : "Motivering till beräkning av dosmängd eller administreringshastighet där detta är beroende av utomstående faktor.",
+          "en" : "A description of the justification used to calculate a dose amount or administration rate where this is dependent on some other factor."
+        },
+        "annotations" : {
+          "comment" : "For example: 'Adjusted for amputation'."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0174]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "medication_safety",
+        "name" : "Medication safety",
+        "localizedName" : "Medication safety",
+        "rmType" : "CLUSTER",
+        "nodeId" : "at0062",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Legemiddelsikkerhet",
+          "pt-br" : "Segurança de medicamentos",
+          "es-ar" : "Seguridad del medicamento",
+          "de" : "Arzneimittelsicherheit",
+          "sv" : "Läkemedelssäkerhet",
+          "en" : "Medication safety"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Detaljer knyttet til sikkerhet rundt den ordinerte varen.",
+          "pt-br" : "Detalhes sobre a segurança de medicamentos prescritos.",
+          "es-ar" : "Detalles acerca de la seguridad del ítem ordenado.",
+          "de" : "Angaben über die Arzneimittelsicherheit des verordneten Medikaments.",
+          "sv" : "Detaljer om medicinsk säkerhet för den beställda artikeln.",
+          "en" : "Details about medication safety for the ordered item."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]",
+        "children" : [ {
+          "id" : "exceptional_safety_override",
+          "name" : "Exceptional safety override?",
+          "localizedName" : "Exceptional safety override?",
+          "rmType" : "DV_BOOLEAN",
+          "nodeId" : "at0064",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Overstyring av sikkerhetsgrenser?",
+            "pt-br" : "Cancelamento excepcional do alerta?",
+            "es-ar" : "¿Problema de seguridad ignorado por excepción?",
+            "de" : "Beabsichtigte Sicherheitsüberschreitung?",
+            "sv" : "Säkerhet åsidosatt?",
+            "en" : "Exceptional safety override?"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Bekreftelse fra forskriveren om at den maksimale dosen eller andre sikkerhetsgrenser er overstyrt på grunn av spesielle omstendigheter.",
+            "pt-br" : "Confirmação pelo prescritor de que a dose normal ou outro limite de segurança foi ultrapassado, por circunstâncias excepcionais.",
+            "es-ar" : "Confirmación por parte del prescriptor de que la dosis normal o un límite de seguridad han sido ignorados por circunstancias excepcionales.",
+            "de" : "Bestätigung durch den verschreibenden Arzt, ob die normale Dosis oder andere Sicherheitsgrenzen aufgrund besonderer Umstände überschritten wurden.",
+            "sv" : "Bekräftelse från ordineraren att normal dos eller annan säkerhetsgräns har åsidosatts på grund av exceptionella omständigheter.",
+            "en" : "Confirmation by the prescriber that the normal dose or other safety limit has been overridden due to exceptional circumstances."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0064]/value",
+          "inputs" : [ {
+            "type" : "BOOLEAN"
+          } ]
+        }, {
+          "id" : "safety_override",
+          "name" : "Safety override",
+          "localizedName" : "Safety override",
+          "rmType" : "CLUSTER",
+          "nodeId" : "at0178",
+          "min" : 0,
+          "max" : -1,
+          "localizedNames" : {
+            "nb" : "Sikkerhetsoverstyring",
+            "pt-br" : "*Safety override(en)",
+            "es-ar" : "Omisión asunto de seguridad",
+            "de" : "Sicherheitsgrenze überschritten",
+            "sv" : "Åsidosättande av säkerhet",
+            "en" : "Safety override"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Overstyring av et kjent problem relatert til legemiddelsikkerhet for dette individet og den ordinerte varen, f.eks. allergi, advarsel om legemiddelduplisering, eller kontraindikasjon.",
+            "pt-br" : "*Overriding of a known or recognised safety issue which applies to this subject and the ordered item, such as an allergy, drug duplication warning or contraindication.(en)",
+            "es-ar" : "La omisión de una cuestión de seguridad conocida o detectada que aplica al sujeto y al ítem de la orden, tal como una alergia, la duplicación de droga o una contraindicación.",
+            "de" : "Überschreiten eines bekannten oder anerkannten Sicherheitshinweis des Medikaments, wie z. B. eine Allergie, eine Warnung vor Drogenmissbrauch oder eine Kontraindikation.",
+            "sv" : "Åsidosättande av en känd säkerhetsfråga som gäller för vårdtagaren och den beställda artikeln, såsom en allergi, varning om läkemedelsdubblering eller kontraindikation.",
+            "en" : "Overriding of a known or recognised safety issue which applies to this subject and the ordered item, such as an allergy, drug duplication warning or contraindication."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0178]",
+          "children" : [ {
+            "id" : "overriden_safety_advice",
+            "name" : "Overriden safety advice",
+            "localizedName" : "Overriden safety advice",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0171",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "nb" : "Overstyrt sikkerhetsanbefaling",
+              "pt-br" : "Aviso de segurança cancelado",
+              "es-ar" : "Alerta de seguridad omitida",
+              "de" : "Hinweis zur überschrittenen Sicherheitsgrenze",
+              "sv" : "Åsidosatta säkerhetsanvisningar",
+              "en" : "Overriden safety advice"
+            },
+            "localizedDescriptions" : {
+              "nb" : "Et kjent problem relatert til legemiddelsikkerhet for dette individet og den ordinerte varen, f.eks. allergi, advarsel om legemiddelduplisering, eller kontraindikasjon. Registreres ordinært bare dersom anbefalingen overstyres.",
+              "pt-br" : "Uma questão de segurança conhecida ou reconhecida de uma pessoa ecom relação ao item prescrito, tais como, alergia, aviso de duplicidade de drogas ou contra-indicação. Este elemento normalmente é registrado apenas quando este aviso de segurança é cancelado.",
+              "es-ar" : "Un problema de seguridad reconocido para el sujeto y el ítem ordenado, tal como una alergia, la duplicación de una droga o una contraindicación, normalmente registrada solo cuando el mismo es deliberadamente ignorado.",
+              "de" : "Ein bekanntes oder anerkanntes Sicherheitsproblem, das für dieses Medikament gilt, wie z. B. eine Allergie, ein Warnhinweis zur Vervielfältigung von Arzneimitteln oder eine Kontraindikation. Dieses Element wird normalerweise nur aufgezeichnet, wenn dieser Sicherheitshinweis außer Kraft gesetzt wird.",
+              "sv" : "En känd säkerhetsfråga som gäller för vårdtagaren och den beställda artikeln, såsom en allergi, varning om läkemedel eller kontraindikation. Detta element registreras normalt bara när säkerhetsanvisningarna åsidosätts.",
+              "en" : "A known or recognised safety issue which applies to this subject and the ordered item, such as an allergy, drug duplication warning or contraindication. This element is normally only recorded when this safety advice is overridden."
+            },
+            "annotations" : {
+              "comment" : "For example: 'Allergic to penicillin', 'Atenolol duplicated'."
+            },
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0178]/items[at0171]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "override_reason",
+            "name" : "Override reason",
+            "localizedName" : "Override reason",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0162",
+            "min" : 0,
+            "max" : -1,
+            "localizedNames" : {
+              "nb" : "Årsak til overstyring",
+              "pt-br" : "Justificativa do cancelamento do alerta",
+              "es-ar" : "Razón para ignorar la seguridad",
+              "de" : "Grund der Überschreitung",
+              "sv" : "Anledning för åsidosättning",
+              "en" : "Override reason"
+            },
+            "localizedDescriptions" : {
+              "nb" : "Begrunnelsen for hvorfor sikkerhetsgrensen eller maksimumsdosen er overstyrt.",
+              "pt-br" : "O motivo pelo qual um item de segurança clínica ou de uma dose máxima não foi cumprido.",
+              "es-ar" : "La razón por la cual se ignoró un problema de seguridad clínica o una dosis máxima.",
+              "de" : "Der Grund für eine Überschreitung der klinischen Sicherheit oder maximalen Dosis.",
+              "sv" : "Anledningen till åsidosättning av en klinisk säkerhet eller överskridande av maximal dos.",
+              "en" : "The reason for a clinical safety or maximum dose override."
+            },
+            "annotations" : {
+              "comment" : "For example: 'Not responsive at maximum recommended dose. Critical situation.', 'Peniciilin is only valid treatment, likelihood of true penicillin allergy is low'."
+            },
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0178]/items[at0162]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          } ]
+        }, {
+          "id" : "maximum_dose",
+          "name" : "Maximum dose",
+          "localizedName" : "Maximum dose",
+          "rmType" : "CLUSTER",
+          "nodeId" : "at0051",
+          "min" : 0,
+          "max" : -1,
+          "localizedNames" : {
+            "nb" : "Maksimumsdose",
+            "pt-br" : "Dose máxima",
+            "es-ar" : "Dosis máxima",
+            "de" : "Maximale Dosis",
+            "sv" : "Maximal dos",
+            "en" : "Maximum dose"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Detaljer om den maksimale kumulative dosen av den ordinerte varen som er tillatt i en definert tidsperiode.",
+            "pt-br" : "Detalhes sobre a dose máxima cumulativa permitida durante um período definido para o item prescrito.",
+            "es-ar" : "Detalles acerca de la dosis máxima acumulativa permitida para un lapso definido para el ítem ordenado.",
+            "de" : "Details zur maximal zulässigen kumulativen Dosis über einen definierten Zeitraum für das verordnete Arzneimittel.",
+            "sv" : "Detaljer om den maximala, kumulativa dosen av den beställda artikeln som tillåts under en definierad period.",
+            "en" : "Details about the maximum, cumulative dose allowed over a defined period for the ordered item."
+          },
+          "annotations" : {
+            "comment" : "For example: 'up to 1gram per day'. This cluster allows multiple occurrences to enable representation of multiple maximum doses that apply to different time periods. Lifetime maximum dose should not be carried here as it refers to multiple orders over time."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0051]",
+          "children" : [ {
+            "id" : "maximum_amount",
+            "name" : "Maximum amount",
+            "localizedName" : "Maximum amount",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "at0130",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "nb" : "Maksimum legemiddelmengde",
+              "pt-br" : "Quantidade máxima",
+              "es-ar" : "Cantidad máxima",
+              "de" : "Höchstmenge",
+              "sv" : "Maximal dosmängd",
+              "en" : "Maximum amount"
+            },
+            "localizedDescriptions" : {
+              "nb" : "Den maksimale kumulative legemiddelmengden som bør administreres i perioden.",
+              "pt-br" : "*The maximum, cumulative amount of medication which should be administered within the allowed period. (en)",
+              "es-ar" : "*The maximum, cumulative amount of medication which should be administered within the allowed period. (en)",
+              "de" : "Die maximale, kumulative Menge an Medikamenten, die innerhalb des zulässigen Zeitraums verabreicht werden sollte.",
+              "sv" : "*The maximum, cumulative amount of medication which should be administered within the allowed period. (en)",
+              "en" : "The maximum, cumulative amount of medication which should be administered within the allowed period."
+            },
+            "annotations" : {
+              "comment" : "For example: 1 ml, 1.5 mg, 0.125 g."
+            },
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0051]/items[at0130]/value",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL"
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT"
+            } ]
+          }, {
+            "id" : "allowed_period",
+            "name" : "Allowed period",
+            "localizedName" : "Allowed period",
+            "rmType" : "DV_DURATION",
+            "nodeId" : "at0053",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "nb" : "Tidsperiode",
+              "pt-br" : "Periodo de tempo permitido",
+              "es-ar" : "Período permitido",
+              "de" : "Zulässige Dauer",
+              "sv" : "Tillåten period",
+              "en" : "Allowed period"
+            },
+            "localizedDescriptions" : {
+              "nb" : "Tidsperioden maksimumsdosen er kalkulert for.",
+              "pt-br" : "O período do tempo durante o qual a dose máxima é calculada.",
+              "es-ar" : "El período de tiempo permitido para la dosis máxima calculada.",
+              "de" : "Der Zeitraum, für den die maximale Dosis berechnet wird.",
+              "sv" : "Tidsperioden under vilken den maximala dosen är beräknad.",
+              "en" : "The period of time during which the maximum dose is calculated."
+            },
+            "annotations" : {
+              "comment" : "Example: 24 hours."
+            },
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0051]/items[at0053]/value",
+            "inputs" : [ {
+              "suffix" : "year",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0
+                }
+              }
+            }, {
+              "suffix" : "month",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0
+                }
+              }
+            }, {
+              "suffix" : "day",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0
+                }
+              }
+            }, {
+              "suffix" : "week",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0
+                }
+              }
+            }, {
+              "suffix" : "hour",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0
+                }
+              }
+            }, {
+              "suffix" : "minute",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0
+                }
+              }
+            }, {
+              "suffix" : "second",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0
+                }
+              }
+            } ]
+          } ]
+        }, {
+          "id" : "total_daily_effective_dose",
+          "name" : "Total daily effective dose",
+          "localizedName" : "Total daily effective dose",
+          "rmType" : "CLUSTER",
+          "nodeId" : "at0150",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Total daglig effektiv dose",
+            "pt-br" : "Dose efetiva total diária",
+            "es-ar" : "Dosis diaria total efectiva",
+            "de" : "Tägliche effektive Gesamtdosis",
+            "sv" : "Total daglig effektiv dos",
+            "en" : "Total daily effective dose"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Detaljer om den totale daglige mengden av den ordinerte varen som skal administreres.",
+            "pt-br" : "Detalhes sobre a quantidade total diária do item prescrito a ser administrado.",
+            "es-ar" : "Detalles de la dosis diaria total efectiva el ítem ordenado y que se espera administrar.",
+            "de" : "Angaben zur täglichen Gesamtmenge des verordneten Arzneimittels, das verabreicht werden soll.",
+            "sv" : "Detaljer om den totala mängden per dag för den beställda artikeln som förväntas administreras.",
+            "en" : "Details about the total daily amount of the ordered item expected to be administered."
+          },
+          "annotations" : {
+            "comment" : "The total daily dose records the expected effective dose, and thus support titration of an initial low dose towards the effective dose over a period of time. This is not itself the target dose or goal but the actual effective daily dose against that goal. In some circumstances the Total daily dose will be calcuable from computable directions, in others it may need to be manually entered."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0150]",
+          "children" : [ {
+            "id" : "purpose",
+            "name" : "Purpose",
+            "localizedName" : "Purpose",
+            "rmType" : "DV_TEXT",
+            "nodeId" : "at0165",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "nb" : "Formål",
+              "pt-br" : "Propósito",
+              "es-ar" : "Propósito",
+              "de" : "Zweck",
+              "sv" : "Syfte",
+              "en" : "Purpose"
+            },
+            "localizedDescriptions" : {
+              "nb" : "Begrunnelsen for at det registreres en total daglig effektiv dose.",
+              "pt-br" : "Descrição do motivo para registrar a dose efetiva diária total.",
+              "es-ar" : "Descripción de la razón por la cual se registró una dosis diaria total efectiva.",
+              "de" : "Beschreibung des Grundes für die Erfassung einer täglichen effektiven Gesamtdosis.",
+              "sv" : "Beskrivning av anledningen till registrering av en total daglig effektiv dos.",
+              "en" : "Description of the reason for recording a total daily effective dose."
+            },
+            "annotations" : {
+              "comment" : "For example: 'Hypertension control', 'Target dose 20mg daily'. The description could be used to identify a name, phrase or paragraph about the purpose for recording total daily effective dose, commonly to allow to titration towards a specific target dose.\r\nThe goal or target dose might be recorded here or more commonly as part of a linked EVALUATION 'Goal' archetype."
+            },
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0150]/items[at0165]/value",
+            "inputs" : [ {
+              "type" : "TEXT"
+            } ]
+          }, {
+            "id" : "total_daily_amount",
+            "name" : "Total daily amount",
+            "localizedName" : "Total daily amount",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "at0151",
+            "min" : 0,
+            "max" : 1,
+            "localizedNames" : {
+              "nb" : "Total daglig dosemengde",
+              "pt-br" : "Quantidade diária total",
+              "es-ar" : "Cantidad diaria total",
+              "de" : "Tägliche Gesamtdosis",
+              "sv" : "Total daglig dos",
+              "en" : "Total daily amount"
+            },
+            "localizedDescriptions" : {
+              "nb" : "Mengden ordinert vare som skal tas per dag dersom det administreres som ordinert.",
+              "pt-br" : "A quantidade do item prescrito que será ingerida diariamente se administrada conforme pretendido.",
+              "es-ar" : "La cantidad del ítem ordenado que puede ser consumida diariamente si se la administra como se ha planificado.",
+              "de" : "Die Gesamtmenge des Arzneimittels, die bei bestimmungsgemäßer Verabreichung täglich angewendet wird.",
+              "sv" : "Mängd av beställd produkt som kommer att tas varje dag om avsedda administreringsanvisningar följs.",
+              "en" : "The amount of ordered item which will be taken each day if administered as intended."
+            },
+            "annotations" : {
+              "comment" : "For example '20 mg'."
+            },
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0062]/items[at0150]/items[at0151]/value",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL"
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT"
+            } ]
+          } ]
+        } ]
+      }, {
+        "id" : "additional_instruction",
+        "name" : "Additional instruction",
+        "localizedName" : "Additional instruction",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0044",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "nb" : "Tilleggsinstruksjon",
+          "pt-br" : "Instruções adicionais",
+          "es-ar" : "Instrucciones adicionales",
+          "de" : "Zusätzliche Anweisung",
+          "sv" : "Ytterligare instruktioner",
+          "en" : "Additional instruction"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Tilleggsinstruksjon for hvordan bruke eller lagre den ordinerte varen.",
+          "pt-br" : "Instruções adicionais sobre como usar ou armazenar o ítem prescrito.",
+          "es-ar" : "Instrucciones adicionales acerca de como utilizar o almacenar el ítem ordenado.",
+          "de" : "Ein zusätzlicher Hinweis zur Verwendung oder Lagerung des verordneten Arzneimittels.",
+          "sv" : "Ytterligare instruktioner för hur beställd produkt ska brukas.",
+          "en" : "An additional instruction on how to use or store the ordered item."
+        },
+        "annotations" : {
+          "comment" : "For example: precautions as 'take with food', 'Avoid grapefruit', 'Dissolve in water', 'store in a cool, dry place'. This data element allows multiple occurrences and should be coded with a reference terminology, where possible."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0044]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "patient_information",
+        "name" : "Patient information",
+        "localizedName" : "Patient information",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0105",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "nb" : "Bruksområde",
+          "pt-br" : "Informações do paciente",
+          "es-ar" : "Información para el paciente",
+          "de" : "Patienteninformation",
+          "sv" : "Patientinformation",
+          "en" : "Patient information"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Tilleggsinstruksjon primært rettet mot pasient og pårørende.",
+          "pt-br" : "Informações adicionais direcionadas principalmente para o indivíduo/paciente ou cuidador.",
+          "es-ar" : "Instrucciones adicionales dirigidas al individuo/paciente o a sus tutores.",
+          "de" : "Ein zusätzlicher Hinweis, der sich in erster Linie an die Person/ den Patienten oder Angehörige richtet.",
+          "sv" : "Ytterligare instruktion främst riktad till vårdtagaren eller vårdgivaren.",
+          "en" : "An additional instruction directed primarily at the individual/patient or carers."
+        },
+        "annotations" : {
+          "comment" : "For example: 'To reduce your blood pressure', 'To thin your blood'. This data element allows multiple occurrences and should be coded with a reference terminology, where possible. If required it is possible to use a LINK attribute to associate this element with, for example, the 'original diagnosis' in a separate Problem list composition but the indication should be explicitly recorded here, as the link target may change over time."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0105]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "monitoring_instruction",
+        "name" : "Monitoring instruction",
+        "localizedName" : "Monitoring instruction",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0107",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "nb" : "Overvåkningsinstruksjon",
+          "pt-br" : "Monitoramento da instrução",
+          "es-ar" : "Instrucciones de monitoreo",
+          "de" : "Überwachungshinweis",
+          "sv" : "Övervakningsinstruktioner",
+          "en" : "Monitoring instruction"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Tilleggsinstruksjon som gir råd om anbefalt eller nødvendig overvåkning ved bruk av den ordinerte varen.",
+          "pt-br" : "Instruções adicionais que advertem sobre o monitoramento dos itens prescritos.",
+          "es-ar" : "Instrucciones adicionales que brindan recomendaciones o monitoreos requeridos para el ítem ordenado.",
+          "de" : "Eine zusätzliche Anweisung mit Hinweisen auf die empfohlene oder erforderliche Überwachung bei Verwendung des verordneten Arzneimittels.",
+          "sv" : "Ytterligare instruktion om rekommenderad eller begärd övervakning av den beställda artikeln.",
+          "en" : "An additional instruction which gives advice on recommended or required monitoring of the ordered item."
+        },
+        "annotations" : {
+          "comment" : "For example: 'Please check renal function in 2 weeks'. This data element allows multiple occurrences."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0107]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "clinical_indication",
+        "name" : "Clinical indication",
+        "localizedName" : "Clinical indication",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0018",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "nb" : "Klinisk indikasjon",
+          "pt-br" : "Indicação Clínica",
+          "es-ar" : "Indicación clínica",
+          "de" : "Klinische Indikation",
+          "sv" : "Klinisk indikation",
+          "en" : "Clinical indication"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Den kliniske begrunnelsen for bruk av den ordinerte varen.",
+          "pt-br" : "A indicação clínica para o uso do item prescrito.",
+          "es-ar" : "La razón clínica para el uso del ítem ordenado.",
+          "de" : "Der klinische Grund für die Verwendung des verordneten Arzneimittels.",
+          "sv" : "Klinisk orsak till användning av den beställda artikeln.",
+          "en" : "The clinical reason for use of the ordered item."
+        },
+        "annotations" : {
+          "comment" : "For example: 'Angina'. Coding of the clinical indication with a terminology is preferred, where possible. This data element allows multiple occurrences. It is not intended to carry an indication for administrative authorisation purposes."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0018]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "therapeutic_intent",
+        "name" : "Therapeutic intent",
+        "localizedName" : "Therapeutic intent",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0148",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "nb" : "Terapeutisk hensikt",
+          "pt-br" : "Intenção terapêutica",
+          "es-ar" : "Propósito terapéutico",
+          "de" : "Therapiezweck",
+          "sv" : "Behandlingsavsikt",
+          "en" : "Therapeutic intent"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Overordnet terapeutisk hensikt med den ordinerte varen.",
+          "pt-br" : "A intenção terapêutica sobre o item prescrito.",
+          "es-ar" : "El propósito terapéutico general del ítem ordenado.",
+          "de" : "Gesamttherapeutischer Zweck des verordneten Arzneimittels.",
+          "sv" : "Den övergripande behandlingsavsikten med den beställda artikeln.",
+          "en" : "The overall therapeutic intent of the ordered item."
+        },
+        "annotations" : {
+          "comment" : "For example: 'pain relief'; 'palliative care'; 'low-dose prophylaxis'; 'rehydration'; 'nutritional infusion'."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0148]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "clinician_guidance",
+        "name" : "Clinician guidance",
+        "localizedName" : "Clinician guidance",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0179",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Klinikerveiledning",
+          "pt-br" : "*Clinician guidance (en)",
+          "es-ar" : "*Clinician guidance (en)",
+          "de" : "Klinische Leitlinie",
+          "sv" : "*Clinician guidance (en)",
+          "en" : "Clinician guidance"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Råd til personer som i fremtiden ordinerer eller deler ut legemiddelet, om den langvarige ordineringen.",
+          "pt-br" : "*Advice to future prescribers/dispensers about the ongoing, long term order. (en)",
+          "es-ar" : "*Advice to future prescribers/dispensers about the ongoing, long term order. (en)",
+          "de" : "Empfehlung an die zukünftigen Verordner/Abgeber über die fortlaufende, langjährige Verordnung.",
+          "sv" : "*Advice to future prescribers/dispensers about the ongoing, long term order. (en)",
+          "en" : "Advice to future prescribers/dispensers about the ongoing, long term order."
+        },
+        "annotations" : {
+          "comment" : "For example: 'don't allow brand substitution' or advice regarding using a specific brand to avoid fillers that cause reactions."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0179]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "order_details",
+        "name" : "Order details",
+        "localizedName" : "Order details",
+        "rmType" : "CLUSTER",
+        "nodeId" : "at0113",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Ordineringsdetaljer",
+          "pt-br" : "Prescrição detalhada",
+          "es-ar" : "Detalle de la orden",
+          "de" : "Detaillierte Angaben zu der Verordnung",
+          "sv" : "Orderdetaljer",
+          "en" : "Order details"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Detaljer om hele legemiddelordineringen.",
+          "pt-br" : "Detalhes sobre a prescrição como um todo.",
+          "es-ar" : "Detalles aplicados a la orden en su totalidad.",
+          "de" : "Detaillierte Angaben zu der gesamten Medikamentenverordnung.",
+          "sv" : "Detaljer om läkemedelsbeställningen.",
+          "en" : "Details about the whole medication order."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0113]",
+        "children" : [ {
+          "id" : "order_start_date_time",
+          "name" : "Order start date/time",
+          "localizedName" : "Order start date/time",
+          "rmType" : "DV_DATE_TIME",
+          "nodeId" : "at0012",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Startdato/tid for ordineringen",
+            "pt-br" : "Data/Hora do início prescrição",
+            "es-ar" : "Fecha y hora de comienzo de la orden",
+            "de" : "Beginn der Verordnung",
+            "sv" : "Datum/tid för påbörjad order",
+            "en" : "Order start date/time"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Dato og valgfri tid for oppstart av den ordinerte varen.",
+            "pt-br" : "A data e hora opcional para iniciar o uso do medicamento prescrito.",
+            "es-ar" : "La fecha y hora (esta última opcional) de comienzo del uso del ítem ordenado.",
+            "de" : "Datum und optionale Uhrzeit für den Beginn der Verwendung des verordneten Arzneimittels.",
+            "sv" : "Datum och tid (valfritt) då användning av den beställda artikeln planeras påbörja.",
+            "en" : "The date and optional time to commence use of the ordered item."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0113]/items[at0012]/value",
+          "inputs" : [ {
+            "type" : "DATETIME"
+          } ]
+        }, {
+          "id" : "order_stop_date_time",
+          "name" : "Order stop date/time",
+          "localizedName" : "Order stop date/time",
+          "rmType" : "DV_DATE_TIME",
+          "nodeId" : "at0013",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Dato/tid for seponering",
+            "pt-br" : "Data/hora do final da prescrição",
+            "es-ar" : "Fecha y hora de finalización de la orden",
+            "de" : "Ende der Verordnung",
+            "sv" : "Datum/tid för avslutad order",
+            "en" : "Order stop date/time"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Dato og valgfri tid når det er planlagt å seponere den ordinerte varen.",
+            "pt-br" : "A data e hora opcional quando está planejado finalizar a utilização do ítem prescrito",
+            "es-ar" : "La fecha y hora (esta última opcional) para la cual se planea discontinuar el uso del ítem ordenado.",
+            "de" : "Datum und optionale Uhrzeit, wann die Verwendung des verordneten Arzneimittels eingestelt werden soll.",
+            "sv" : "Datum och tid (valfritt) då användning av den beställda artikeln planeras upphöra.",
+            "en" : "The date and optional time when it is planned to cease use of the ordered item."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0113]/items[at0013]/value",
+          "inputs" : [ {
+            "type" : "DATETIME"
+          } ]
+        }, {
+          "id" : "order_start_criterion",
+          "name" : "Order start criterion",
+          "localizedName" : "Order start criterion",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "at0011",
+          "min" : 0,
+          "max" : -1,
+          "localizedNames" : {
+            "nb" : "Startkriterium",
+            "pt-br" : "Critério para o início da prescrição",
+            "es-ar" : "Criterio de comienzo de la orden",
+            "de" : "Startkriterium für die Verordnung",
+            "sv" : "Startkriterium för order",
+            "en" : "Order start criterion"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Et vilkår for at den ordinerte varen kan tas i bruk.",
+            "pt-br" : "Uma condição que, quando encontrada, exige o início da administração ou uso.",
+            "es-ar" : "La condición frente a la cual se debe comenzar la administración o uso.",
+            "de" : "Eine Bedingung für den Beginn der Verwendung des verordneten Arzneimittels.",
+            "sv" : "Det villkor som måste vara uppfyllt innan administrering eller användning påbörjas.",
+            "en" : "A condition which, when met, requires the commencement of administration or use."
+          },
+          "annotations" : {
+            "comment" : "For example: 'Start if symptoms recur'. This is intended for a general pre-condition which should trigger the whole medication course to be started, and not for 'as required' administrations of an ongoing order."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0113]/items[at0011]/value",
+          "inputs" : [ {
+            "type" : "TEXT"
+          } ]
+        }, {
+          "id" : "order_stop_criterion",
+          "name" : "Order stop criterion",
+          "localizedName" : "Order stop criterion",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "at0016",
+          "min" : 0,
+          "max" : -1,
+          "localizedNames" : {
+            "nb" : "Seponeringskriterium",
+            "pt-br" : "Critérios para interromper a prescrição",
+            "es-ar" : "Criterio de finalización de la orden",
+            "de" : "Stopkriterium für die Verordnung",
+            "sv" : "Stoppkriterium för order",
+            "en" : "Order stop criterion"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Et vilkår for at den ordinerte varen skal seponeres.",
+            "pt-br" : "Uma condição que se existente, exige a interrupção da administração ou uso.",
+            "es-ar" : "La condición frente a la cual se debe discontinuar la administración o uso.",
+            "de" : "Eine Bedingung für das Einstellen der Verwendung des verordneten Arzneimittels.",
+            "sv" : "Det villkor som måste vara uppfyllt innan administrering eller användning upphör.",
+            "en" : "A condition which, when met, requires the cessation of administration or use."
+          },
+          "annotations" : {
+            "comment" : "For example: 'Stop after symptoms disappear''."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0113]/items[at0016]/value",
+          "inputs" : [ {
+            "type" : "TEXT"
+          } ]
+        }, {
+          "id" : "administrations_completed",
+          "name" : "Administrations completed",
+          "localizedName" : "Administrations completed",
+          "rmType" : "DV_COUNT",
+          "nodeId" : "at0060",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Antall administreringer utført",
+            "pt-br" : "Administrações finalizadas",
+            "es-ar" : "Administraciones realizadas",
+            "de" : "Anwendungen durchgeführt",
+            "sv" : "Slutförda administrationer",
+            "en" : "Administrations completed"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Antall administreringer av den ordinerte varen som er utført som del av den planlagte ordineringen, men i forkant av denne instruksjonen.",
+            "pt-br" : "O número de administrações realizadas do item prescrito, como parte da prescrição total, antes da execução da prescrição atual.",
+            "es-ar" : "La cantidad de administraciones del ítem ordenado que ya han sido completadas como parte de la orden completa pero previo a la emisión de esta orden.",
+            "de" : "Die Anzahl der Verabreichungen des verordneten Arzneimittels, die im Rahmen der geplanten Gesamtverordnung, bereits vor dieser Ausgabe, durchgeführt wurden.",
+            "sv" : "Antalet slutförda administrationer av den beställda artikeln. Detta är en del av den avsedda totala beställningen, men före utfärdandet av denna beställning.",
+            "en" : "The number of administrations of the ordered item that have been completed, as part of the intended whole order but prior to the issuance of this order."
+          },
+          "annotations" : {
+            "comment" : "For example: To record that the patient has taken the two first antibiotic tablets of a three day course, prior to discharge from the hospital to a nursing home."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0113]/items[at0060]/value",
+          "inputs" : [ {
+            "type" : "INTEGER",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0
+              }
+            }
+          } ]
+        }, {
+          "id" : "duration_of_order_completed",
+          "name" : "Duration of order completed",
+          "localizedName" : "Duration of order completed",
+          "rmType" : "DV_DURATION",
+          "nodeId" : "at0050",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Del av ordinering allerede administrert",
+            "pt-br" : "Duração do uso do ítem da prescrição",
+            "es-ar" : "Duración de la orden completada",
+            "de" : "Dauer der durchgeführten Verordnung",
+            "sv" : "Varaktighet för slutförd order",
+            "en" : "Duration of order completed"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Tidsperioden individet/pasienten har brukt den ordinerte varen i forkant av denne instruksjonen.",
+            "pt-br" : "O período de tempo em que o indíviduo/paciente vem fazendo uso do item prescrito com parte da duração total do tratamento, antes da execução da prescrição atual.",
+            "es-ar" : "El período de tiempo durante el cual el individuo/paciente ha estado recibiendo el item ordenado como parte de la orden completa panificaa pero previo a la emisión de esta orden.",
+            "de" : "Der Zeitraum, in dem die Person / der Patient das verordnete Arzneimittel noch vor der Ausstellung dieser Verordnung bereits angewendet hat.",
+            "sv" : "Den tidsperiod under vilken individen/patienten redan har använt den beställda artikeln. Detta är en del av den avsedda totala beställningen, men före utfärdandet av denna beställning.",
+            "en" : "The time period during which the individual/patient has already been using the ordered item as a part of the intended whole order but prior to the issuance of this order."
+          },
+          "annotations" : {
+            "comment" : "For example: To record that the patient had been taking antibiotics 3 days prior to hospital admission, in the context of a 7 day course."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0113]/items[at0050]/value",
+          "inputs" : [ {
+            "suffix" : "week",
+            "type" : "INTEGER",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0
+              }
+            }
+          }, {
+            "suffix" : "day",
+            "type" : "INTEGER",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0
+              }
+            }
+          }, {
+            "suffix" : "hour",
+            "type" : "INTEGER",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0
+              }
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "dispense_directions",
+        "name" : "Dispense directions",
+        "localizedName" : "Dispense directions",
+        "rmType" : "CLUSTER",
+        "nodeId" : "at0129",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Utdelingsanvisning",
+          "pt-br" : "Orientações para a dispensação",
+          "es-ar" : "Directivas para dispensación",
+          "de" : "Anweisungen zur Abgabe",
+          "sv" : "Anvisningar för dispensering",
+          "en" : "Dispense directions"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Veiledning for utdeling av den ordinerte varen.",
+          "pt-br" : "Orientações sobre a dispensação do ítem prescrito.",
+          "es-ar" : "Directivas relativas a la dispensación del ítem ordenado.",
+          "de" : "Anweisungen zur Abgabe des verordneten Arzneimittels.",
+          "sv" : "Anvisningar för dispensering av den beställda artikeln.",
+          "en" : "Directions about the dispensing of the ordered item."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0129]",
+        "children" : [ {
+          "id" : "dispense_instruction",
+          "name" : "Dispense instruction",
+          "localizedName" : "Dispense instruction",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "at0106",
+          "min" : 0,
+          "max" : -1,
+          "localizedNames" : {
+            "nb" : "Utdelingsinstruksjon",
+            "pt-br" : "Instruções para a dispensação",
+            "es-ar" : "Instrucciones de dispensación",
+            "de" : "Abgabehinweis",
+            "sv" : "Instruktion för dispensering",
+            "en" : "Dispense instruction"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Tilleggsinstruksjon primært rettet mot personen som deler ut den ordinerte varen.",
+            "pt-br" : "Instruções adicionais direcionadas primariamente para a pessoa responsável pela dispensação do ítem prescrito.",
+            "es-ar" : "Instrucción adicional dirigida principalmente a la persona que dispensa el ítem ordenado.",
+            "de" : "Ein zusätzlicher Hinweis richtet sich in erster Linie an die Person, die das verordnete Arzneimittel verteilt.",
+            "sv" : "Ytterligare instruktion riktad främst till den individ som ska dispensera den beställda artikeln.",
+            "en" : "An additional instruction directed primarily at the person dispensing the ordered item."
+          },
+          "annotations" : {
+            "comment" : "Example: Detailed instructions for phased dispensing of opiates."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0129]/items[at0106]/value",
+          "inputs" : [ {
+            "type" : "TEXT"
+          } ]
+        }, {
+          "id" : "substitution_direction",
+          "name" : "Substitution direction",
+          "localizedName" : "Substitution direction",
+          "rmType" : "DV_CODED_TEXT",
+          "nodeId" : "at0132",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Generisk bytte",
+            "pt-br" : "Orientações para substituição",
+            "es-ar" : "Directiva de sustitución",
+            "de" : "Substitutionsanweisung",
+            "sv" : "Anvisningar för substitution",
+            "en" : "Substitution direction"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Indikerer om generisk bytte med en bioekvivalent vare er tillatt.",
+            "pt-br" : "Permissão para substituir item prescrito por outro bioequivalente.",
+            "es-ar" : "Permisos para la sustitución por un ítem bioequivalente.",
+            "de" : "Erlaubnis zum Ersatz durch ein bioäquivalentes Arzneimittel.",
+            "sv" : "Tillstånd för att ersätta en bioekvivalent artikel.",
+            "en" : "Permission for substitution with a bioequivalent item."
+          },
+          "annotations" : {
+            "comment" : "In many jurisdictions, substitution of an ordered item as a generic form or with a different brand name, which has been determined as bioequivalent, is allowed at the point of dispense or supply. In other cases substitution is assumed and the clinician has to explicitly request non-substitution."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0129]/items[at0132]/value",
+          "inputs" : [ {
+            "suffix" : "code",
+            "type" : "CODED_TEXT",
+            "list" : [ {
+              "value" : "at0168",
+              "label" : "Permitted",
+              "localizedLabels" : {
+                "nb" : "Tillatt",
+                "pt-br" : "Perimitido",
+                "es-ar" : "Permitida",
+                "de" : "Erlaubt",
+                "sv" : "Tillåtet",
+                "en" : "Permitted"
+              },
+              "localizedDescriptions" : {
+                "nb" : "Generisk bytte med bioekvivalent legemiddel er tillatt.",
+                "pt-br" : "Permitir a subsituição do medicamento por medicamento bioequivalente.",
+                "es-ar" : "La sustitución del medicamento por un bioequivalente es permitida.",
+                "de" : "Die Substitution des Arzneimittels mit einem bioequivalenten Arzneimittel ist erlaubt.",
+                "sv" : "Ersättning av läkemedlet med ett bioekvivalent alternativ är tillåtet.",
+                "en" : "Substitution of the medication with a bioequivalent medication is allowed."
+              }
+            }, {
+              "value" : "at0169",
+              "label" : "Not permitted",
+              "localizedLabels" : {
+                "nb" : "Ikke tillatt",
+                "pt-br" : "Não permitidio",
+                "es-ar" : "No permitida",
+                "de" : "Nicht erlaubt",
+                "sv" : "Ej tillåtet",
+                "en" : "Not permitted"
+              },
+              "localizedDescriptions" : {
+                "nb" : "Generisk bytte med bioekvivalent legemiddel er ikke tillatt.",
+                "pt-br" : "Não é permitido subsituir medicamento por medicamento bioequivalente.",
+                "es-ar" : "La sustitución del medicamento por un bioequivalente no es permitida.",
+                "de" : "Die Substitution des Arzneimittels mit einem bioequivalenten Arzneimittel ist nicht erlaubt.",
+                "sv" : "Ersättning av läkemedlet med ett bioekvivalent alternativ är inte tillåtet.",
+                "en" : "Substitution of the medication with a bioequivalent medication is not allowed."
+              }
+            } ]
+          } ]
+        }, {
+          "id" : "non-substitution_reason",
+          "name" : "Non-substitution reason",
+          "localizedName" : "Non-substitution reason",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "at0154",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Begrunnelse for byttereservasjon",
+            "pt-br" : "Justificativa para a não substituição",
+            "es-ar" : "Razón de la no sustitución",
+            "de" : "Ablehnungsgrund der Substitution",
+            "sv" : "Skäl till ej tillåten substitution",
+            "en" : "Non-substitution reason"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Begrunnelsen for beslutningen om at generisk bytte av den ordinerte varen ikke tillates.",
+            "pt-br" : "Motivo pelo qual o ítem prescrito não deve ser substituído no momento da dispensação.",
+            "es-ar" : "La razón por la cual un ítem ordenado no debe ser sustituido al momento de la dispensa.",
+            "de" : "Der Grund warum eine Substitution des verordneten Arzneimittels nicht zulässig ist.",
+            "sv" : "Anledningen till att en beställd artikel inte ska ersättas vid dispensering.",
+            "en" : "The reason why an ordered item should not be substituted at dispense."
+          },
+          "annotations" : {
+            "comment" : "For example 'Generic preparation not bio-equivalent'."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0129]/items[at0154]/value",
+          "inputs" : [ {
+            "type" : "TEXT"
+          } ]
+        }, {
+          "id" : "priority",
+          "name" : "Priority",
+          "localizedName" : "Priority",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "at0139",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Prioritet",
+            "pt-br" : "Prioridade",
+            "es-ar" : "Prioridad",
+            "de" : "Priorität",
+            "sv" : "Prioritet",
+            "en" : "Priority"
+          },
+          "localizedDescriptions" : {
+            "nb" : "En indikator for hastegraden den ordinerte varen bør utdeles under.",
+            "pt-br" : "Indicador da urgência de dispensação do ítem prescrito.",
+            "es-ar" : "Un indicador de la urgencia con la cual el ítem ordenado debe ser dispensado.",
+            "de" : "Ein Indikator wie dringlich das verordnete Arzneimittel abgegeben werden soll.",
+            "sv" : "Indikation på hur brådskande den beställda artikeln ska dispenseras.",
+            "en" : "An indicator of the urgency with which the ordered item should be dispensed."
+          },
+          "annotations" : {
+            "comment" : "For example 'Urgent'. This is left to be templated or specialised according to local valuesets. Some jurisdictions allow instructions to dispense to be marked as 'urgent' so that the dispensary handles them quickly."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0129]/items[at0139]/value",
+          "inputs" : [ {
+            "type" : "TEXT"
+          } ]
+        }, {
+          "id" : "dispensing_start_date",
+          "name" : "Dispensing start date",
+          "localizedName" : "Dispensing start date",
+          "rmType" : "DV_DATE_TIME",
+          "nodeId" : "at0155",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Startdato utlevering",
+            "pt-br" : "Data do início da dispensação",
+            "es-ar" : "Fecha de inicio de la dispensa",
+            "de" : "Beginn der Abgabe",
+            "sv" : "Startdatum för dispensering",
+            "en" : "Dispensing start date"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Datoen den ordinerte varen kan utdeles for første gang.",
+            "pt-br" : "Data inicial permitida para a primeira dispensação do ítem prescrito.",
+            "es-ar" : "La fecha a partir de la cual se permite la dispensa del ítem ordenado por primera vez.",
+            "de" : "Das Datum, ab dem das verordnete Arzneimittel zum ersten Mal abgegeben werden darf.",
+            "sv" : "Det datum från vilket den beställda artikeln får dispenseras för första gången.",
+            "en" : "The date from which the ordered item is permitted to be dispensed for the first time."
+          },
+          "annotations" : {
+            "comment" : "May be used to control the time of dispensing of medications with potential for abuse. For example: benzodiazepines or analgesics."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0129]/items[at0155]/value",
+          "inputs" : [ {
+            "type" : "DATETIME"
+          } ]
+        }, {
+          "id" : "dispensing_expiry_date",
+          "name" : "Dispensing expiry date",
+          "localizedName" : "Dispensing expiry date",
+          "rmType" : "DV_DATE_TIME",
+          "nodeId" : "at0161",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Utløpsdato utdeling",
+            "pt-br" : "Data de validade da dispensação",
+            "es-ar" : "Fecha de expiración de la dispensa",
+            "de" : "Ablaufdatum der Abgabe",
+            "sv" : "Utgångsdatum för dispensering",
+            "en" : "Dispensing expiry date"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Dato da ordineringen ikke lenger er gyldig for utdeling.",
+            "pt-br" : "Data a partir da qual a dispensação não é mais válida.",
+            "es-ar" : "La fecha posterior a la cual el ítem ordenado o puede ser legalmente dispensado.",
+            "de" : "Das Datum, ab dem das Rezept für die legale Abgabe des Arzneimittels nicht mehr gültig ist.",
+            "sv" : "Datumet efter det att den beställda artikeln inte längre är giltig för laglig dispensering",
+            "en" : "The date after which the ordered item is no longer valid to be legally dispensed."
+          },
+          "annotations" : {
+            "comment" : "In some jurisdictions, orders to dispense may have an expiry date after which the prescription may not be dispensed."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0129]/items[at0161]/value",
+          "inputs" : [ {
+            "type" : "DATETIME"
+          } ]
+        } ]
+      }, {
+        "id" : "comment",
+        "name" : "Comment",
+        "localizedName" : "Comment",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0167",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Kommentar",
+          "pt-br" : "Comentários",
+          "es-ar" : "Comentario",
+          "de" : "Kommentar",
+          "sv" : "Kommentar",
+          "en" : "Comment"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Ytterligere fritekst om legemiddelordineringen som ikke er fanget i andre felt.",
+          "pt-br" : "Comentários adicionais sobre o ítem prescrito em texto livre, não capturados em outros campos.",
+          "es-ar" : "Narrativa adicional relativa a datos del medicamento que pueden no haber sido representados en otros campos.",
+          "de" : "Zusätzliche Kommentare über die Medikamentenverordnung, die nicht in anderen Feldern erfasst wurden.",
+          "sv" : "Kommentarer avseende läkemedelsbeställningen som inte beskrivs i övriga fält.",
+          "en" : "Additional narrative about the medication order not captured in other fields."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0167]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "timing",
+        "name" : "Timing",
+        "rmType" : "DV_PARSABLE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/activities[at0001]/timing",
+        "inputs" : [ {
+          "suffix" : "value",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "formalism",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      }, {
+        "id" : "action_archetype_id",
+        "name" : "Action_archetype_id",
+        "rmType" : "STRING",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/activities[at0001]/action_archetype_id",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      } ]
+    }, {
+      "id" : "order_identifier",
+      "name" : "Order identifier",
+      "localizedName" : "Order identifier",
+      "rmType" : "DV_IDENTIFIER",
+      "nodeId" : "at0004",
+      "min" : 0,
+      "max" : -1,
+      "dependsOn" : [ "order" ],
+      "localizedNames" : {
+        "nb" : "Ordineringsidentifikator",
+        "pt-br" : "Outros identificadores",
+        "es-ar" : "Identificador de la orden",
+        "de" : "ID der Verordnung",
+        "sv" : "Beställnings-ID",
+        "en" : "Order identifier"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Unik identifikator for ordineringen.",
+        "pt-br" : "Identificador unívoco do ítem prescrito.",
+        "es-ar" : "Identificador unívoco de la orden de medicamento.",
+        "de" : "Eindeutige Kennung der Medikamentenverordnung / des Rezeptes.",
+        "sv" : "Unik identifikator för läkemedelsbeställningen.",
+        "en" : "Unique identifier for the medication order."
+      },
+      "annotations" : {
+        "comment" : "This data element allows for multiple occurrences to be defined more explicitly at run-time, if required."
+      },
+      "aqlPath" : "/protocol[at0005]/items[at0004]/value",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "type",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "issuer",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "assigner",
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "expiry_time",
+      "name" : "expiry_time",
+      "rmType" : "DV_DATE_TIME",
+      "min" : 0,
+      "max" : 1,
+      "aqlPath" : "/expiry_time",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ]
+    }, {
+      "id" : "narrative",
+      "name" : "Narrative",
+      "rmType" : "DV_TEXT",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/narrative",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    }, {
+      "id" : "language",
+      "name" : "Language",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/language",
+      "inContext" : true
+    }, {
+      "id" : "encoding",
+      "name" : "Encoding",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/encoding",
+      "inContext" : true
+    }, {
+      "id" : "subject",
+      "name" : "Subject",
+      "rmType" : "PARTY_PROXY",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/subject",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_scheme",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_namespace",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "name",
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}

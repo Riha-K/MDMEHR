@@ -1,0 +1,110 @@
+{
+  "templateId": "Address",
+  "semVer": "0.1.0",
+  "version": "1.0",
+  "defaultLanguage": "en",
+  "languages": ["en"],
+  "tree": {
+    "id": "address",
+    "name": "Address",
+    "localizedName": "Address",
+    "rmType": "CLUSTER",
+    "nodeId": "openEHR-EHR-CLUSTER.address.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "Address"
+    },
+    "localizedDescriptions": {
+      "en": "Details about the location of a person, physical building, or landmark."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "addressDetails",
+        "name": "AddressDetails",
+        "rmType": "ELEMENT",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/items[at0001]/value",
+        "children": [
+          {
+            "id": "addressDetails_value",
+            "name": "value",
+            "rmType": "DV_TEXT",
+            "min": 1,
+            "max": 1
+          }
+        ]
+      },
+      {
+        "id": "city",
+        "name": "City",
+        "rmType": "ELEMENT",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/items[at0002]/value",
+        "children": [
+          {
+            "id": "city_value",
+            "name": "value",
+            "rmType": "DV_TEXT",
+            "min": 1,
+            "max": 1
+          }
+        ]
+      },
+      {
+        "id": "postalCode",
+        "name": "PostalCode",
+        "rmType": "ELEMENT",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/items[at0003]/value",
+        "children": [
+          {
+            "id": "postalCode_value",
+            "name": "value",
+            "rmType": "DV_TEXT",
+            "min": 1,
+            "max": 1
+          }
+        ]
+      },
+      {
+        "id": "country",
+        "name": "Country",
+        "rmType": "ELEMENT",
+        "min": 1,
+        "max": 1,
+        "aqlPath": "/items[at0004]/value",
+        "children": [
+          {
+            "id": "country_value",
+            "name": "value",
+            "rmType": "DV_TEXT",
+            "min": 1,
+            "max": 1
+          }
+        ]
+      },
+      {
+        "id": "additionalDetails",
+        "name": "AdditionalDetails",
+        "rmType": "ELEMENT",
+        "min": 0,
+        "max": 1,
+        "aqlPath": "/items[at0005]/value",
+        "children": [
+          {
+            "id": "additionalDetails_value",
+            "name": "value",
+            "rmType": "DV_TEXT",
+            "min": 0,
+            "max": 1
+          }
+        ]
+      }
+    ]
+  }
+}

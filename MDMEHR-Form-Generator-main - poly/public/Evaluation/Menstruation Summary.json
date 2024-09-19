@@ -1,0 +1,745 @@
+{
+  "templateId" : "Mensuration Summary",
+  "semVer" : "0.1.0",
+  "version" : "2.3",
+  "defaultLanguage" : "en",
+  "languages" : [ "nb", "fi", "sv", "en" ],
+  "tree" : {
+    "id" : "mensuration_summary",
+    "name" : "Mensuration Summary",
+    "localizedName" : "Mensuration Summary",
+    "rmType" : "EVALUATION",
+    "nodeId" : "openEHR-EHR-EVALUATION.menstruation_summary.v1",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "nb" : "Mensuration Summary",
+      "fi" : "Mensuration Summary",
+      "sv" : "Mensuration Summary",
+      "en" : "Mensuration Summary"
+    },
+    "localizedDescriptions" : {
+      "nb" : "Sammendrag eller varig (persistent) informasjon om et individs menstruasjonshistorikk.",
+      "fi" : "Yhteenveto merkittävistä kuukautiskiertoon liittyvistä tapahtumista.",
+      "sv" : "Sammanfattning eller ihållande information om en persons menstruationshistoria.",
+      "en" : "Summary or persistent information about an individual's menstruation history."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "overall_description",
+      "name" : "Overall description",
+      "localizedName" : "Overall description",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0025",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Overordnet beskrivelse",
+        "fi" : "*Overall description (en)",
+        "sv" : "Övergripande beskrivning",
+        "en" : "Overall description"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Fritekstbeskrivelse om det generelle menstruasjonsmønsteret.",
+        "fi" : "*Narrative description about the overall pattern of menstruation. (en)",
+        "sv" : "Berättande beskrivning av det övergripande menstruationsmönstret.",
+        "en" : "Narrative description about the overall pattern of menstruation."
+      },
+      "aqlPath" : "/data[at0001]/items[at0025]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "menstrual_status",
+      "name" : "Menstrual status",
+      "localizedName" : "Menstrual status",
+      "rmType" : "DV_CODED_TEXT",
+      "nodeId" : "at0003",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Menstruasjonsstatus",
+        "fi" : "*Menstrual status (en)",
+        "sv" : "Menstruationsstatus",
+        "en" : "Menstrual status"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Status relatert til stadium under reproduktiv periode.",
+        "fi" : "*Statement about the current menstrual activity. (en)",
+        "sv" : "Uttalande om den aktuella menstruationsaktiviteten.",
+        "en" : "Statement about the current menstrual activity."
+      },
+      "annotations" : {
+        "comment" : "If this data element is updated, the 'Date last updated' in Protocol should also be amended."
+      },
+      "aqlPath" : "/data[at0001]/items[at0003]/value",
+      "inputs" : [ {
+        "suffix" : "code",
+        "type" : "CODED_TEXT",
+        "list" : [ {
+          "value" : "at0026",
+          "label" : "Premenarchal",
+          "localizedLabels" : {
+            "nb" : "Premenarke",
+            "fi" : "*Premenarchal (en)",
+            "sv" : "Premenarkal",
+            "en" : "Premenarchal"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Før første menstruasjon.",
+            "fi" : "*Before the first onset of menstruation. (en)",
+            "sv" : "Innan menstruationen börjar.",
+            "en" : "Before the first onset of menstruation."
+          }
+        }, {
+          "value" : "at0005",
+          "label" : "Premenopausal",
+          "localizedLabels" : {
+            "nb" : "Premenopausal",
+            "fi" : "*Premenopausal (en)",
+            "sv" : "Premenopausal",
+            "en" : "Premenopausal"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Etter menarké, forut for menopausen og uten symptomer relatert til hormonelle endringer i klimakteriet.",
+            "fi" : "*After menarche, preceding menopause and without symptoms related to the hormonal changes preceding menopause. (en)",
+            "sv" : "Efter mensdebut, före klimakteriet och utan symtom relaterade till hormonella förändringar före klimakteriet.",
+            "en" : "After menarche, preceding menopause and without symptoms related to the hormonal changes preceding menopause."
+          }
+        }, {
+          "value" : "at0006",
+          "label" : "Perimenopausal",
+          "localizedLabels" : {
+            "nb" : "Perimenopausal",
+            "fi" : "*Perimenopausal (en)",
+            "sv" : "Perimenopausal",
+            "en" : "Perimenopausal"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Forut for menopausen, med symptomer relatert til hormonelle endringer i klimakteriet.",
+            "fi" : "*Preceding menopause with symptoms related to the hormonal changes leading up to menopause. (en)",
+            "sv" : "Före klimakteriet med symtom relaterade till hormonella förändringar som leder till klimakteriet.",
+            "en" : "Preceding menopause with symptoms related to the hormonal changes leading up to menopause."
+          }
+        }, {
+          "value" : "at0007",
+          "label" : "Postmenopausal",
+          "localizedLabels" : {
+            "nb" : "Postmenopausal",
+            "fi" : "*Postmenopausal (en)",
+            "sv" : "Postmenopausal",
+            "en" : "Postmenopausal"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Etter menopausen.",
+            "fi" : "*After menopause. (en)",
+            "sv" : "Efter klimakteriet.",
+            "en" : "After menopause."
+          }
+        } ]
+      } ]
+    }, {
+      "id" : "age_at_menarche",
+      "name" : "Age at menarche",
+      "localizedName" : "Age at menarche",
+      "rmType" : "DV_DURATION",
+      "nodeId" : "at0002",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Alder ved menarke",
+        "fi" : "*Age at menarche (en)",
+        "sv" : "Ålder vid mensdebut",
+        "en" : "Age at menarche"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Alder ved første menstruasjon.",
+        "fi" : "Ensimmäisen kuukautiskierron alkamispäivä. Epätäydelliset päivämäärät, kuten pelkkä vuosi tai vuosi ja kuukausi, ovat sallittuja.",
+        "sv" : "Ålder vid första menstruationscykel.",
+        "en" : "Age at onset of first menstrual cycle."
+      },
+      "aqlPath" : "/data[at0001]/items[at0002]/value",
+      "inputs" : [ {
+        "suffix" : "year",
+        "type" : "INTEGER",
+        "validation" : {
+          "range" : {
+            "minOp" : ">=",
+            "min" : 0
+          }
+        }
+      }, {
+        "suffix" : "month",
+        "type" : "INTEGER",
+        "validation" : {
+          "range" : {
+            "minOp" : ">=",
+            "min" : 0
+          }
+        }
+      } ]
+    }, {
+      "id" : "per_episode",
+      "name" : "Per episode",
+      "localizedName" : "Per episode",
+      "rmType" : "CLUSTER",
+      "nodeId" : "at0010",
+      "min" : 0,
+      "max" : -1,
+      "localizedNames" : {
+        "nb" : "Per tidsepisode",
+        "fi" : "*Per episode (en)",
+        "sv" : "Per episod",
+        "en" : "Per episode"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Detaljer om et typisk menstruasjonsmønster i et angitt tidsintervall.",
+        "fi" : "*",
+        "sv" : "Detaljer om ett typiskt menstruationsmönster under ett angivet tidsintervall.",
+        "en" : "Details about a typical pattern of menstruation during a specified interval of time."
+      },
+      "annotations" : {
+        "comment" : "If the pattern of menstruation changes significantly, or other factors significantly interrupt (for example, a full term pregnancy) or influence (for example, changing contraception methods) the menstrual cycle, then it may be useful to record as a new episode ."
+      },
+      "aqlPath" : "/data[at0001]/items[at0010]",
+      "children" : [ {
+        "id" : "episode_label",
+        "name" : "Episode label",
+        "localizedName" : "Episode label",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0011",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Episodenavn",
+          "fi" : "*Episode label (en)",
+          "sv" : "Episodetikett",
+          "en" : "Episode label"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Et navn eller en betegnelse for denne episoden i menstruasjonshistorikken.",
+          "fi" : "*",
+          "sv" : "Ett namn eller etikett associerat med denna episod av menstruation.",
+          "en" : "A name or label associated with this episode of menstruation."
+        },
+        "annotations" : {
+          "comment" : "The label will allow a specific episode to be distinguished from other episodes with similar or different menstruation patterns. For example: 'Post Pregnancy #2'; 'Commenced POP'."
+        },
+        "aqlPath" : "/data[at0001]/items[at0010]/items[at0011]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "episode_start_date",
+        "name" : "Episode start date",
+        "localizedName" : "Episode start date",
+        "rmType" : "DV_DATE_TIME",
+        "nodeId" : "at0012",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Episodens startdato",
+          "fi" : "*Episode start date (en)",
+          "sv" : "Startdatum för episod",
+          "en" : "Episode start date"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Dato da episoden startet.",
+          "fi" : "*",
+          "sv" : "Datum när denna episod började.",
+          "en" : "Date when this episode commenced."
+        },
+        "annotations" : {
+          "comment" : "Can be a partial date, for example, only a year."
+        },
+        "aqlPath" : "/data[at0001]/items[at0010]/items[at0012]/value",
+        "inputs" : [ {
+          "type" : "DATETIME"
+        } ]
+      }, {
+        "id" : "description",
+        "name" : "Description",
+        "localizedName" : "Description",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0013",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Beskrivelse",
+          "fi" : "*Description (en)",
+          "sv" : "Beskrivning",
+          "en" : "Description"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Fritekstbeskrivelse om denne episoden.",
+          "fi" : "*",
+          "sv" : "Berättande beskrivning om episoden.",
+          "en" : "Narrative description about this episode."
+        },
+        "aqlPath" : "/data[at0001]/items[at0010]/items[at0013]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "typical_pattern",
+        "name" : "Typical pattern",
+        "localizedName" : "Typical pattern",
+        "rmType" : "DV_CODED_TEXT",
+        "nodeId" : "at0014",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Typisk mønster",
+          "fi" : "*Typical pattern (en)",
+          "sv" : "Typiskt mönster",
+          "en" : "Typical pattern"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Regulariteten av menstruasjonen i løpet av denne episoden.",
+          "fi" : "*",
+          "sv" : "Den vanliga förutsägbarheten för menstruation under episoden.",
+          "en" : "The usual predictability of menstruation during this episode."
+        },
+        "aqlPath" : "/data[at0001]/items[at0010]/items[at0014]/value",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "at0015",
+            "label" : "Regular",
+            "localizedLabels" : {
+              "nb" : "Regelmessig",
+              "fi" : "*Regular (en)",
+              "sv" : "Regelbunden",
+              "en" : "Regular"
+            },
+            "localizedDescriptions" : {
+              "nb" : "Starten av menstruasjonen er grovt sett forutsigbar fra måned til måned.",
+              "fi" : "*The start of menses is roughly predictable from month to month. (en)",
+              "sv" : "Början på menstruation är ungefär förutsägbar från månad till månad.",
+              "en" : "The start of menses is roughly predictable from month to month."
+            }
+          }, {
+            "value" : "at0016",
+            "label" : "Irregular",
+            "localizedLabels" : {
+              "nb" : "Uregelmessig",
+              "fi" : "*Irregular (en)",
+              "sv" : "Oregelbunden",
+              "en" : "Irregular"
+            },
+            "localizedDescriptions" : {
+              "nb" : "Starten av menstruasjonen er uforutsigbar fra måned til måned.",
+              "fi" : "*The start of menses is not predictable month to month. (en)",
+              "sv" : "Början av menstruation är inte förutsägbar månad till månad.",
+              "en" : "The start of menses is not predictable month to month."
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "typical_cycle_length",
+        "name" : "Typical cycle length",
+        "localizedName" : "Typical cycle length",
+        "rmType" : "ELEMENT",
+        "nodeId" : "at0017",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Typisk sykluslengde",
+          "fi" : "*Typical cycle length (en)",
+          "sv" : "Typisk cykellängd",
+          "en" : "Typical cycle length"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Vanlig sykluslengde i løpet av denne episoden.",
+          "fi" : "*",
+          "sv" : "Den vanliga cykellängden under episoden.",
+          "en" : "The usual length of cycle during this episode."
+        },
+        "aqlPath" : "/data[at0001]/items[at0010]/items[at0017]",
+        "children" : [ {
+          "id" : "duration_value",
+          "localizedName" : "Typical cycle length",
+          "rmType" : "DV_DURATION",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Typisk sykluslengde",
+            "fi" : "*Typical cycle length (en)",
+            "sv" : "Typisk cykellängd",
+            "en" : "Typical cycle length"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Vanlig sykluslengde i løpet av denne episoden.",
+            "fi" : "*",
+            "sv" : "Den vanliga cykellängden under episoden.",
+            "en" : "The usual length of cycle during this episode."
+          },
+          "aqlPath" : "/data[at0001]/items[at0010]/items[at0017]/value",
+          "inputs" : [ {
+            "suffix" : "day",
+            "type" : "INTEGER",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 1,
+                "maxOp" : "<=",
+                "max" : 999
+              }
+            }
+          } ]
+        }, {
+          "id" : "interval_of_duration_value",
+          "localizedName" : "Typical cycle length",
+          "rmType" : "DV_INTERVAL<DV_DURATION>",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Typisk sykluslengde",
+            "fi" : "*Typical cycle length (en)",
+            "sv" : "Typisk cykellängd",
+            "en" : "Typical cycle length"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Vanlig sykluslengde i løpet av denne episoden.",
+            "fi" : "*",
+            "sv" : "Den vanliga cykellängden under episoden.",
+            "en" : "The usual length of cycle during this episode."
+          },
+          "aqlPath" : "/data[at0001]/items[at0010]/items[at0017]/value",
+          "children" : [ {
+            "id" : "lower",
+            "rmType" : "DV_DURATION",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/data[at0001]/items[at0010]/items[at0017]/value/lower",
+            "inputs" : [ {
+              "suffix" : "day",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 999
+                }
+              }
+            } ]
+          }, {
+            "id" : "upper",
+            "rmType" : "DV_DURATION",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/data[at0001]/items[at0010]/items[at0017]/value/upper",
+            "inputs" : [ {
+              "suffix" : "day",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 999
+                }
+              }
+            } ]
+          } ]
+        } ]
+      }, {
+        "id" : "typical_menses_duration",
+        "name" : "Typical menses duration",
+        "localizedName" : "Typical menses duration",
+        "rmType" : "ELEMENT",
+        "nodeId" : "at0018",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Typisk varighet",
+          "fi" : "*Typical menses duration (en)",
+          "sv" : "Typisk menstruationsvaraktighet",
+          "en" : "Typical menses duration"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Den vanlige varigheten av menstruasjon i løpet av denne episoden.",
+          "fi" : "*",
+          "sv" : "Den vanliga varaktigheten för menstruation under episoden.",
+          "en" : "The usual duration of menses during this episode."
+        },
+        "aqlPath" : "/data[at0001]/items[at0010]/items[at0018]",
+        "children" : [ {
+          "id" : "duration_value",
+          "localizedName" : "Typical menses duration",
+          "rmType" : "DV_DURATION",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Typisk varighet",
+            "fi" : "*Typical menses duration (en)",
+            "sv" : "Typisk menstruationsvaraktighet",
+            "en" : "Typical menses duration"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Den vanlige varigheten av menstruasjon i løpet av denne episoden.",
+            "fi" : "*",
+            "sv" : "Den vanliga varaktigheten för menstruation under episoden.",
+            "en" : "The usual duration of menses during this episode."
+          },
+          "aqlPath" : "/data[at0001]/items[at0010]/items[at0018]/value",
+          "inputs" : [ {
+            "suffix" : "day",
+            "type" : "INTEGER",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 1,
+                "maxOp" : "<=",
+                "max" : 999
+              }
+            }
+          } ]
+        }, {
+          "id" : "interval_of_duration_value",
+          "localizedName" : "Typical menses duration",
+          "rmType" : "DV_INTERVAL<DV_DURATION>",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "nb" : "Typisk varighet",
+            "fi" : "*Typical menses duration (en)",
+            "sv" : "Typisk menstruationsvaraktighet",
+            "en" : "Typical menses duration"
+          },
+          "localizedDescriptions" : {
+            "nb" : "Den vanlige varigheten av menstruasjon i løpet av denne episoden.",
+            "fi" : "*",
+            "sv" : "Den vanliga varaktigheten för menstruation under episoden.",
+            "en" : "The usual duration of menses during this episode."
+          },
+          "aqlPath" : "/data[at0001]/items[at0010]/items[at0018]/value",
+          "children" : [ {
+            "id" : "lower",
+            "rmType" : "DV_DURATION",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/data[at0001]/items[at0010]/items[at0018]/value/lower",
+            "inputs" : [ {
+              "suffix" : "day",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 999
+                }
+              }
+            } ]
+          }, {
+            "id" : "upper",
+            "rmType" : "DV_DURATION",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/data[at0001]/items[at0010]/items[at0018]/value/upper",
+            "inputs" : [ {
+              "suffix" : "day",
+              "type" : "INTEGER",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 999
+                }
+              }
+            } ]
+          } ]
+        } ]
+      }, {
+        "id" : "episode_end_date",
+        "name" : "Episode end date",
+        "localizedName" : "Episode end date",
+        "rmType" : "DV_DATE_TIME",
+        "nodeId" : "at0021",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Episodens sluttdato",
+          "fi" : "*Episode end date (en)",
+          "sv" : "Episodens slutdatum",
+          "en" : "Episode end date"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Datoen episoden opphørte.",
+          "fi" : "*Date when this episode ceased. (en)",
+          "sv" : "Datum när episoden upphörde.",
+          "en" : "Date when this episode ceased."
+        },
+        "annotations" : {
+          "comment" : "Can be a partial date, for example, only a year. This data field will be empty if the episode is current and ongoing."
+        },
+        "aqlPath" : "/data[at0001]/items[at0010]/items[at0021]/value",
+        "inputs" : [ {
+          "type" : "DATETIME"
+        } ]
+      }, {
+        "id" : "episode_comment",
+        "name" : "Episode comment",
+        "localizedName" : "Episode comment",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0022",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "nb" : "Kommentar til episoden",
+          "fi" : "*Episode comment (en)",
+          "sv" : "Episod kommentar",
+          "en" : "Episode comment"
+        },
+        "localizedDescriptions" : {
+          "nb" : "Ytterligere fritekst om menstruasjonen innenfor den spesifiserte episoden, som ikke er omfattet av andre felt.",
+          "fi" : "*Additional narrative about this episode of menstruation not captured in other fields. (en)",
+          "sv" : "Ytterligare beskrivning om menstruationsepisoden som inte redan inkluderats.",
+          "en" : "Additional narrative about this episode of menstruation not captured in other fields."
+        },
+        "aqlPath" : "/data[at0001]/items[at0010]/items[at0022]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      } ]
+    }, {
+      "id" : "age_at_menopause",
+      "name" : "Age at menopause",
+      "localizedName" : "Age at menopause",
+      "rmType" : "DV_DURATION",
+      "nodeId" : "at0004",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Alder ved menopause",
+        "fi" : "*Age at menopause (en)",
+        "sv" : "Ålder vid klimakteriet",
+        "en" : "Age at menopause"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Alderen menopausen startet.",
+        "fi" : "Menopaussin alku – kuukautisten loppuminen (vaihdevuosi-iässä). Epätäydelliset päivämäärät, kuten pelkkä vuosi tai vuosi ja kuukausi, ovat sallittuja.",
+        "sv" : "Ålder vid upphörande av menstruationscykler.",
+        "en" : "Age at cessation of menstrual cycles."
+      },
+      "aqlPath" : "/data[at0001]/items[at0004]/value",
+      "inputs" : [ {
+        "suffix" : "year",
+        "type" : "INTEGER",
+        "validation" : {
+          "range" : {
+            "minOp" : ">=",
+            "min" : 0
+          }
+        }
+      }, {
+        "suffix" : "month",
+        "type" : "INTEGER",
+        "validation" : {
+          "range" : {
+            "minOp" : ">=",
+            "min" : 0
+          }
+        }
+      } ]
+    }, {
+      "id" : "comment",
+      "name" : "Comment",
+      "localizedName" : "Comment",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0023",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "nb" : "Kommentar",
+        "fi" : "*Comment (en)",
+        "sv" : "Kommentar",
+        "en" : "Comment"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Ytterligere fritekst om menstruasjonsmønster og epsioder som ikke er omfattet av andre felt.",
+        "fi" : "*Additional narrative about the overall patterns and episodes of menstruation not captured in other fields. (en)",
+        "sv" : "Ytterligare beskrivning om de övergripande mönster och menstruationsepisoder som inte redan inkluderats.",
+        "en" : "Additional narrative about the overall patterns and episodes of menstruation not captured in other fields."
+      },
+      "aqlPath" : "/data[at0001]/items[at0023]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "date_last_updated",
+      "name" : "Date last updated",
+      "localizedName" : "Date last updated",
+      "rmType" : "DV_DATE_TIME",
+      "nodeId" : "at0024",
+      "min" : 0,
+      "max" : 1,
+      "dependsOn" : [ "age_at_menopause", "menstrual_status", "comment", "per_episode", "age_at_menarche", "overall_description" ],
+      "localizedNames" : {
+        "nb" : "Sist oppdatert",
+        "fi" : "*Date last updated (en)",
+        "sv" : "Datum senast uppdaterad",
+        "en" : "Date last updated"
+      },
+      "localizedDescriptions" : {
+        "nb" : "Datoen da menstruasjons-sammendraget, inkludert episoder, ble sist oppdatert.",
+        "fi" : "*",
+        "sv" : "Datum då menstruationsöversikten, inklusive episoden, uppdaterades.",
+        "en" : "Date when the Menstruation summary, including episodes, was updated."
+      },
+      "aqlPath" : "/protocol[at0008]/items[at0024]/value",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ]
+    }, {
+      "id" : "language",
+      "name" : "Language",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/language",
+      "inContext" : true
+    }, {
+      "id" : "encoding",
+      "name" : "Encoding",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/encoding",
+      "inContext" : true
+    }, {
+      "id" : "subject",
+      "name" : "Subject",
+      "rmType" : "PARTY_PROXY",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/subject",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_scheme",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_namespace",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "name",
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}

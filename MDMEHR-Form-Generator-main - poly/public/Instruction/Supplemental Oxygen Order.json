@@ -1,0 +1,1460 @@
+{
+  "templateId" : "Supplemental Oxygen Order",
+  "semVer" : "0.1.0",
+  "version" : "2.3",
+  "defaultLanguage" : "en",
+  "languages" : [ "en" ],
+  "tree" : {
+    "id" : "supplemental_oxygen_order",
+    "name" : "Supplemental Oxygen Order",
+    "localizedName" : "Supplemental Oxygen Order",
+    "rmType" : "INSTRUCTION",
+    "nodeId" : "openEHR-EHR-INSTRUCTION.supplemental_oxygen_order.v0",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "en" : "Supplemental Oxygen Order"
+    },
+    "localizedDescriptions" : {
+      "en" : "A request for supplemental oxygen for an individual who is breathing spontaneously."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "current_activity",
+      "name" : "Current Activity",
+      "localizedName" : "Current Activity",
+      "rmType" : "ACTIVITY",
+      "nodeId" : "at0001",
+      "min" : 1,
+      "max" : 1,
+      "localizedNames" : {
+        "en" : "Current Activity"
+      },
+      "localizedDescriptions" : {
+        "en" : ""
+      },
+      "aqlPath" : "/activities[at0001]",
+      "children" : [ {
+        "id" : "target_o_saturation",
+        "name" : "Target O₂ saturation",
+        "localizedName" : "Target O₂ saturation",
+        "rmType" : "ELEMENT",
+        "nodeId" : "at0003",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Target O₂ saturation"
+        },
+        "localizedDescriptions" : {
+          "en" : "The target levels of oxygenation that is appropriate for the individual."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0003]",
+        "children" : [ {
+          "id" : "coded_text_value",
+          "localizedName" : "Target O₂ saturation",
+          "rmType" : "DV_CODED_TEXT",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Target O₂ saturation"
+          },
+          "localizedDescriptions" : {
+            "en" : "The target levels of oxygenation that is appropriate for the individual."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0003]/value",
+          "inputs" : [ {
+            "suffix" : "code",
+            "type" : "CODED_TEXT",
+            "list" : [ {
+              "value" : "at0004",
+              "label" : "94-98%",
+              "localizedLabels" : {
+                "en" : "94-98%"
+              },
+              "localizedDescriptions" : {
+                "en" : ""
+              }
+            }, {
+              "value" : "at0005",
+              "label" : "88-92%",
+              "localizedLabels" : {
+                "en" : "88-92%"
+              },
+              "localizedDescriptions" : {
+                "en" : ""
+              }
+            } ]
+          } ]
+        }, {
+          "id" : "text_value",
+          "localizedName" : "Target O₂ saturation",
+          "rmType" : "DV_TEXT",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Target O₂ saturation"
+          },
+          "localizedDescriptions" : {
+            "en" : "The target levels of oxygenation that is appropriate for the individual."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0003]/value",
+          "inputs" : [ {
+            "type" : "TEXT"
+          } ]
+        }, {
+          "id" : "interval_of_quantity_value",
+          "localizedName" : "Target O₂ saturation",
+          "rmType" : "DV_INTERVAL<DV_QUANTITY>",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Target O₂ saturation"
+          },
+          "localizedDescriptions" : {
+            "en" : "The target levels of oxygenation that is appropriate for the individual."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0003]/value",
+          "children" : [ {
+            "id" : "lower",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0003]/value/lower",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0,
+                  "maxOp" : "<",
+                  "max" : 100.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "%",
+                "label" : "%",
+                "validation" : {
+                  "range" : {
+                    "minOp" : ">=",
+                    "min" : 0.0,
+                    "maxOp" : "<",
+                    "max" : 100.0
+                  },
+                  "precision" : {
+                    "minOp" : ">=",
+                    "min" : 1,
+                    "maxOp" : "<=",
+                    "max" : 1
+                  }
+                }
+              } ]
+            } ]
+          }, {
+            "id" : "upper",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0003]/value/upper",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">",
+                  "min" : 0.0,
+                  "maxOp" : "<=",
+                  "max" : 100.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "%",
+                "label" : "%",
+                "validation" : {
+                  "range" : {
+                    "minOp" : ">",
+                    "min" : 0.0,
+                    "maxOp" : "<=",
+                    "max" : 100.0
+                  },
+                  "precision" : {
+                    "minOp" : ">=",
+                    "min" : 1,
+                    "maxOp" : "<=",
+                    "max" : 1
+                  }
+                }
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "quantity_value",
+          "localizedName" : "Target O₂ saturation",
+          "rmType" : "DV_QUANTITY",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Target O₂ saturation"
+          },
+          "localizedDescriptions" : {
+            "en" : "The target levels of oxygenation that is appropriate for the individual."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0003]/value",
+          "inputs" : [ {
+            "suffix" : "magnitude",
+            "type" : "DECIMAL",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0.0,
+                "maxOp" : "<=",
+                "max" : 100.0
+              },
+              "precision" : {
+                "minOp" : ">=",
+                "min" : 1,
+                "maxOp" : "<=",
+                "max" : 1
+              }
+            }
+          }, {
+            "suffix" : "unit",
+            "type" : "CODED_TEXT",
+            "list" : [ {
+              "value" : "%",
+              "label" : "%",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0,
+                  "maxOp" : "<=",
+                  "max" : 100.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            } ]
+          } ]
+        } ]
+      }, {
+        "id" : "flow_rate",
+        "name" : "Flow rate",
+        "localizedName" : "Flow rate",
+        "rmType" : "ELEMENT",
+        "nodeId" : "at0006",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Flow rate"
+        },
+        "localizedDescriptions" : {
+          "en" : "The rate of flow of oxygen delivered to the delivery device."
+        },
+        "annotations" : {
+          "comment" : "For example: 4 L/min."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0006]",
+        "children" : [ {
+          "id" : "quantity_value",
+          "localizedName" : "Flow rate",
+          "rmType" : "DV_QUANTITY",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Flow rate"
+          },
+          "localizedDescriptions" : {
+            "en" : "The rate of flow of oxygen delivered to the delivery device."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0006]/value",
+          "inputs" : [ {
+            "suffix" : "magnitude",
+            "type" : "DECIMAL",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0.0
+              },
+              "precision" : {
+                "minOp" : ">=",
+                "min" : 1,
+                "maxOp" : "<=",
+                "max" : 1
+              }
+            }
+          }, {
+            "suffix" : "unit",
+            "type" : "CODED_TEXT",
+            "list" : [ {
+              "value" : "l/m",
+              "label" : "l/m",
+              "localizedLabels" : {
+                "en" : "l/min"
+              },
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            } ]
+          } ]
+        }, {
+          "id" : "interval_of_quantity_value",
+          "localizedName" : "Flow rate",
+          "rmType" : "DV_INTERVAL<DV_QUANTITY>",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Flow rate"
+          },
+          "localizedDescriptions" : {
+            "en" : "The rate of flow of oxygen delivered to the delivery device."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0006]/value",
+          "children" : [ {
+            "id" : "lower",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0006]/value/lower",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "l/m",
+                "label" : "l/m",
+                "localizedLabels" : {
+                  "en" : "l/min"
+                },
+                "validation" : {
+                  "range" : {
+                    "minOp" : ">=",
+                    "min" : 0.0
+                  },
+                  "precision" : {
+                    "minOp" : ">=",
+                    "min" : 1,
+                    "maxOp" : "<=",
+                    "max" : 1
+                  }
+                }
+              } ]
+            } ]
+          }, {
+            "id" : "upper",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0006]/value/upper",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "l/m",
+                "label" : "l/m",
+                "localizedLabels" : {
+                  "en" : "l/min"
+                },
+                "validation" : {
+                  "range" : {
+                    "minOp" : ">=",
+                    "min" : 0.0
+                  },
+                  "precision" : {
+                    "minOp" : ">=",
+                    "min" : 1,
+                    "maxOp" : "<=",
+                    "max" : 1
+                  }
+                }
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "id" : "delivery_device",
+        "name" : "Delivery device",
+        "localizedName" : "Delivery device",
+        "rmType" : "DV_CODED_TEXT",
+        "nodeId" : "at0021",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Delivery device"
+        },
+        "localizedDescriptions" : {
+          "en" : "Type of oxygen delivery device"
+        },
+        "annotations" : {
+          "comment" : "For example: 'nasal prongs'; or 'V40, Venturi mask 40%'."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0021]/value",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "at0022",
+            "label" : "Standard nasal cannulae",
+            "localizedLabels" : {
+              "en" : "Standard nasal cannulae"
+            },
+            "localizedDescriptions" : {
+              "en" : ""
+            }
+          }, {
+            "value" : "at0023",
+            "label" : "High-flow nasal cannulae",
+            "localizedLabels" : {
+              "en" : "High-flow nasal cannulae"
+            },
+            "localizedDescriptions" : {
+              "en" : ""
+            }
+          }, {
+            "value" : "at0024",
+            "label" : "Simple face mask",
+            "localizedLabels" : {
+              "en" : "Simple face mask"
+            },
+            "localizedDescriptions" : {
+              "en" : ""
+            }
+          }, {
+            "value" : "at0025",
+            "label" : "Non-rebreather reservoir mask",
+            "localizedLabels" : {
+              "en" : "Non-rebreather reservoir mask"
+            },
+            "localizedDescriptions" : {
+              "en" : ""
+            }
+          }, {
+            "value" : "at0026",
+            "label" : "Venturi mask",
+            "localizedLabels" : {
+              "en" : "Venturi mask"
+            },
+            "localizedDescriptions" : {
+              "en" : ""
+            }
+          }, {
+            "value" : "at0027",
+            "label" : "Transtracheal catheter",
+            "localizedLabels" : {
+              "en" : "Transtracheal catheter"
+            },
+            "localizedDescriptions" : {
+              "en" : ""
+            }
+          } ],
+          "listOpen" : true
+        }, {
+          "suffix" : "other",
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "pattern",
+        "name" : "Pattern",
+        "localizedName" : "Pattern",
+        "rmType" : "DV_CODED_TEXT",
+        "nodeId" : "at0007",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Pattern"
+        },
+        "localizedDescriptions" : {
+          "en" : "The intended approach for administration."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0007]/value",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "at0008",
+            "label" : "Continuous",
+            "localizedLabels" : {
+              "en" : "Continuous"
+            },
+            "localizedDescriptions" : {
+              "en" : "Oxygen is delivered at a constant flow rate throughout the 24 hour period."
+            }
+          }, {
+            "value" : "at0009",
+            "label" : "Intermittent",
+            "localizedLabels" : {
+              "en" : "Intermittent"
+            },
+            "localizedDescriptions" : {
+              "en" : "At various times of the day or during activities specified using the 'Timing' CLUSTER."
+            }
+          }, {
+            "value" : "at0012",
+            "label" : "As required",
+            "localizedLabels" : {
+              "en" : "As required"
+            },
+            "localizedDescriptions" : {
+              "en" : "Also known as 'PRN (pro re nata)' or 'PN (per necessare)'."
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "description",
+        "name" : "Description",
+        "localizedName" : "Description",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0041",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Description"
+        },
+        "localizedDescriptions" : {
+          "en" : "Narrative description about the supplemental oxygen order."
+        },
+        "annotations" : {
+          "comment" : "This data element should be used to describe the named service in more detail, including how it should be delivered, patient concerns and issues that might be encountered in delivering the order."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0041]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "clinical_indication",
+        "name" : "Clinical indication",
+        "localizedName" : "Clinical indication",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0028",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "en" : "Clinical indication"
+        },
+        "localizedDescriptions" : {
+          "en" : "The clinical reason for supplemental use of oxygen."
+        },
+        "annotations" : {
+          "comment" : "For example: 'Chronic obstructive pulmonary disease'; or 'Obstructive sleep apnea'. Coding of the clinical indication with a terminology is preferred, where possible. This data element allows multiple occurrences to enable recording of multiple conditions."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0028]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "therapeutic_intent",
+        "name" : "Therapeutic intent",
+        "localizedName" : "Therapeutic intent",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0029",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Therapeutic intent"
+        },
+        "localizedDescriptions" : {
+          "en" : "The therapeutic goal for use of supplemental oxygen."
+        },
+        "annotations" : {
+          "comment" : "For example: 'symptom relief'; or 'increase exercise tolerance'."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0029]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "urgency",
+        "name" : "Urgency",
+        "localizedName" : "Urgency",
+        "rmType" : "DV_CODED_TEXT",
+        "nodeId" : "at0030",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Urgency"
+        },
+        "localizedDescriptions" : {
+          "en" : "Urgency of the request for oxygen."
+        },
+        "annotations" : {
+          "comment" : "Specific definitions of emergency and urgent will vary between clinical contexts, clinical systems and the clinical scenario. If explicit timing is required then the Order start and expiry times should be clearly stated."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0030]/value",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "at0031",
+            "label" : "Emergency",
+            "localizedLabels" : {
+              "en" : "Emergency"
+            },
+            "localizedDescriptions" : {
+              "en" : "The order requires immediate attention."
+            }
+          }, {
+            "value" : "at0032",
+            "label" : "Urgent",
+            "localizedLabels" : {
+              "en" : "Urgent"
+            },
+            "localizedDescriptions" : {
+              "en" : "The order requires prioritised attention."
+            }
+          }, {
+            "value" : "at0033",
+            "label" : "Routine",
+            "localizedLabels" : {
+              "en" : "Routine"
+            },
+            "localizedDescriptions" : {
+              "en" : "The order does not require immediate or prioritised attention."
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "duration_per_administration",
+        "name" : "Duration per administration",
+        "localizedName" : "Duration per administration",
+        "rmType" : "ELEMENT",
+        "nodeId" : "at0010",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Duration per administration"
+        },
+        "localizedDescriptions" : {
+          "en" : "Duration of each administration of supplemental oxygen."
+        },
+        "annotations" : {
+          "comment" : "Redundant if 'Continuous' is selected in the 'Mode' data element."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0010]",
+        "children" : [ {
+          "id" : "quantity_value",
+          "localizedName" : "Duration per administration",
+          "rmType" : "DV_QUANTITY",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Duration per administration"
+          },
+          "localizedDescriptions" : {
+            "en" : "Duration of each administration of supplemental oxygen."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0010]/value",
+          "inputs" : [ {
+            "suffix" : "magnitude",
+            "type" : "DECIMAL",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0.0,
+                "maxOp" : "<",
+                "max" : 24.0
+              },
+              "precision" : {
+                "minOp" : ">=",
+                "min" : 1,
+                "maxOp" : "<=",
+                "max" : 1
+              }
+            }
+          }, {
+            "suffix" : "unit",
+            "type" : "CODED_TEXT",
+            "list" : [ {
+              "value" : "h",
+              "label" : "h",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0,
+                  "maxOp" : "<",
+                  "max" : 24.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            } ]
+          } ]
+        }, {
+          "id" : "interval_of_quantity_value",
+          "localizedName" : "Duration per administration",
+          "rmType" : "DV_INTERVAL<DV_QUANTITY>",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Duration per administration"
+          },
+          "localizedDescriptions" : {
+            "en" : "Duration of each administration of supplemental oxygen."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0010]/value",
+          "children" : [ {
+            "id" : "lower",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0010]/value/lower",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0,
+                  "maxOp" : "<",
+                  "max" : 24.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "h",
+                "label" : "h",
+                "validation" : {
+                  "range" : {
+                    "minOp" : ">=",
+                    "min" : 0.0,
+                    "maxOp" : "<",
+                    "max" : 24.0
+                  },
+                  "precision" : {
+                    "minOp" : ">=",
+                    "min" : 1,
+                    "maxOp" : "<=",
+                    "max" : 1
+                  }
+                }
+              } ]
+            } ]
+          }, {
+            "id" : "upper",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0010]/value/upper",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0,
+                  "maxOp" : "<",
+                  "max" : 24.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "h",
+                "label" : "h",
+                "validation" : {
+                  "range" : {
+                    "minOp" : ">=",
+                    "min" : 0.0,
+                    "maxOp" : "<",
+                    "max" : 24.0
+                  },
+                  "precision" : {
+                    "minOp" : ">=",
+                    "min" : 1,
+                    "maxOp" : "<=",
+                    "max" : 1
+                  }
+                }
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "id" : "duration_per_day",
+        "name" : "Duration per day",
+        "localizedName" : "Duration per day",
+        "rmType" : "ELEMENT",
+        "nodeId" : "at0013",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Duration per day"
+        },
+        "localizedDescriptions" : {
+          "en" : "Total administration of supplemental oxygen over a 24 hour period."
+        },
+        "annotations" : {
+          "comment" : "Redundant if 'Continuous' is selected in the 'Mode' data element.\r\nFor example: 'at least 15 hours per day'."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0013]",
+        "children" : [ {
+          "id" : "quantity_value",
+          "localizedName" : "Duration per day",
+          "rmType" : "DV_QUANTITY",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Duration per day"
+          },
+          "localizedDescriptions" : {
+            "en" : "Total administration of supplemental oxygen over a 24 hour period."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0013]/value",
+          "inputs" : [ {
+            "suffix" : "magnitude",
+            "type" : "DECIMAL",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0.0,
+                "maxOp" : "<",
+                "max" : 24.0
+              },
+              "precision" : {
+                "minOp" : ">=",
+                "min" : 1,
+                "maxOp" : "<=",
+                "max" : 1
+              }
+            }
+          }, {
+            "suffix" : "unit",
+            "type" : "CODED_TEXT",
+            "list" : [ {
+              "value" : "h/d",
+              "label" : "h/d",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0,
+                  "maxOp" : "<",
+                  "max" : 24.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            } ]
+          } ]
+        }, {
+          "id" : "interval_of_quantity_value",
+          "localizedName" : "Duration per day",
+          "rmType" : "DV_INTERVAL<DV_QUANTITY>",
+          "nodeId" : "",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "en" : "Duration per day"
+          },
+          "localizedDescriptions" : {
+            "en" : "Total administration of supplemental oxygen over a 24 hour period."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0013]/value",
+          "children" : [ {
+            "id" : "lower",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0013]/value/lower",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0,
+                  "maxOp" : "<",
+                  "max" : 24.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "h/d",
+                "label" : "h/d",
+                "validation" : {
+                  "range" : {
+                    "minOp" : ">=",
+                    "min" : 0.0,
+                    "maxOp" : "<",
+                    "max" : 24.0
+                  },
+                  "precision" : {
+                    "minOp" : ">=",
+                    "min" : 1,
+                    "maxOp" : "<=",
+                    "max" : 1
+                  }
+                }
+              } ]
+            } ]
+          }, {
+            "id" : "upper",
+            "rmType" : "DV_QUANTITY",
+            "nodeId" : "",
+            "min" : 1,
+            "max" : 1,
+            "aqlPath" : "/activities[at0001]/description[at0002]/items[at0013]/value/upper",
+            "inputs" : [ {
+              "suffix" : "magnitude",
+              "type" : "DECIMAL",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0,
+                  "maxOp" : "<",
+                  "max" : 24.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 1,
+                  "maxOp" : "<=",
+                  "max" : 1
+                }
+              }
+            }, {
+              "suffix" : "unit",
+              "type" : "CODED_TEXT",
+              "list" : [ {
+                "value" : "h/d",
+                "label" : "h/d",
+                "validation" : {
+                  "range" : {
+                    "minOp" : ">=",
+                    "min" : 0.0,
+                    "maxOp" : "<",
+                    "max" : 24.0
+                  },
+                  "precision" : {
+                    "minOp" : ">=",
+                    "min" : 1,
+                    "maxOp" : "<=",
+                    "max" : 1
+                  }
+                }
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "id" : "activity",
+        "name" : "Activity",
+        "localizedName" : "Activity",
+        "rmType" : "DV_CODED_TEXT",
+        "nodeId" : "at0015",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "en" : "Activity"
+        },
+        "localizedDescriptions" : {
+          "en" : "Specific activity that requires supplemental oxygen."
+        },
+        "annotations" : {
+          "comment" : "Redundant if 'Continuous' is selected in the 'Mode' data element."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0015]/value",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "at0016",
+            "label" : "At rest/awake",
+            "localizedLabels" : {
+              "en" : "At rest/awake"
+            },
+            "localizedDescriptions" : {
+              "en" : "Delivered while at rest and awake."
+            }
+          }, {
+            "value" : "at0017",
+            "label" : "Nocturnal/asleep",
+            "localizedLabels" : {
+              "en" : "Nocturnal/asleep"
+            },
+            "localizedDescriptions" : {
+              "en" : "Delivered at night or while sleeping."
+            }
+          }, {
+            "value" : "at0018",
+            "label" : "During exertion",
+            "localizedLabels" : {
+              "en" : "During exertion"
+            },
+            "localizedDescriptions" : {
+              "en" : "Delivered during exercise or activities of daily living."
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "used_with_pap",
+        "name" : "Used with PAP",
+        "localizedName" : "Used with PAP",
+        "rmType" : "DV_BOOLEAN",
+        "nodeId" : "at0019",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Used with PAP"
+        },
+        "localizedDescriptions" : {
+          "en" : "Flag if the order requires PAP."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0019]/value",
+        "inputs" : [ {
+          "type" : "BOOLEAN"
+        } ]
+      }, {
+        "id" : "equipment_type",
+        "name" : "Equipment type",
+        "localizedName" : "Equipment type",
+        "rmType" : "DV_CODED_TEXT",
+        "nodeId" : "at0034",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Equipment type"
+        },
+        "localizedDescriptions" : {
+          "en" : ""
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0034]/value",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "at0035",
+            "label" : "Portable",
+            "localizedLabels" : {
+              "en" : "Portable"
+            },
+            "localizedDescriptions" : {
+              "en" : "The individual will require equipment that allows them to be ambulatory or mobile."
+            }
+          }, {
+            "value" : "at0036",
+            "label" : "Stationary",
+            "localizedLabels" : {
+              "en" : "Stationary"
+            },
+            "localizedDescriptions" : {
+              "en" : "The individual will not require equipment that allows them to be ambulatory or mobile."
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "order_start",
+        "name" : "Order start",
+        "localizedName" : "Order start",
+        "rmType" : "DV_DATE_TIME",
+        "nodeId" : "at0037",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Order start"
+        },
+        "localizedDescriptions" : {
+          "en" : "The date/time when supplemental oxygen order commences."
+        },
+        "annotations" : {
+          "comment" : "Only required if the start date/time is different to the date/time when this order is recorded."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0037]/value",
+        "inputs" : [ {
+          "type" : "DATETIME"
+        } ]
+      }, {
+        "id" : "order_end",
+        "name" : "Order end",
+        "localizedName" : "Order end",
+        "rmType" : "DV_DATE_TIME",
+        "nodeId" : "at0038",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Order end"
+        },
+        "localizedDescriptions" : {
+          "en" : "The date/time when supplemental oxygen order ceases."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0038]/value",
+        "inputs" : [ {
+          "type" : "DATETIME"
+        } ]
+      }, {
+        "id" : "indefinite",
+        "name" : "Indefinite",
+        "localizedName" : "Indefinite",
+        "rmType" : "DV_BOOLEAN",
+        "nodeId" : "at0039",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Indefinite"
+        },
+        "localizedDescriptions" : {
+          "en" : "The order is open ended and has no end date."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0039]/value",
+        "inputs" : [ {
+          "type" : "BOOLEAN"
+        } ]
+      }, {
+        "id" : "comment",
+        "name" : "Comment",
+        "localizedName" : "Comment",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0040",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Comment"
+        },
+        "localizedDescriptions" : {
+          "en" : "Additional narrative about the supplemental oxygen order not captured in other fields."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0040]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "timing",
+        "name" : "Timing",
+        "rmType" : "DV_PARSABLE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/activities[at0001]/timing",
+        "inputs" : [ {
+          "suffix" : "value",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "formalism",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      }, {
+        "id" : "action_archetype_id",
+        "name" : "Action_archetype_id",
+        "rmType" : "STRING",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/activities[at0001]/action_archetype_id",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      } ]
+    }, {
+      "id" : "requester_order_identifier",
+      "name" : "Requester order identifier",
+      "localizedName" : "Requester order identifier",
+      "rmType" : "ELEMENT",
+      "nodeId" : "at0042",
+      "min" : 0,
+      "max" : 1,
+      "dependsOn" : [ "current_activity" ],
+      "localizedNames" : {
+        "en" : "Requester order identifier"
+      },
+      "localizedDescriptions" : {
+        "en" : "The local identifier assigned by the requesting clinical system."
+      },
+      "annotations" : {
+        "comment" : "Usually equivalent to the HL7 Placer Order Identifier."
+      },
+      "aqlPath" : "/protocol[at0014]/items[at0042]",
+      "children" : [ {
+        "id" : "text_value",
+        "localizedName" : "Requester order identifier",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Requester order identifier"
+        },
+        "localizedDescriptions" : {
+          "en" : "The local identifier assigned by the requesting clinical system."
+        },
+        "aqlPath" : "/protocol[at0014]/items[at0042]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "identifier_value",
+        "localizedName" : "Requester order identifier",
+        "rmType" : "DV_IDENTIFIER",
+        "nodeId" : "",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Requester order identifier"
+        },
+        "localizedDescriptions" : {
+          "en" : "The local identifier assigned by the requesting clinical system."
+        },
+        "aqlPath" : "/protocol[at0014]/items[at0042]/value",
+        "inputs" : [ {
+          "suffix" : "id",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "type",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "issuer",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "assigner",
+          "type" : "TEXT"
+        } ]
+      } ]
+    }, {
+      "id" : "receiver_order_identifier",
+      "name" : "Receiver order identifier",
+      "localizedName" : "Receiver order identifier",
+      "rmType" : "ELEMENT",
+      "nodeId" : "at0044",
+      "min" : 0,
+      "max" : 1,
+      "dependsOn" : [ "current_activity" ],
+      "localizedNames" : {
+        "en" : "Receiver order identifier"
+      },
+      "localizedDescriptions" : {
+        "en" : "The local identifier assigned to the request by the clinician or organisation receiving the order."
+      },
+      "annotations" : {
+        "comment" : "Usually equivalent to the HL7 Filler Order Identifier."
+      },
+      "aqlPath" : "/protocol[at0014]/items[at0044]",
+      "children" : [ {
+        "id" : "text_value",
+        "localizedName" : "Receiver order identifier",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Receiver order identifier"
+        },
+        "localizedDescriptions" : {
+          "en" : "The local identifier assigned to the request by the clinician or organisation receiving the order."
+        },
+        "aqlPath" : "/protocol[at0014]/items[at0044]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "identifier_value",
+        "localizedName" : "Receiver order identifier",
+        "rmType" : "DV_IDENTIFIER",
+        "nodeId" : "",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "en" : "Receiver order identifier"
+        },
+        "localizedDescriptions" : {
+          "en" : "The local identifier assigned to the request by the clinician or organisation receiving the order."
+        },
+        "aqlPath" : "/protocol[at0014]/items[at0044]/value",
+        "inputs" : [ {
+          "suffix" : "id",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "type",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "issuer",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "assigner",
+          "type" : "TEXT"
+        } ]
+      } ]
+    }, {
+      "id" : "request_status",
+      "name" : "Request status",
+      "localizedName" : "Request status",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0046",
+      "min" : 0,
+      "max" : 1,
+      "dependsOn" : [ "current_activity" ],
+      "localizedNames" : {
+        "en" : "Request status"
+      },
+      "localizedDescriptions" : {
+        "en" : "The status of the order as indicated by the requester."
+      },
+      "annotations" : {
+        "comment" : "Status is used to denote whether this is the initial request, or a follow-up request to change or provide supplementary information. Coding with a terminology is preferred, where possible."
+      },
+      "aqlPath" : "/protocol[at0014]/items[at0046]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "expiry_time",
+      "name" : "expiry_time",
+      "rmType" : "DV_DATE_TIME",
+      "min" : 0,
+      "max" : 1,
+      "aqlPath" : "/expiry_time",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ]
+    }, {
+      "id" : "narrative",
+      "name" : "Narrative",
+      "rmType" : "DV_TEXT",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/narrative",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    }, {
+      "id" : "language",
+      "name" : "Language",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/language",
+      "inContext" : true
+    }, {
+      "id" : "encoding",
+      "name" : "Encoding",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/encoding",
+      "inContext" : true
+    }, {
+      "id" : "subject",
+      "name" : "Subject",
+      "rmType" : "PARTY_PROXY",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/subject",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_scheme",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_namespace",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "name",
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}

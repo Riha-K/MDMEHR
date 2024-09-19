@@ -1,0 +1,463 @@
+{
+  "templateId" : "Transfusion",
+  "semVer" : "0.1.0",
+  "version" : "2.3",
+  "defaultLanguage" : "en",
+  "languages" : [ "de", "pt-br", "en" ],
+  "tree" : {
+    "id" : "transfusion",
+    "name" : "Transfusion",
+    "localizedName" : "Transfusion",
+    "rmType" : "ACTION",
+    "nodeId" : "openEHR-EHR-ACTION.transfusion.v0",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "de" : "Transfusion",
+      "pt-br" : "Transfusion",
+      "en" : "Transfusion"
+    },
+    "localizedDescriptions" : {
+      "de" : "Dokumentation der Handlungen, die während einer Transfusion durchgeführt werden.",
+      "pt-br" : "Registro das ações durante a transfusão",
+      "en" : "Recording the actions taken during transfusion."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "ism_transition",
+      "name" : "Ism_transition",
+      "rmType" : "ISM_TRANSITION",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/ism_transition",
+      "children" : [ {
+        "id" : "current_state",
+        "name" : "Current_state",
+        "rmType" : "DV_CODED_TEXT",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/ism_transition/current_state",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "530",
+            "label" : "suspended"
+          }, {
+            "value" : "245",
+            "label" : "active"
+          }, {
+            "value" : "531",
+            "label" : "aborted"
+          }, {
+            "value" : "532",
+            "label" : "completed"
+          }, {
+            "value" : "524",
+            "label" : "initial"
+          }, {
+            "value" : "527",
+            "label" : "postponed"
+          }, {
+            "value" : "528",
+            "label" : "cancelled"
+          }, {
+            "value" : "529",
+            "label" : "scheduled"
+          } ]
+        } ],
+        "inContext" : true
+      }, {
+        "id" : "transition",
+        "name" : "Transition",
+        "rmType" : "DV_CODED_TEXT",
+        "min" : 0,
+        "max" : 1,
+        "aqlPath" : "/ism_transition/transition",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "value",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      }, {
+        "id" : "careflow_step",
+        "name" : "Careflow_step",
+        "rmType" : "DV_CODED_TEXT",
+        "min" : 0,
+        "max" : 1,
+        "aqlPath" : "/ism_transition/careflow_step",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "at0002",
+            "label" : "Planned",
+            "localizedLabels" : {
+              "de" : "Geplant",
+              "pt-br" : "Planejada",
+              "en" : "Planned"
+            },
+            "currentStates" : [ "524" ]
+          }, {
+            "value" : "at0004",
+            "label" : "Prepared (Matching)",
+            "localizedLabels" : {
+              "de" : "Vorbereitet (Probe)",
+              "pt-br" : "Preparada",
+              "en" : "Prepared (Matching)"
+            },
+            "currentStates" : [ "524" ]
+          }, {
+            "value" : "at0012",
+            "label" : "Consent obtained",
+            "localizedLabels" : {
+              "de" : "Einwilligung eingeholt",
+              "pt-br" : "Consentimento obtido",
+              "en" : "Consent obtained"
+            },
+            "currentStates" : [ "524" ]
+          }, {
+            "value" : "at0005",
+            "label" : "Postponed",
+            "localizedLabels" : {
+              "de" : "Verschoben",
+              "pt-br" : "Adiada",
+              "en" : "Postponed"
+            },
+            "currentStates" : [ "527" ]
+          }, {
+            "value" : "at0006",
+            "label" : "Cancelled",
+            "localizedLabels" : {
+              "de" : "Abgebrochen",
+              "pt-br" : "Cancelada",
+              "en" : "Cancelled"
+            },
+            "currentStates" : [ "528" ]
+          }, {
+            "value" : "at0003",
+            "label" : "Blood products ordered",
+            "localizedLabels" : {
+              "de" : "Blutprodukte bestellt",
+              "pt-br" : "Produto do sangue prescritos",
+              "en" : "Blood products ordered"
+            },
+            "currentStates" : [ "529" ]
+          }, {
+            "value" : "at0007",
+            "label" : "Blood and patient identification checked",
+            "localizedLabels" : {
+              "de" : "Blut- und Patientenidentifikation überprüft",
+              "pt-br" : "Identificação de sangue e paciente verificados",
+              "en" : "Blood and patient identification checked"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0008",
+            "label" : "Transfusion unit commenced",
+            "localizedLabels" : {
+              "de" : "Transfusionseinheit begonnen",
+              "pt-br" : "Unidade de transfusão iniciada",
+              "en" : "Transfusion unit commenced"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0013",
+            "label" : "Transfusion unit completed",
+            "localizedLabels" : {
+              "de" : "Transfusionseinheit beendet",
+              "pt-br" : "Unidade de transfusão completadas",
+              "en" : "Transfusion unit completed"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0009",
+            "label" : "Transfusion suspended",
+            "localizedLabels" : {
+              "de" : "Transfusion ausgesetzt",
+              "pt-br" : "Transfusão suspensa",
+              "en" : "Transfusion suspended"
+            },
+            "currentStates" : [ "530" ]
+          }, {
+            "value" : "at0010",
+            "label" : "Transfusion stopped",
+            "localizedLabels" : {
+              "de" : "Transfusion gestoppt",
+              "pt-br" : "Transfusão interrompida",
+              "en" : "Transfusion stopped"
+            },
+            "currentStates" : [ "531" ]
+          }, {
+            "value" : "at0011",
+            "label" : "Transfusion has been completed",
+            "localizedLabels" : {
+              "de" : "Transfusion wurde beendet",
+              "pt-br" : "A transfusão foi completada",
+              "en" : "Transfusion has been completed"
+            },
+            "currentStates" : [ "532" ]
+          } ]
+        } ],
+        "inContext" : true
+      } ],
+      "inContext" : true
+    }, {
+      "id" : "type_of_blood_unit",
+      "name" : "Type of blood unit",
+      "localizedName" : "Type of blood unit",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0014",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "de" : "Art des Blutproduktes",
+        "pt-br" : "Unidade de tipo de sangue",
+        "en" : "Type of blood unit"
+      },
+      "localizedDescriptions" : {
+        "de" : "Das transfundierte Blutprodukt.",
+        "pt-br" : "O produto do sangue transfundido",
+        "en" : "The blood product transfused."
+      },
+      "aqlPath" : "/description[at0001]/items[at0014]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "administration_details",
+      "name" : "Administration details",
+      "localizedName" : "Administration details",
+      "rmType" : "CLUSTER",
+      "nodeId" : "at0022",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "de" : "Verabreichungseinzelheiten",
+        "pt-br" : "Detalhes da administração",
+        "en" : "Administration details"
+      },
+      "localizedDescriptions" : {
+        "de" : "Einzelheiten der Verabreichung.",
+        "pt-br" : "Detalhes sobre a administração",
+        "en" : "Details about the administration."
+      },
+      "aqlPath" : "/description[at0001]/items[at0022]",
+      "children" : [ {
+        "id" : "sequence_number",
+        "name" : "Sequence number",
+        "localizedName" : "Sequence number",
+        "rmType" : "DV_COUNT",
+        "nodeId" : "at0015",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "de" : "Laufnummer",
+          "pt-br" : "Sequência numérica",
+          "en" : "Sequence number"
+        },
+        "localizedDescriptions" : {
+          "de" : "Die Nummer der begonnenen oder beendeten Einheit.",
+          "pt-br" : "O número de unidades finalizados ou iniciados.",
+          "en" : "The number of the unit completed or commenced."
+        },
+        "aqlPath" : "/description[at0001]/items[at0022]/items[at0015]/value",
+        "inputs" : [ {
+          "type" : "INTEGER"
+        } ]
+      }, {
+        "id" : "proportion_administered",
+        "name" : "Proportion administered",
+        "localizedName" : "Proportion administered",
+        "rmType" : "DV_PROPORTION",
+        "nodeId" : "at0016",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "de" : "Verabreichter Anteil",
+          "pt-br" : "Proporção administrada",
+          "en" : "Proportion administered"
+        },
+        "localizedDescriptions" : {
+          "de" : "Anteil der verabreichten Einheit(en).",
+          "pt-br" : "A proporção de uma unidade administrada",
+          "en" : "The proportion of the unit(s) administered."
+        },
+        "aqlPath" : "/description[at0001]/items[at0022]/items[at0016]/value",
+        "proportionTypes" : [ "integer_fraction", "unitary", "percent", "ratio", "fraction" ],
+        "inputs" : [ {
+          "suffix" : "numerator",
+          "type" : "DECIMAL",
+          "validation" : {
+            "range" : {
+              "minOp" : ">=",
+              "min" : 0.0
+            }
+          }
+        }, {
+          "suffix" : "denominator",
+          "type" : "DECIMAL"
+        } ]
+      } ]
+    }, {
+      "id" : "reason",
+      "name" : "Reason",
+      "localizedName" : "Reason",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0017",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "de" : "Grund",
+        "pt-br" : "Razão",
+        "en" : "Reason"
+      },
+      "localizedDescriptions" : {
+        "de" : "Grund für die Handlung.",
+        "pt-br" : "Motivo da ação",
+        "en" : "Reason for action."
+      },
+      "aqlPath" : "/description[at0001]/items[at0017]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "reaction_details",
+      "name" : "Reaction details",
+      "localizedName" : "Reaction details",
+      "rmType" : "CLUSTER",
+      "nodeId" : "at0020",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "de" : "Reaktionseinzelheit",
+        "pt-br" : "Detalhes da reação",
+        "en" : "Reaction details"
+      },
+      "localizedDescriptions" : {
+        "de" : "Beliebige Einzelheiten einer Reaktion.",
+        "pt-br" : "Qualquer detalhe da reação",
+        "en" : "Any details of a reaction."
+      },
+      "aqlPath" : "/description[at0001]/items[at0020]",
+      "children" : [ {
+        "id" : "clinical_description",
+        "name" : "Clinical description",
+        "localizedName" : "Clinical description",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0019",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "de" : "klinische Beschreibung",
+          "pt-br" : "Descrilção clínica",
+          "en" : "Clinical description"
+        },
+        "localizedDescriptions" : {
+          "de" : "Beliebige Reaktion auf die Transfusion.",
+          "pt-br" : "Qualquer reação à transfusão",
+          "en" : "Any reaction to the transfusion."
+        },
+        "aqlPath" : "/description[at0001]/items[at0020]/items[at0019]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      } ]
+    }, {
+      "id" : "related_records",
+      "name" : "Related records",
+      "localizedName" : "Related records",
+      "rmType" : "DV_URI",
+      "nodeId" : "at0021",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "de" : "zugehörige Aufzeichnungen",
+        "pt-br" : "Registros relatados",
+        "en" : "Related records"
+      },
+      "localizedDescriptions" : {
+        "de" : "Ein Verweis auf beliebige zugehörige Beobachtungen oder dokumentierte Einträge.",
+        "pt-br" : "Eventuais observações relacionadas ou entradas do registro",
+        "en" : "A pointer to any related observations or record entries."
+      },
+      "aqlPath" : "/description[at0001]/items[at0021]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "country_of_origin_of_blood_product",
+      "name" : "Country of origin of blood product",
+      "localizedName" : "Country of origin of blood product",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0018",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "de" : "Herkunftsland des Blutproduktes",
+        "pt-br" : "País de origem do produto do sangue",
+        "en" : "Country of origin of blood product"
+      },
+      "localizedDescriptions" : {
+        "de" : "Das Herkunftsland des Blutproduktes.",
+        "pt-br" : "O país de origem do produto do sangue",
+        "en" : "The country of origin of the blood product."
+      },
+      "aqlPath" : "/description[at0001]/items[at0018]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "time",
+      "name" : "Time",
+      "rmType" : "DV_DATE_TIME",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/time",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ],
+      "inContext" : true
+    }, {
+      "id" : "language",
+      "name" : "Language",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/language",
+      "inContext" : true
+    }, {
+      "id" : "encoding",
+      "name" : "Encoding",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/encoding",
+      "inContext" : true
+    }, {
+      "id" : "subject",
+      "name" : "Subject",
+      "rmType" : "PARTY_PROXY",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/subject",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_scheme",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_namespace",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "name",
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}

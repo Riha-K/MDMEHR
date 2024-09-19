@@ -1,0 +1,317 @@
+{
+  "templateId" : "Transfusion Order",
+  "semVer" : "0.1.0",
+  "version" : "2.3",
+  "defaultLanguage" : "en",
+  "languages" : [ "de", "en" ],
+  "tree" : {
+    "id" : "transfusion_order",
+    "name" : "Transfusion Order",
+    "localizedName" : "Transfusion Order",
+    "rmType" : "INSTRUCTION",
+    "nodeId" : "openEHR-EHR-INSTRUCTION.transfusion_order.v0",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "de" : "Transfusion Order",
+      "en" : "Transfusion Order"
+    },
+    "localizedDescriptions" : {
+      "de" : "*The instructions for giving a transfusion.(en)",
+      "en" : "The instructions for giving a transfusion."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "new_activity",
+      "name" : "new activity",
+      "localizedName" : "new activity",
+      "rmType" : "ACTIVITY",
+      "nodeId" : "at0001",
+      "min" : 0,
+      "max" : 1,
+      "cardinalities" : [ {
+        "min" : 2,
+        "max" : -1,
+        "ids" : [ "type_of_blood_product", "amount", "clinical_indication", "urgency", "special_requirement" ]
+      } ],
+      "localizedNames" : {
+        "de" : "neue Handlung",
+        "en" : "new activity"
+      },
+      "localizedDescriptions" : {
+        "de" : "*",
+        "en" : "*"
+      },
+      "aqlPath" : "/activities[at0001]",
+      "children" : [ {
+        "id" : "type_of_blood_product",
+        "name" : "Type of blood product",
+        "localizedName" : "Type of blood product",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0003",
+        "min" : 1,
+        "max" : 1,
+        "localizedNames" : {
+          "de" : "*Type of blood product(en)",
+          "en" : "Type of blood product"
+        },
+        "localizedDescriptions" : {
+          "de" : "*The blood product to be administered.(en)",
+          "en" : "The blood product to be administered."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0003]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "amount",
+        "name" : "Amount",
+        "localizedName" : "Amount",
+        "rmType" : "CLUSTER",
+        "nodeId" : "at0010",
+        "min" : 1,
+        "max" : 1,
+        "cardinalities" : [ {
+          "min" : 1,
+          "max" : 1,
+          "ids" : [ "number_of_units", "volume" ]
+        } ],
+        "localizedNames" : {
+          "de" : "*Amount(en)",
+          "en" : "Amount"
+        },
+        "localizedDescriptions" : {
+          "de" : "*The amount of blood product to be transfused.(en)",
+          "en" : "The amount of blood product to be transfused."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0010]",
+        "children" : [ {
+          "id" : "number_of_units",
+          "name" : "Number of units",
+          "localizedName" : "Number of units",
+          "rmType" : "DV_COUNT",
+          "nodeId" : "at0004",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "de" : "*Number of units(en)",
+            "en" : "Number of units"
+          },
+          "localizedDescriptions" : {
+            "de" : "*The number of units to be transfused.(en)",
+            "en" : "The number of units to be transfused."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0010]/items[at0004]/value",
+          "inputs" : [ {
+            "type" : "INTEGER",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0
+              }
+            }
+          } ]
+        }, {
+          "id" : "volume",
+          "name" : "Volume",
+          "localizedName" : "Volume",
+          "rmType" : "DV_QUANTITY",
+          "nodeId" : "at0011",
+          "min" : 0,
+          "max" : 1,
+          "localizedNames" : {
+            "de" : "*Volume(en)",
+            "en" : "Volume"
+          },
+          "localizedDescriptions" : {
+            "de" : "*The volume of the product to be transfused for paediatric and some specific purposes.(en)",
+            "en" : "The volume of the product to be transfused for paediatric and some specific purposes."
+          },
+          "aqlPath" : "/activities[at0001]/description[at0002]/items[at0010]/items[at0011]/value",
+          "inputs" : [ {
+            "suffix" : "magnitude",
+            "type" : "DECIMAL",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0.0
+              },
+              "precision" : {
+                "minOp" : ">=",
+                "min" : 0,
+                "maxOp" : "<=",
+                "max" : 0
+              }
+            }
+          }, {
+            "suffix" : "unit",
+            "type" : "CODED_TEXT",
+            "list" : [ {
+              "value" : "ml",
+              "label" : "ml",
+              "validation" : {
+                "range" : {
+                  "minOp" : ">=",
+                  "min" : 0.0
+                },
+                "precision" : {
+                  "minOp" : ">=",
+                  "min" : 0,
+                  "maxOp" : "<=",
+                  "max" : 0
+                }
+              }
+            } ]
+          } ]
+        } ]
+      }, {
+        "id" : "clinical_indication",
+        "name" : "Clinical indication",
+        "localizedName" : "Clinical indication",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0009",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "de" : "*Clinical indication(en)",
+          "en" : "Clinical indication"
+        },
+        "localizedDescriptions" : {
+          "de" : "*The clinical reason for ordering the tranfusion.(en)",
+          "en" : "The clinical reason for ordering the tranfusion."
+        },
+        "annotations" : {
+          "comment" : "For example: 'low hemoglobin level'. Coding of the clinical indication with a terminology is preferred, where possible. This data element allows multiple occurrences. It is not intended to carry an indication for administrative authorisation purposes."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0009]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "urgency",
+        "name" : "Urgency",
+        "localizedName" : "Urgency",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0012",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "de" : "*Urgency(en)",
+          "en" : "Urgency"
+        },
+        "localizedDescriptions" : {
+          "de" : "*The urgency of the transfusion.(en)",
+          "en" : "The urgency of the transfusion."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0012]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "special_requirement",
+        "name" : "Special requirement",
+        "localizedName" : "Special requirement",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0005",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "de" : "*Special requirement(en)",
+          "en" : "Special requirement"
+        },
+        "localizedDescriptions" : {
+          "de" : "*Special requirements for blood products.(en)",
+          "en" : "Special requirements for blood products."
+        },
+        "aqlPath" : "/activities[at0001]/description[at0002]/items[at0005]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "timing",
+        "name" : "Timing",
+        "rmType" : "DV_PARSABLE",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/activities[at0001]/timing",
+        "inputs" : [ {
+          "suffix" : "value",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "formalism",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      }, {
+        "id" : "action_archetype_id",
+        "name" : "Action_archetype_id",
+        "rmType" : "STRING",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/activities[at0001]/action_archetype_id",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      } ]
+    }, {
+      "id" : "expiry_time",
+      "name" : "expiry_time",
+      "rmType" : "DV_DATE_TIME",
+      "min" : 0,
+      "max" : 1,
+      "aqlPath" : "/expiry_time",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ]
+    }, {
+      "id" : "narrative",
+      "name" : "Narrative",
+      "rmType" : "DV_TEXT",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/narrative",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    }, {
+      "id" : "language",
+      "name" : "Language",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/language",
+      "inContext" : true
+    }, {
+      "id" : "encoding",
+      "name" : "Encoding",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/encoding",
+      "inContext" : true
+    }, {
+      "id" : "subject",
+      "name" : "Subject",
+      "rmType" : "PARTY_PROXY",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/subject",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_scheme",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_namespace",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "name",
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}

@@ -1,0 +1,495 @@
+{
+  "templateId" : "Pulse Oximetry",
+  "semVer" : "0.1.0",
+  "version" : "2.3",
+  "defaultLanguage" : "en",
+  "languages" : [ "ru", "sv", "de", "en" ],
+  "tree" : {
+    "id" : "pulse_oximetry",
+    "name" : "Pulse Oximetry",
+    "localizedName" : "Pulse Oximetry",
+    "rmType" : "OBSERVATION",
+    "nodeId" : "openEHR-EHR-OBSERVATION.pulse_oximetry.v1",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "ru" : "Pulse Oximetry",
+      "sv" : "Pulse Oximetry",
+      "de" : "Pulse Oximetry",
+      "en" : "Pulse Oximetry"
+    },
+    "localizedDescriptions" : {
+      "ru" : "*Blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry.(en)",
+      "sv" : "Syremättnad i blodet och relaterade mätningar, uppmätta med pulsoximetri eller CO-oximetri.",
+      "de" : "Blutsauerstoff und verwandte Messungen, die mittels Pulsoxymetrie oder Puls-CO-Oximetrie gemessen wurden.",
+      "en" : "Blood oxygen and related measurements, measured by pulse oximetry or pulse CO-oximetry."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "any_event",
+      "name" : "Any event",
+      "localizedName" : "Any event",
+      "rmType" : "EVENT",
+      "nodeId" : "at0002",
+      "min" : 0,
+      "max" : -1,
+      "localizedNames" : {
+        "ru" : "Любое событие",
+        "sv" : "Ospecificerad händelse",
+        "de" : "Beliebiges Ereignis",
+        "en" : "Any event"
+      },
+      "localizedDescriptions" : {
+        "ru" : "Сроки события",
+        "sv" : "Ospecificerad händelse\r\n\r\nOspecificerad standardhändelse vid en tidpunkt eller inom ett tidsintervall som explicit kan definieras i en mall eller genereras automatiskt av vissa IT-system.",
+        "de" : "Standardwert, ein undefinierter/s Zeitpunkt oder Intervallereignis, das explizit im Template oder zur Laufzeit der Anwendung definiert werden kann.",
+        "en" : "Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time."
+      },
+      "aqlPath" : "/data[at0001]/events[at0002]",
+      "children" : [ {
+        "id" : "spo",
+        "name" : "SpO₂",
+        "localizedName" : "SpO₂",
+        "rmType" : "DV_PROPORTION",
+        "nodeId" : "at0006",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "ru" : "*SpO₂(en)",
+          "sv" : "SpO₂",
+          "de" : "SpO₂",
+          "en" : "SpO₂"
+        },
+        "localizedDescriptions" : {
+          "ru" : "*The saturation of oxygen in the peripheral blood, measured via pulse oximetry.(en)",
+          "sv" : "Syremättnad i perifert blod uppmätt genom pulsoximetri.",
+          "de" : "Die Sättigung des Sauerstoffs im peripheren Blut, mittels Pulsoxymetrie gemessen.",
+          "en" : "The saturation of oxygen in the peripheral blood, measured via pulse oximetry."
+        },
+        "annotations" : {
+          "comment" : "SpO₂ is defined as the percentage of oxyhaemoglobin (HbO₂) to the total concentration of haemoglobin (HbO₂ + deoxyhaemoglobin) in peripheral blood."
+        },
+        "aqlPath" : "/data[at0001]/events[at0002]/data[at0003]/items[at0006]/value",
+        "proportionTypes" : [ "percent" ],
+        "inputs" : [ {
+          "suffix" : "numerator",
+          "type" : "DECIMAL",
+          "validation" : {
+            "range" : {
+              "minOp" : ">=",
+              "min" : 0.0,
+              "maxOp" : "<=",
+              "max" : 100.0
+            }
+          }
+        }, {
+          "suffix" : "denominator",
+          "type" : "DECIMAL",
+          "validation" : {
+            "range" : {
+              "minOp" : ">=",
+              "min" : 100.0,
+              "maxOp" : "<=",
+              "max" : 100.0
+            }
+          }
+        } ],
+        "termBindings" : {
+          "SNOMED-CT" : {
+            "value" : "[SNOMED-CT::431314004]",
+            "terminologyId" : "SNOMED-CT"
+          },
+          "LOINC" : {
+            "value" : "[LOINC::59408-5]",
+            "terminologyId" : "LOINC"
+          }
+        }
+      }, {
+        "id" : "spoc",
+        "name" : "SpOC",
+        "localizedName" : "SpOC",
+        "rmType" : "DV_QUANTITY",
+        "nodeId" : "at0044",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "ru" : "*SpOC(en)",
+          "sv" : "SpOC",
+          "de" : "SpOC",
+          "en" : "SpOC"
+        },
+        "localizedDescriptions" : {
+          "ru" : "*The oxygen content of the peripheral blood, calculated based on pulse oximetry and pulse CO-oximetry.(en)",
+          "sv" : "Syreinehållet i preifert blod, beräknat från pulsoximetri och puls-CO-oximetri i kombination.",
+          "de" : "Der Sauerstoffgehalt des peripheren Blutes, auf der Grundlage der Pulsoxymetrie und der Puls-CO-Oximetrie berechnet.",
+          "en" : "The oxygen content of the peripheral blood, calculated based on pulse oximetry and pulse CO-oximetry."
+        },
+        "aqlPath" : "/data[at0001]/events[at0002]/data[at0003]/items[at0044]/value",
+        "inputs" : [ {
+          "suffix" : "magnitude",
+          "type" : "DECIMAL",
+          "validation" : {
+            "range" : {
+              "minOp" : ">=",
+              "min" : 0.0
+            }
+          }
+        }, {
+          "suffix" : "unit",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "ml/dl",
+            "label" : "ml/dl",
+            "validation" : {
+              "range" : {
+                "minOp" : ">=",
+                "min" : 0.0
+              }
+            }
+          } ]
+        } ],
+        "termBindings" : {
+          "LOINC" : {
+            "value" : "[LOINC::57800-5]",
+            "terminologyId" : "LOINC"
+          }
+        }
+      }, {
+        "id" : "spco",
+        "name" : "SpCO",
+        "localizedName" : "SpCO",
+        "rmType" : "DV_PROPORTION",
+        "nodeId" : "at0045",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "ru" : "*SpCO(en)",
+          "sv" : "SpCO",
+          "de" : "SpCO",
+          "en" : "SpCO"
+        },
+        "localizedDescriptions" : {
+          "ru" : "*The saturation of carboxyhaemoglobin in the perpiheral blood, measured via pulse CO-oximetry.(en)",
+          "sv" : "Mättnaden av karboxihemoglobin i perifert blod, mätt genom puls CO-oximetri.",
+          "de" : "Die Sättigung des Carboxyhämoglobins im peripheren Blut, mittels Puls-CO-Oximetrie gemessen.",
+          "en" : "The saturation of carboxyhaemoglobin in the peripheral blood, measured via pulse CO-oximetry."
+        },
+        "aqlPath" : "/data[at0001]/events[at0002]/data[at0003]/items[at0045]/value",
+        "proportionTypes" : [ "percent" ],
+        "inputs" : [ {
+          "suffix" : "numerator",
+          "type" : "DECIMAL",
+          "validation" : {
+            "range" : {
+              "minOp" : ">=",
+              "min" : 0.0,
+              "maxOp" : "<=",
+              "max" : 100.0
+            }
+          }
+        }, {
+          "suffix" : "denominator",
+          "type" : "DECIMAL",
+          "validation" : {
+            "range" : {
+              "minOp" : ">=",
+              "min" : 100.0,
+              "maxOp" : "<=",
+              "max" : 100.0
+            }
+          }
+        } ],
+        "termBindings" : {
+          "LOINC" : {
+            "value" : "[LOINC::86904-0]",
+            "terminologyId" : "LOINC"
+          }
+        }
+      }, {
+        "id" : "spmet",
+        "name" : "SpMet",
+        "localizedName" : "SpMet",
+        "rmType" : "DV_PROPORTION",
+        "nodeId" : "at0046",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "ru" : "*SpMet(en)",
+          "sv" : "SpMet",
+          "de" : "SpMet",
+          "en" : "SpMet"
+        },
+        "localizedDescriptions" : {
+          "ru" : "*The saturation of metaemoglobin in the peripheral blood, measured via pulse CO-oximetry.(en)",
+          "sv" : "Mättnaden av metahemoglobin i perifert blod uppmätt genom puls-CO-oximetri.",
+          "de" : "Die Sättigung des Methämoglobins im peripheren Blut, mittels Puls-CO-Oximetrie gemessen.",
+          "en" : "The saturation of methaemoglobin in the peripheral blood, measured via pulse CO-oximetry."
+        },
+        "aqlPath" : "/data[at0001]/events[at0002]/data[at0003]/items[at0046]/value",
+        "proportionTypes" : [ "percent" ],
+        "inputs" : [ {
+          "suffix" : "numerator",
+          "type" : "DECIMAL",
+          "validation" : {
+            "range" : {
+              "minOp" : ">=",
+              "min" : 0.0,
+              "maxOp" : "<=",
+              "max" : 100.0
+            }
+          }
+        }, {
+          "suffix" : "denominator",
+          "type" : "DECIMAL",
+          "validation" : {
+            "range" : {
+              "minOp" : ">=",
+              "min" : 100.0,
+              "maxOp" : "<=",
+              "max" : 100.0
+            }
+          }
+        } ],
+        "termBindings" : {
+          "LOINC" : {
+            "value" : "[LOINC::2614-6]",
+            "terminologyId" : "LOINC"
+          }
+        }
+      }, {
+        "id" : "interpretation",
+        "name" : "Interpretation",
+        "localizedName" : "Interpretation",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0058",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "ru" : "*Interpretation(en)",
+          "sv" : "Tolkning",
+          "de" : "Interpretation",
+          "en" : "Interpretation"
+        },
+        "localizedDescriptions" : {
+          "ru" : "*Single word, phrase or brief description which represents the clinical meaning and significance of the measurements.(en)",
+          "sv" : "Ord, fras eller kort text som beskriver den kliniska innebörden och signifikansen av mätningarna.",
+          "de" : "Ein einzelnes Wort, eine Phrase oder eine kurze Beschreibung, welches die klinische Bedeutung und Signifikanz der Messung darstellt.",
+          "en" : "Single word, phrase or brief description which represents the clinical meaning and significance of the measurements."
+        },
+        "annotations" : {
+          "comment" : "Coding with a terminology is preferred, if possible. For example, normal oxygen saturation or hypoxaemia."
+        },
+        "aqlPath" : "/data[at0001]/events[at0002]/data[at0003]/items[at0058]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "comment",
+        "name" : "Comment",
+        "localizedName" : "Comment",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0036",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "ru" : "*Comment(en)",
+          "sv" : "Kommentar",
+          "de" : "Kommentar",
+          "en" : "Comment"
+        },
+        "localizedDescriptions" : {
+          "ru" : "*A text comment about the pulse oximetry result.(en)",
+          "sv" : "Kommentar angående pulsoximetriresultatet",
+          "de" : "Ein Kommentar über das Ergebnis der Pulsoximetrie.",
+          "en" : "A text comment about the pulse oximetry result."
+        },
+        "aqlPath" : "/data[at0001]/events[at0002]/data[at0003]/items[at0036]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "confounding_factors",
+        "name" : "Confounding factors",
+        "localizedName" : "Confounding factors",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0016",
+        "min" : 0,
+        "max" : -1,
+        "dependsOn" : [ "spo", "spoc", "interpretation", "spmet", "comment", "spco" ],
+        "localizedNames" : {
+          "ru" : "*Confounding factors(en)",
+          "sv" : "Möjliga felkällor",
+          "de" : "Einflussfaktoren",
+          "en" : "Confounding factors"
+        },
+        "localizedDescriptions" : {
+          "ru" : "*Comment on and record other incidental factors that may be affect interpretation of the observation.(en)",
+          "sv" : "Beskrivning av faktorer och felkällor som kan påverka bedömningen av mätningen.",
+          "de" : "Kommentar und Aufzeichung anderer Faktoren die ggf. die Interpretation der Beobachtung beeinflussen können\r\n\r\n",
+          "en" : "Comment on and record other incidental factors that may be affect interpretation of the observation."
+        },
+        "annotations" : {
+          "comment" : "For example, motion, pain, poor perfusion, infant feeding, peripheral hypothermia, sedation."
+        },
+        "aqlPath" : "/data[at0001]/events[at0002]/state[at0014]/items[at0016]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "time",
+        "name" : "Time",
+        "rmType" : "DV_DATE_TIME",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/data[at0001]/events[at0002]/time",
+        "inputs" : [ {
+          "type" : "DATETIME"
+        } ],
+        "inContext" : true
+      } ]
+    }, {
+      "id" : "sensor_site",
+      "name" : "Sensor site",
+      "localizedName" : "Sensor site",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0009",
+      "min" : 0,
+      "max" : 1,
+      "dependsOn" : [ "any_event" ],
+      "localizedNames" : {
+        "ru" : "*Sensor site(en)",
+        "sv" : "Mätplats",
+        "de" : "Sensor Stelle",
+        "en" : "Sensor site"
+      },
+      "localizedDescriptions" : {
+        "ru" : "*The site of the measurement sensor.(en)",
+        "sv" : "Plats på kroppen där sensorn satt under mätningen",
+        "de" : "Die Stelle des Messsensors.",
+        "en" : "The site of the measurement sensor."
+      },
+      "annotations" : {
+        "comment" : "For example: Right index finger, left earlobe. Coding with a terminology is preferred, if possible."
+      },
+      "aqlPath" : "/protocol[at0007]/items[at0009]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ],
+      "termBindings" : {
+        "LOINC" : {
+          "value" : "[LOINC::20081-6]",
+          "terminologyId" : "LOINC"
+        }
+      }
+    }, {
+      "id" : "pre_post-ductal",
+      "name" : "Pre/post-ductal",
+      "localizedName" : "Pre/post-ductal",
+      "rmType" : "DV_CODED_TEXT",
+      "nodeId" : "at0061",
+      "min" : 0,
+      "max" : 1,
+      "dependsOn" : [ "any_event" ],
+      "localizedNames" : {
+        "ru" : "*Pre/post-ductal(en)",
+        "sv" : "Pre/post-duktal",
+        "de" : "prä/postduktal",
+        "en" : "Pre/post-ductal"
+      },
+      "localizedDescriptions" : {
+        "ru" : "*Sensor site relative to the ductus arteriosus in neonates, to determine whether the blood supply to limb of the sensor site is pre- or post-ductal in cases of patent ductus arteriosa.(en)",
+        "sv" : "Mätsensorns placering i relation till ductus arteriosus hos nyfödda \r\nbarn, för att avgöra om blodtillförseln till kroppsdelen sensorn sitter på är pre- eller post-duktal för patienter med öppetstående ductus arteriosus.",
+        "de" : "Stelle des Sensors bezogen zum Ductus arteriosus bei Neugeborenen, um zu bestimmen, ob die Blutversorgung der Extremität der Sensorstelle prä- oder postduktal ist, wenn es sich um einen patentierten Ductus arteriosus handelt.\r\n",
+        "en" : "Sensor site relative to the ductus arteriosus in neonates, to determine whether the blood supply to limb of the sensor site is pre- or post-ductal in cases of patent ductus arteriosus."
+      },
+      "aqlPath" : "/protocol[at0007]/items[at0061]/value",
+      "inputs" : [ {
+        "suffix" : "code",
+        "type" : "CODED_TEXT",
+        "list" : [ {
+          "value" : "at0062",
+          "label" : "Pre-ductal",
+          "localizedLabels" : {
+            "ru" : "*Pre-ductal(en)",
+            "sv" : "Preduktal",
+            "de" : "Präduktal",
+            "en" : "Pre-ductal"
+          },
+          "localizedDescriptions" : {
+            "ru" : "*The sensor site is pre-ductal.(en)",
+            "sv" : "Sensorn är placerad preduktalt.",
+            "de" : "Die Senorstelle ist präduktal.",
+            "en" : "The sensor site is pre-ductal."
+          }
+        }, {
+          "value" : "at0063",
+          "label" : "Post-ductal",
+          "localizedLabels" : {
+            "ru" : "*Post-ductal(en)",
+            "sv" : "Postduktal",
+            "de" : "Postductal",
+            "en" : "Post-ductal"
+          },
+          "localizedDescriptions" : {
+            "ru" : "*The sensor site is post-ductal.(en)",
+            "sv" : "Sensorn är placerad postduktalt.",
+            "de" : "Die Senorstelle ist postductal.",
+            "en" : "The sensor site is post-ductal."
+          }
+        }, {
+          "value" : "at0064",
+          "label" : "Indeterminate",
+          "localizedLabels" : {
+            "ru" : "*Indeterminate(en)",
+            "sv" : "Obestämd",
+            "de" : "Unbestimmt",
+            "en" : "Indeterminate"
+          },
+          "localizedDescriptions" : {
+            "ru" : "*Unable to assess whether the sensor site is pre- or post-ductal.(en)",
+            "sv" : "Det går inte att bedöma om sensorplatsen är pre- eller post-duktal",
+            "de" : "Kann nicht beurteilen, ob die Sensorstelle prä- oder postductal ist.",
+            "en" : "Unable to assess whether the sensor site is pre- or post-ductal."
+          }
+        } ]
+      } ]
+    }, {
+      "id" : "language",
+      "name" : "Language",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/language",
+      "inContext" : true
+    }, {
+      "id" : "encoding",
+      "name" : "Encoding",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/encoding",
+      "inContext" : true
+    }, {
+      "id" : "subject",
+      "name" : "Subject",
+      "rmType" : "PARTY_PROXY",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/subject",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_scheme",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_namespace",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "name",
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}

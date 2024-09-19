@@ -1,0 +1,10 @@
+[1]	Sachdeva, S., Batra, S. and Bhalla, S., 2017. Evolving large scale healthcare applications using open standards. Health Policy and Technology, 6(4), pp.410-425.
+[2]	De Araújo, A.M.C., Times, V.C., da Silva, M.U., Alves, D.S. and de Santana, S.H.C., 2016, December. Template4EHR: building dynamically GUIs for the electronic health records using archetypes. In 2016 IEEE International Conference on Computer and Information Technology (CIT) (pp. 26-33). IEEE.
+[3]	Karamjit Kaur and Rinkle Rani, 2015, December. A Smart Polyglot Solution for Big Data in Healthcare. Published by the IEEE Computer Society, pp.48 - 55.
+[4]	André Magno Costa de Araújo, Valéria Cesário Times, Marcus Urbano da Silva, July 2016. PolyEHR: A Framework for Polyglot Persistence of the Electronic Health Record. Int'l Conf. Internet Computing and Internet of Things, 
+[5]	Huanmei Wu, Ashish ambavane, Sunanda Mukherjee, and Songan Mao, 2017. A Coherent Healthcare System with RDBMS, NoSQL and GIS Database. In Proceedings of the 32nd International Conference on Computers and Their Applications, CATA 2017 (pp. 313-318).
+[6]	Pwint Phyu Khine and Zhaoshun Wang, 2019. A Review of Polyglot Persistence in the Big Data World. Information 2019. 
+[7]	Jiaheng Lu and Irena Holubová. 2019. Multi-model Databases: A New Journey to Handle the Variety of Data. ACM Comput. Surv. 52, 3, Article 55 (June 2019), 38 pages.
+[8]	Fernando Pereira, Eduardo Guerra, and Reinaldo R. Rosa, October 2022. Patterns for Polyglot Persistence Layer. PLoP '22: Proceedings of the 29th Conference on Pattern Languages of Program, Article No.: 7 pp.1-8.
+[9]	Omar Lajam, Salahadin Mohammed, 2022. Revisiting Polyglot Persistence: From Principles to Practice. (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 13, No. 5, pp.872-882.
+[10]	Sicen Liu, Xiaolong Wang, Yongshuai Hou, Ge Li, Hui Wang, Hui Xu, Yang Xiang, and Buzhou Tang, January 2023. Multimodal Data Matters: Language Model Pre-Training Over Structured and Unstructured Electronic Health Records. IEEE journal of biomedical and health informatics, vol. 27, no. 1. pp.504 – 514

@@ -1,0 +1,134 @@
+{
+  "templateId": "Birth_Detail",
+  "semVer": "0.1.0",
+  "version": "1.0",
+  "defaultLanguage": "en",
+  "languages": ["en"],
+  "tree": {
+    "id": "birth_detail",
+    "name": "Birth Detail",
+    "localizedName": "Birth Detail",
+    "rmType": "CLUSTER",
+    "nodeId": "openEHR-EHR-CLUSTER.birth_detail.v1",
+    "min": 1,
+    "max": 1,
+    "localizedNames": {
+      "en": "Birth Detail"
+    },
+    "localizedDescriptions": {
+      "en": "A subset of persistent or summary information about the pregnancy and birth of an infant, selected for utility of use within both the maternal and infant health records."
+    },
+    "annotations": {
+      "comment": "This archetype captures details about an infant born to the mother."
+    },
+    "aqlPath": "",
+    "children": [
+      {
+        "id": "date",
+        "name": "Date",
+        "rmType": "ELEMENT",
+        "min": 0,
+        "max": 1,
+        "aqlPath": "/items[at0001]/value",
+        "children": [
+          {
+            "id": "",
+            "name": "value",
+            "rmType": "DV_DATE",
+            "min": 1,
+            "max": 1,
+            "inputs" : [ {
+              "type" : "DATETIME"
+            } ],
+            "inContext" : true
+          }
+        ]
+      },
+      {
+        "id": "birth_order",
+        "name": "Birth Order",
+        "rmType": "ELEMENT",
+        "min": 0,
+        "max": 1,
+        "aqlPath": "/items[at0003]/value",
+        "children": [
+          {
+            "id": "",
+            "name": "value",
+            "rmType": "DV_COUNT",
+            "min": 1,
+            "max": 1
+          }
+        ]
+      },
+      {
+        "id": "gestation",
+        "name": "Gestation",
+        "rmType": "ELEMENT",
+        "min": 0,
+        "max": 1,
+        "aqlPath": "/items[at0004]/value",
+        "children": [
+          {
+            "id": "",
+            "name": "value",
+            "rmType": "DV_DURATION",
+            "min": 1,
+            "max": 1
+          }
+        ]
+      },
+      {
+        "id": "method_of_delivery",
+        "name": "Method of Delivery",
+        "rmType": "ELEMENT",
+        "min": 0,
+        "max": 1,
+        "aqlPath": "/items[at0005]/value",
+        "children": [
+          {
+            "id": "",
+            "name": "value",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1
+          }
+        ]
+      },
+      {
+        "id": "gestational_age",
+        "name": "Gestational Age",
+        "rmType": "ELEMENT",
+        "min": 0,
+        "max": 1,
+        "aqlPath": "/items[at0018]/value",
+        "children": [
+          {
+            "id": "",
+            "name": "value",
+            "rmType": "DV_DURATION",
+            "min": 1,
+            "max": 1
+          }
+        ]
+      },
+      {
+        "id": "delivery_timing",
+        "name": "Delivery Timing",
+        "rmType": "ELEMENT",
+        "min": 0,
+        "max": 1,
+        "aqlPath": "/items[at0005]/value",
+        "children": [
+          {
+            "id": "",
+            "name": "value",
+            "rmType": "DV_CODED_TEXT",
+            "min": 1,
+            "max": 1
+          }
+        ]
+      }
+    ]
+  }
+}

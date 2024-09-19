@@ -1,0 +1,18 @@
+{
+  "Action": ["Health Education", "Medication"],
+  "Cluster": ["Address","Birth_Details"],
+  "Composition": ["Health Summary", "Medication List"],
+  "Evaluation": ["Alcohol Consumption Summary", "Health Risk", "Menstruation Summary"],
+  "Instruction": [
+    "Medication Order",
+    "Supplemental Oxygen Order",
+    "Transfusion Order"
+  ],
+  "Observation": [
+    "Blood Pressure",
+    "ECG",
+    "Pulse Oximetry",
+    "Respiration",
+    "Spirometry"
+  ]
+}

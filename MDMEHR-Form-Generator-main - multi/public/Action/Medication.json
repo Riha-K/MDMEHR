@@ -1,0 +1,1307 @@
+{
+  "templateId" : "Medication",
+  "semVer" : "0.1.0",
+  "version" : "2.3",
+  "defaultLanguage" : "en",
+  "languages" : [ "ar-sy", "sl", "es-ar", "ru", "nb", "pt-br", "de", "sv", "zh-cn", "en" ],
+  "tree" : {
+    "id" : "medication",
+    "name" : "Medication",
+    "localizedName" : "Medication",
+    "rmType" : "ACTION",
+    "nodeId" : "openEHR-EHR-ACTION.medication.v1",
+    "min" : 1,
+    "max" : 1,
+    "localizedNames" : {
+      "ar-sy" : "Medication",
+      "sl" : "Medication",
+      "es-ar" : "Medication",
+      "ru" : "Medication",
+      "nb" : "Medication",
+      "pt-br" : "Medication",
+      "de" : "Medication",
+      "sv" : "Medication",
+      "zh-cn" : "Medication",
+      "en" : "Medication"
+    },
+    "localizedDescriptions" : {
+      "ar-sy" : "*Any activity related to the planning, scheduling, prescription management, dispensing, administration, cessation and other use of a medication, vaccine, nutritional product or other therapeutic item.(en)",
+      "sl" : "*Any activity related to the planning, scheduling, prescription management, dispensing, administration, cessation and other use of a medication, vaccine, nutritional product or other therapeutic item.(en)",
+      "es-ar" : "*Any activity related to the planning, scheduling, prescription management, dispensing, administration, cessation and other use of a medication, vaccine, nutritional product or other therapeutic item.(en)",
+      "ru" : "*Any activity related to the planning, scheduling, prescription management, dispensing, administration, cessation and other use of a medication, vaccine, nutritional product or other therapeutic item.(en)",
+      "nb" : "Detaljer om enhver legemiddelrelatert oppgave som utføres fra et legemiddel er ordinert eller rekvirert til det er utdelt eller eventuelt kassert, for eksempel bestilling, istandgjøring, administrering, ekspedering eller seponering.",
+      "pt-br" : "Qualquer atividade relacionada ao planejamento, agendamento, gestão da prescrição, dispensação, administração, término e outro uso de um medicamento, vacina, produto nutricional ou outro item terapêutico.",
+      "de" : "Jede Aktivität in Bezug auf die Planung, Vorbereitung, Rezeptverwaltung, Ausgabe, Verabreichung, Einnahme, Absetzung und anderer Verwendung von Arzneimitteln, Impfstoffen, Nahrungsergänzungsmitteln und anderen therapeutischen Mitteln.",
+      "sv" : "Alla aktiviteter relaterade till planering, schemaläggning, recepthantering, utdelning, administrering, upphörande, vaccin, näringsprodukt och annan användning av ett läkemedel eller annan behandlings produkt.",
+      "zh-cn" : "任何与药物、疫苗、营养产品/制品或其他治疗类制剂（therapeutic item）的计划[编制]、排程/安排、处方管理、配发、施用/给药、停止/停用和其他使用情况相关的活动。又称为用药管理。",
+      "en" : "Any activity related to the planning, scheduling, prescription management, dispensing, administration, cessation and other use of a medication, vaccine, nutritional product or other therapeutic item."
+    },
+    "annotations" : {
+      "comment" : "This is not limited to activities performed based on medication orders from clinicians, but could also include for example taking over the counter medication."
+    },
+    "aqlPath" : "",
+    "children" : [ {
+      "id" : "ism_transition",
+      "name" : "Ism_transition",
+      "rmType" : "ISM_TRANSITION",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/ism_transition",
+      "children" : [ {
+        "id" : "current_state",
+        "name" : "Current_state",
+        "rmType" : "DV_CODED_TEXT",
+        "min" : 1,
+        "max" : 1,
+        "aqlPath" : "/ism_transition/current_state",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "530",
+            "label" : "suspended"
+          }, {
+            "value" : "245",
+            "label" : "active"
+          }, {
+            "value" : "531",
+            "label" : "aborted"
+          }, {
+            "value" : "532",
+            "label" : "completed"
+          }, {
+            "value" : "526",
+            "label" : "planned"
+          }, {
+            "value" : "527",
+            "label" : "postponed"
+          }, {
+            "value" : "528",
+            "label" : "cancelled"
+          }, {
+            "value" : "529",
+            "label" : "scheduled"
+          } ]
+        } ],
+        "inContext" : true
+      }, {
+        "id" : "transition",
+        "name" : "Transition",
+        "rmType" : "DV_CODED_TEXT",
+        "min" : 0,
+        "max" : 1,
+        "aqlPath" : "/ism_transition/transition",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "TEXT"
+        }, {
+          "suffix" : "value",
+          "type" : "TEXT"
+        } ],
+        "inContext" : true
+      }, {
+        "id" : "careflow_step",
+        "name" : "Careflow_step",
+        "rmType" : "DV_CODED_TEXT",
+        "min" : 0,
+        "max" : 1,
+        "aqlPath" : "/ism_transition/careflow_step",
+        "inputs" : [ {
+          "suffix" : "code",
+          "type" : "CODED_TEXT",
+          "list" : [ {
+            "value" : "at0109",
+            "label" : "Medication recommended",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication recommended(en)",
+              "sl" : "*Medication recommended(en)",
+              "es-ar" : "*Medication recommended(en)",
+              "ru" : "*Medication recommended(en)",
+              "nb" : "Anbefalt medisinering",
+              "pt-br" : "Medicamento recomendado",
+              "de" : "Arzneimittel empfohlen",
+              "sv" : "Läkemedel rekommenderad",
+              "zh-cn" : "已推荐的药物",
+              "en" : "Medication recommended"
+            },
+            "currentStates" : [ "526" ]
+          }, {
+            "value" : "at0145",
+            "label" : "Prescription awaiting authorisation",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription awaiting authorisation(en)",
+              "sl" : "*Prescription awaiting authorisation(en)",
+              "es-ar" : "*Prescription awaiting authorisation(en)",
+              "ru" : "*Prescription awaiting authorisation(en)",
+              "nb" : "Resept avventer autorisering",
+              "pt-br" : "Prescrição no aguardo de autorização",
+              "de" : "Rezept wartet auf Genehmigung",
+              "sv" : "Förskrivning väntar på auktorisering",
+              "zh-cn" : "等待授权的处方",
+              "en" : "Prescription awaiting authorisation"
+            },
+            "currentStates" : [ "526", "245" ]
+          }, {
+            "value" : "at0013",
+            "label" : "Medication course postponed",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication course postponed(en)",
+              "sl" : "*Medication course postponed(en)",
+              "es-ar" : "*Medication course postponed(en)",
+              "ru" : "*Medication course postponed(en)",
+              "nb" : "Planlagt medisinering satt på vent",
+              "pt-br" : "Curso da medicação adiado",
+              "de" : "Arzneimittelbehandlung wurde verschoben",
+              "sv" : "läkemedelsbehandling skjutits upp",
+              "zh-cn" : "已推迟的药物治疗过程",
+              "en" : "Medication course postponed"
+            },
+            "currentStates" : [ "527" ]
+          }, {
+            "value" : "at0012",
+            "label" : "Medication course cancelled",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication course cancelled(en)",
+              "sl" : "*Medication course cancelled(en)",
+              "es-ar" : "*Medication course cancelled(en)",
+              "ru" : "*Medication course cancelled(en)",
+              "nb" : "Planlagt medisinering avbrutt",
+              "pt-br" : "Curso da medicação cancelado",
+              "de" : "Arzneimittelbehandlung wurde abgesagt",
+              "sv" : "Avbruten läkemedelsbehandling",
+              "zh-cn" : "已取消的药物治疗过程",
+              "en" : "Medication course cancelled"
+            },
+            "currentStates" : [ "528" ]
+          }, {
+            "value" : "at0150",
+            "label" : "Prescription cancelled",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription cancelled(en)",
+              "sl" : "*Prescription cancelled(en)",
+              "es-ar" : "*Prescription cancelled(en)",
+              "ru" : "*Prescription cancelled(en)",
+              "nb" : "Resept avbrutt",
+              "pt-br" : "Prescrição cancelada",
+              "de" : "Rezept wurde widerrufen",
+              "sv" : "Recept avbrutet",
+              "zh-cn" : "已取消的处方",
+              "en" : "Prescription cancelled"
+            },
+            "currentStates" : [ "528" ]
+          }, {
+            "value" : "at0016",
+            "label" : "Medication start date/condition set",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication start date/condition set(en)",
+              "sl" : "*Medication start date/condition set(en)",
+              "es-ar" : "*Medication start date/condition set(en)",
+              "ru" : "*Medication start date/condition set(en)",
+              "nb" : "Oppstartsdato satt",
+              "pt-br" : "Data do início/ Condição de início",
+              "de" : "Arzneimittel Startdatum/Voraussetzung",
+              "sv" : "Läkemedlets startdatum eller tillstånd inställt",
+              "zh-cn" : "已设定的用药开始日期/条件",
+              "en" : "Medication start date/condition set"
+            },
+            "currentStates" : [ "529" ]
+          }, {
+            "value" : "at0153",
+            "label" : "Medication authorised",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication authorised(en)",
+              "sl" : "*Medication authorised(en)",
+              "es-ar" : "*Medication authorised(en)",
+              "ru" : "*Medication authorised(en)",
+              "nb" : "Legemiddel autorisert",
+              "pt-br" : "Medicação autorizada",
+              "de" : "Arzneimittel wurde genehmigt",
+              "sv" : "Läkemedlet är godkänt",
+              "zh-cn" : "已授权的药物",
+              "en" : "Medication authorised"
+            },
+            "currentStates" : [ "529" ]
+          }, {
+            "value" : "at0002",
+            "label" : "Prescription issued",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription issued(en)",
+              "sl" : "*Prescription issued(en)",
+              "es-ar" : "*Prescription issued(en)",
+              "ru" : "*Prescription issued(en)",
+              "nb" : "Resept utstedt",
+              "pt-br" : "Prescrição emitida",
+              "de" : "Rezept ausgestellt",
+              "sv" : "Recept utfärdat",
+              "zh-cn" : "已签发的处方",
+              "en" : "Prescription issued"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0003",
+            "label" : "Prescription dispensed",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription dispensed(en)",
+              "sl" : "*Prescription dispensed(en)",
+              "es-ar" : "*Prescription dispensed(en)",
+              "ru" : "*Prescription dispensed(en)",
+              "nb" : "Resept ekspedert",
+              "pt-br" : "Prescrição aviada",
+              "de" : "Rezept wurde ausgegeben/eingelöst",
+              "sv" : "Recept utdelat",
+              "zh-cn" : "已配发的处方",
+              "en" : "Prescription dispensed"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0106",
+            "label" : "Prescription re-authorised",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription re-authorised(en)",
+              "sl" : "*Prescription re-authorised(en)",
+              "es-ar" : "*Prescription re-authorised(en)",
+              "ru" : "*Prescription re-authorised(en)",
+              "nb" : "Resept reautorisert",
+              "pt-br" : "Prescrição reautorizada",
+              "de" : "Rezept ist re-autorisiert",
+              "sv" : "Receptet godkännts på nytt",
+              "zh-cn" : "已重新授权的处方",
+              "en" : "Prescription re-authorised"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0010",
+            "label" : "Prescription re-issued",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription re-issued(en)",
+              "sl" : "*Prescription re-issued(en)",
+              "es-ar" : "*Prescription re-issued(en)",
+              "ru" : "*Prescription re-issued(en)",
+              "nb" : "Resept fornyet",
+              "pt-br" : "Nova liberação de prescrição",
+              "de" : "Rezept neu ausgestellt",
+              "sv" : "Recept utfärdat på nytt",
+              "zh-cn" : "已重新签发的处方",
+              "en" : "Prescription re-issued"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0148",
+            "label" : "Medication prepared",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication prepared(en)",
+              "sl" : "*Medication prepared(en)",
+              "es-ar" : "*Medication prepared(en)",
+              "ru" : "*Medication prepared(en)",
+              "nb" : "Legemiddel istandgjort",
+              "pt-br" : "Medicamento preparado",
+              "de" : "Arzneimittel wurde vorbereitet",
+              "sv" : "Läkemedel förberedd",
+              "zh-cn" : "已准备好的药物",
+              "en" : "Medication prepared"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0004",
+            "label" : "Medication course commenced",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication course commenced(en)",
+              "sl" : "*Medication course commenced(en)",
+              "es-ar" : "*Medication course commenced(en)",
+              "ru" : "*Medication course commenced(en)",
+              "nb" : "Medisinering startet",
+              "pt-br" : "Curso da medicação iniciado",
+              "de" : "Arzneimittelbehandlung hat begonnen",
+              "sv" : "Läkemedels kuren påbörjades",
+              "zh-cn" : "已开始的药物治疗过程",
+              "en" : "Medication course commenced"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0041",
+            "label" : "Minor change to order",
+            "localizedLabels" : {
+              "ar-sy" : "*Minor change to order(en)",
+              "sl" : "*Minor change to order(en)",
+              "es-ar" : "*Minor change to order(en)",
+              "ru" : "*Minor change to order(en)",
+              "nb" : "Mindre endring av ordinering",
+              "pt-br" : "Prescrição com mínimas mudanças",
+              "de" : "Geringfügige Änderung der Verordnung",
+              "sv" : "Mindre ändring i läkemedelsordination",
+              "zh-cn" : "医嘱的微小变更",
+              "en" : "Minor change to order"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0005",
+            "label" : "Medication reassessed",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication course reviewed(en)",
+              "sl" : "*Medication course reviewed(en)",
+              "es-ar" : "*Medication course reviewed(en)",
+              "ru" : "*Medication course reviewed(en)",
+              "nb" : "Legemiddel revurdert",
+              "pt-br" : "Curso da medicação revisado",
+              "de" : "Arzneimittel wurde neu bewertet",
+              "sv" : "Läkemedlet omprövades",
+              "zh-cn" : "已重新评估的药物",
+              "en" : "Medication reassessed"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0006",
+            "label" : "Dose administered",
+            "localizedLabels" : {
+              "ar-sy" : "*Dose administered(en)",
+              "sl" : "*Dose administered(en)",
+              "es-ar" : "*Dose administered(en)",
+              "ru" : "*Dose administered(en)",
+              "nb" : "Legemiddel administrert",
+              "pt-br" : "Dose administrada",
+              "de" : "Dosis wurde verabreicht",
+              "sv" : "Dos administrerad",
+              "zh-cn" : "已施用/给药的剂量",
+              "en" : "Dose administered"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0018",
+            "label" : "Dose administration omitted",
+            "localizedLabels" : {
+              "ar-sy" : "*Dose administration omitted(en)",
+              "sl" : "*Dose administration omitted(en)",
+              "es-ar" : "*Dose administration omitted(en)",
+              "ru" : "*Dose administration omitted(en)",
+              "nb" : "Enkeltdose ikke administrert",
+              "pt-br" : "Omissão da administração da dose",
+              "de" : "Verabreichung einer Dosis wurde ausgelassen",
+              "sv" : "Administration av dosen är utelämnad",
+              "zh-cn" : "已省略的剂量管理",
+              "en" : "Dose administration omitted"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0044",
+            "label" : "Dose administration deferred",
+            "localizedLabels" : {
+              "ar-sy" : "*Dose administration deferred(en)",
+              "sl" : "*Dose administration deferred(en)",
+              "es-ar" : "*Dose administration deferred(en)",
+              "ru" : "*Dose administration deferred(en)",
+              "nb" : "Administrering utsatt",
+              "pt-br" : "Administração da dose adiada",
+              "de" : "Verabreichung einer Dosis wurde verschoben",
+              "sv" : "Dosadministrationen uppskjuten",
+              "zh-cn" : "已延期的施用/给药",
+              "en" : "Dose administration deferred"
+            },
+            "currentStates" : [ "245" ]
+          }, {
+            "value" : "at0008",
+            "label" : "Prescription supply delayed",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription supply delayed(en)",
+              "sl" : "*Prescription supply delayed(en)",
+              "es-ar" : "*Prescription supply delayed(en)",
+              "ru" : "*Prescription supply delayed(en)",
+              "nb" : "Forsinket levering",
+              "pt-br" : "Suprimento da prescrição atrasado",
+              "de" : "Verzögerung der Rezeptabgabe",
+              "sv" : "Receptleverans försenad",
+              "zh-cn" : "已延迟的处方供应",
+              "en" : "Prescription supply delayed"
+            },
+            "currentStates" : [ "530" ]
+          }, {
+            "value" : "at0009",
+            "label" : "Administrations suspended",
+            "localizedLabels" : {
+              "ar-sy" : "*Administrations suspended(en)",
+              "sl" : "*Administrations suspended(en)",
+              "es-ar" : "*Administrations suspended(en)",
+              "ru" : "*Administrations suspended(en)",
+              "nb" : "Administrering satt på vent",
+              "pt-br" : "Administração suspensa",
+              "de" : "Verabreichung wurde ausgesetzt",
+              "sv" : "Administrationer avstängda",
+              "zh-cn" : "已暂停的施用/给药",
+              "en" : "Administrations suspended"
+            },
+            "currentStates" : [ "530" ]
+          }, {
+            "value" : "at0011",
+            "label" : "Prescription re-authorisation pending",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription re-issue suspended(en)",
+              "sl" : "*Prescription re-issue suspended(en)",
+              "es-ar" : "*Prescription re-issue suspended(en)",
+              "ru" : "*Prescription re-issue suspended(en)",
+              "nb" : "Reautorisering av resept satt på vent",
+              "pt-br" : "Reemissão da prescrição suspensa",
+              "de" : "Re-Autorisierug des Rezepts ausstehend",
+              "sv" : "Receptansökan om godkännande väntar",
+              "zh-cn" : "待处理的处方重新授权",
+              "en" : "Prescription re-authorisation pending"
+            },
+            "currentStates" : [ "530" ]
+          }, {
+            "value" : "at0015",
+            "label" : "Medication course stopped",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication course stopped(en)",
+              "sl" : "*Medication course stopped(en)",
+              "es-ar" : "*Medication course stopped(en)",
+              "ru" : "*Medication course stopped(en)",
+              "nb" : "Legemiddel seponert",
+              "pt-br" : "Curso da medicação interrompido",
+              "de" : "Arzneimittelbehandlung gestoppt",
+              "sv" : "Läkemedels kuren slutade",
+              "zh-cn" : "已停止的药物治疗过程",
+              "en" : "Medication course stopped"
+            },
+            "currentStates" : [ "531" ]
+          }, {
+            "value" : "at0039",
+            "label" : "Major change to order",
+            "localizedLabels" : {
+              "ar-sy" : "*Major change to order.(en)",
+              "sl" : "*Major change to order.(en)",
+              "es-ar" : "*Major change to order.(en)",
+              "ru" : "*Major change to order.(en)",
+              "nb" : "Omfattende endring av ordinering",
+              "pt-br" : "Alteração significativa na prescrição",
+              "de" : "Größere Änderung der Verordnung",
+              "sv" : "Stor förändring i beställning",
+              "zh-cn" : "医嘱的重大变更",
+              "en" : "Major change to order"
+            },
+            "currentStates" : [ "531" ]
+          }, {
+            "value" : "at0151",
+            "label" : "Prescription invalid or expired",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription invalid or expired(en)",
+              "sl" : "*Prescription invalid or expired(en)",
+              "es-ar" : "*Prescription invalid or expired(en)",
+              "ru" : "*Prescription invalid or expired(en)",
+              "nb" : "Resept ugyldig eller utgått",
+              "pt-br" : "Prescrição inválida ou cancelada",
+              "de" : "Rezept ist ungültig oder abgelaufen",
+              "sv" : "Receptet är ogiltigt eller upphört att gälla",
+              "zh-cn" : "无效或过期的处方",
+              "en" : "Prescription invalid or expired"
+            },
+            "currentStates" : [ "531" ]
+          }, {
+            "value" : "at0007",
+            "label" : "Medication course completed",
+            "localizedLabels" : {
+              "ar-sy" : "*Medication course completed(en)",
+              "sl" : "*Medication course completed(en)",
+              "es-ar" : "*Medication course completed(en)",
+              "ru" : "*Medication course completed(en)",
+              "nb" : "Medisinering fullført",
+              "pt-br" : "Final do tratamento medicamentoso",
+              "de" : "Arzneimittelbehandlung ist abgeschlossen",
+              "sv" : "Läkemedelskuren slutförd",
+              "zh-cn" : "已完成的药物治疗过程",
+              "en" : "Medication course completed"
+            },
+            "currentStates" : [ "532" ]
+          }, {
+            "value" : "at0152",
+            "label" : "Prescription fulfilled",
+            "localizedLabels" : {
+              "ar-sy" : "*Prescription fulfilled(en)",
+              "sl" : "*Prescription fulfilled(en)",
+              "es-ar" : "*Prescription fulfilled(en)",
+              "ru" : "*Prescription fulfilled(en)",
+              "nb" : "Resept ferdig ekspedert",
+              "pt-br" : "Prescrição aviada",
+              "de" : "Rezept wurde ausgeführt",
+              "sv" : "Receptet utfört",
+              "zh-cn" : "已执行的处方",
+              "en" : "Prescription fulfilled"
+            },
+            "currentStates" : [ "532" ]
+          } ]
+        } ],
+        "inContext" : true
+      } ],
+      "inContext" : true
+    }, {
+      "id" : "medication_item",
+      "name" : "Medication item",
+      "localizedName" : "Medication item",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0020",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Medication item(en)",
+        "sl" : "*Medication item(en)",
+        "es-ar" : "*Medication item(en)",
+        "ru" : "*Medication item(en)",
+        "nb" : "Legemiddel",
+        "pt-br" : "Item de medicação",
+        "de" : "Arzneimittel",
+        "sv" : "Läkemedelsföremål",
+        "zh-cn" : "用药项",
+        "en" : "Medication item"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*Name of the medication, vaccine or other therapeutic/prescribable item which was the focus of the activity.(en)",
+        "sl" : "*Name of the medication, vaccine or other therapeutic/prescribable item which was the focus of the activity.(en)",
+        "es-ar" : "*Name of the medication, vaccine or other therapeutic/prescribable item which was the focus of the activity.(en)",
+        "ru" : "*Name of the medication, vaccine or other therapeutic/prescribable item which was the focus of the activity.(en)",
+        "nb" : "Navnet på legemiddelet, vaksinen eller det medisinske forbruksmateriellet som var fokus for aktiviteten.",
+        "pt-br" : "Nome do medicamento, vacina ou outro item terapêutico que foi o foco da atividade.",
+        "de" : "Name des Arzneimittels, eines Impfstoffs oder eines anderen therapeutischen Mittels, welches im Mittelpunkt der Aktivität steht.",
+        "sv" : "Namnet på medicinen, vaccinet eller andra behandlings/ förskrivningsbara föremål som var fokus för aktiviteten.",
+        "zh-cn" : "作为活动关注焦点的药物、疫苗或其他治疗项/处方项的名称。",
+        "en" : "Name of the medication, vaccine or other therapeutic/prescribable item which was the focus of the activity."
+      },
+      "annotations" : {
+        "comment" : "For example: 'Atenolol 100mg' or 'Tenormin tablets 100mg'. \r\nIt is strongly recommended that the 'Medication item' is coded with a terminology capable of triggering decision support, where possible. The extent of coding may vary from the simple name of the medication item through to structured details about the actual medication pack used. Free text entry should only be used if there is no appropriate terminology available."
+      },
+      "aqlPath" : "/description[at0017]/items[at0020]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "clinical_indication",
+      "name" : "Clinical indication",
+      "localizedName" : "Clinical indication",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0156",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Clinical indication (en)",
+        "sl" : "*Clinical indication (en)",
+        "es-ar" : "*Clinical indication (en)",
+        "ru" : "*Clinical indication (en)",
+        "nb" : "Klinisk indikasjon",
+        "pt-br" : "*Clinical indication (en)",
+        "de" : "Klinische Indikation",
+        "sv" : "Klinisk indikation",
+        "zh-cn" : "临床适应证",
+        "en" : "Clinical indication"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*The clinical reason for the medication activity. (en)",
+        "sl" : "*The clinical reason for the medication activity. (en)",
+        "es-ar" : "*The clinical reason for the medication activity. (en)",
+        "ru" : "*The clinical reason for the medication activity. (en)",
+        "nb" : "Den kliniske årsaken til legemiddeladministrasjonen.",
+        "pt-br" : "*The clinical reason for the medication activity. (en)",
+        "de" : "Der klinische Grund für die Aktivität mit dem Arzneimittel.",
+        "sv" : "Den kliniska orsaken till läkemedelsaktiviteten.",
+        "zh-cn" : "用药活性的临床原因。",
+        "en" : "The clinical reason for the medication activity."
+      },
+      "annotations" : {
+        "comment" : "For example: 'Angina' or 'Pain'. Coding of the indication with a terminology is preferred, where possible. This data element allows multiple occurrences. If only an ACTION is used to record a medication indication, this data element can be used without additional consideration. However, if a clinical indication is recorded for both the Medication order INSTRUCTION and this Medication management ACTION, be aware that these indications might not be consistent.\""
+      },
+      "aqlPath" : "/description[at0017]/items[at0156]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "substitution",
+      "name" : "Substitution",
+      "localizedName" : "Substitution",
+      "rmType" : "DV_CODED_TEXT",
+      "nodeId" : "at0132",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Substitution(en)",
+        "sl" : "*Substitution(en)",
+        "es-ar" : "*Substitution(en)",
+        "ru" : "*Substitution(en)",
+        "nb" : "Generisk bytte",
+        "pt-br" : "Substituição",
+        "de" : "Substitution",
+        "sv" : "Utbyte",
+        "zh-cn" : "替换",
+        "en" : "Substitution"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*Subsitution action taken by the person administering or dispensing the drug.(en)",
+        "sl" : "*Subsitution action taken by the person administering or dispensing the drug.(en)",
+        "es-ar" : "*Subsitution action taken by the person administering or dispensing the drug.(en)",
+        "ru" : "*Subsitution action taken by the person administering or dispensing the drug.(en)",
+        "nb" : "Generisk bytte utført ved administrering eller ekspedering.",
+        "pt-br" : "Ação de substituição realizada pela pessoa que administrou ou dispensou o medicamento.",
+        "de" : "Substitutionsmaßnahmen, die von der Person ergriffen werden, die das Medikament verabreicht oder ausgibt.",
+        "sv" : "Ersättningsåtgärder som vidtas av den person som administrerar eller delar ut läkemedlet.",
+        "zh-cn" : "负责施用/给药或配发药物的人员所采取的替换行动。",
+        "en" : "Subsitution action taken by the person administering or dispensing the drug."
+      },
+      "annotations" : {
+        "comment" : "In many jurisdictions, substitution of an ordered item as a generic form or with a different brand name, which has been determined as bioequivalent, is allowed at the point of dispense or supply. In other cases substitution is assumed and the clinician has to explicitly request non-substitution."
+      },
+      "aqlPath" : "/description[at0017]/items[at0132]/value",
+      "inputs" : [ {
+        "suffix" : "code",
+        "type" : "CODED_TEXT",
+        "list" : [ {
+          "value" : "at0138",
+          "label" : "Substitution performed",
+          "localizedLabels" : {
+            "ar-sy" : "*Substitution performed(en)",
+            "sl" : "*Substitution performed(en)",
+            "es-ar" : "*Substitution performed(en)",
+            "ru" : "*Substitution performed(en)",
+            "nb" : "Generisk bytte utført",
+            "pt-br" : "Substituição realizada",
+            "de" : "Substitution wurde durchgeführt",
+            "sv" : "Utbyte utfört",
+            "zh-cn" : "已执行的替换",
+            "en" : "Substitution performed"
+          },
+          "localizedDescriptions" : {
+            "ar-sy" : "*A medication was substituted which is bioequivalent to that ordered.(en)",
+            "sl" : "*A medication was substituted which is bioequivalent to that ordered.(en)",
+            "es-ar" : "*A medication was substituted which is bioequivalent to that ordered.(en)",
+            "ru" : "*A medication was substituted which is bioequivalent to that ordered.(en)",
+            "nb" : "Det ordinerte produktet ble byttet til et bioekvivalent produkt.",
+            "pt-br" : "A medicação substituída é bioequivalente àquela prescrita.",
+            "de" : "Ein Arzneimittel wurde substituiert, welches bioäquivalent zu dem Angeforderten ist.",
+            "sv" : "Ett läkemedel ersattes som är bioekvivalent med det som har beställts.",
+            "zh-cn" : "已经将医嘱所开立的药物替换成了与之生物等效的药物。",
+            "en" : "A medication was substituted which is bioequivalent to that ordered."
+          }
+        }, {
+          "value" : "at0139",
+          "label" : "Substitution not performed",
+          "localizedLabels" : {
+            "ar-sy" : "*Substitution not performed(en)",
+            "sl" : "*Substitution not performed(en)",
+            "es-ar" : "*Substitution not performed(en)",
+            "ru" : "*Substitution not performed(en)",
+            "nb" : "Generisk bytte ikke utført",
+            "pt-br" : "Substituição não realizada",
+            "de" : "Substitution wurde nicht durchgeführt",
+            "sv" : "Ersättning inte utförd",
+            "zh-cn" : "未执行的替换",
+            "en" : "Substitution not performed"
+          },
+          "localizedDescriptions" : {
+            "ar-sy" : "*Although allowed by the medication order a bioequvalent medication was not substituted.(en)",
+            "sl" : "*Although allowed by the medication order a bioequvalent medication was not substituted.(en)",
+            "es-ar" : "*Although allowed by the medication order a bioequvalent medication was not substituted.(en)",
+            "ru" : "*Although allowed by the medication order a bioequvalent medication was not substituted.(en)",
+            "nb" : "Det ordinerte produktet ble ikke byttet til et bioekvivalent produkt, til tross for at dette var tillatt i ordineringen.",
+            "pt-br" : "Embora permitido pela prescrição da medicação a substituição por um medicamento bioequivalente não foi realizada.",
+            "de" : "Obwohl es nach der Arzneimittelverordnung erlaubt gewesen wäre, wurde nicht mit einem bioäquivalenten Arzneimittel substituiert.",
+            "sv" : "Även om det tillåts av läkemedelsbeställningen ersattes inte ett bioekvivalent läkemedel.",
+            "zh-cn" : "尽管药物医嘱允许替换，但并未将医嘱所开立的药物替换成生物等效药物。",
+            "en" : "Although allowed by the medication order a bioequvalent medication was not substituted."
+          }
+        } ]
+      } ]
+    }, {
+      "id" : "substitution_reason",
+      "name" : "Substitution reason",
+      "localizedName" : "Substitution reason",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0133",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Substitution reason(en)",
+        "sl" : "*Substitution reason(en)",
+        "es-ar" : "*Substitution reason(en)",
+        "ru" : "*Substitution reason(en)",
+        "nb" : "Årsak for bytte/ikke bytte",
+        "pt-br" : "Motivo da substituição",
+        "de" : "Grund für die Substitution",
+        "sv" : "Anledningar till byte",
+        "zh-cn" : "替换原因",
+        "en" : "Substitution reason"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*The reason or justification for the substitution action taken.(en)",
+        "sl" : "*The reason or justification for the substitution action taken.(en)",
+        "es-ar" : "*The reason or justification for the substitution action taken.(en)",
+        "ru" : "*The reason or justification for the substitution action taken.(en)",
+        "nb" : "Årsak eller begrunnelse for at generisk bytte er utført eller ikke utført.",
+        "pt-br" : "O motivo ou justificativa para a ação de substituição realizada.",
+        "de" : "Die Ursache oder die Begründung für die durchgeführte Substitution.",
+        "sv" : "Orsaken eller motiveringen till utbytet är tagen.",
+        "zh-cn" : "关于所采取的替代行动的原因或理由。",
+        "en" : "The reason or justification for the substitution action taken."
+      },
+      "annotations" : {
+        "comment" : "For example: \"Generic alternative contains a substance that is not tolerated by the patient.\" May be coded with a terminology when clinically appropriate"
+      },
+      "aqlPath" : "/description[at0017]/items[at0133]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "original_scheduled_date_time",
+      "name" : "Original scheduled date/time",
+      "localizedName" : "Original scheduled date/time",
+      "rmType" : "DV_DATE_TIME",
+      "nodeId" : "at0043",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Original scheduled date/time(en)",
+        "sl" : "*Original scheduled date/time(en)",
+        "es-ar" : "*Original scheduled date/time(en)",
+        "ru" : "*Original scheduled date/time(en)",
+        "nb" : "Opprinnelig planlagt tid",
+        "pt-br" : "Data/hora original do agendamento",
+        "de" : "Ursprünglich geplantes Datum/Uhrzeit",
+        "sv" : "Ursprungligt schemalagt datum / tid",
+        "zh-cn" : "原始排程/安排的日期/时间",
+        "en" : "Original scheduled date/time"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*The datetime at which the medication action was scheduled to occur.(en)",
+        "sl" : "*The datetime at which the medication action was scheduled to occur.(en)",
+        "es-ar" : "*The datetime at which the medication action was scheduled to occur.(en)",
+        "ru" : "*The datetime at which the medication action was scheduled to occur.(en)",
+        "nb" : "Dato/tid for når legemiddelaktiviteten var planlagt å skulle skje.",
+        "pt-br" : "Data/hora na qual a foi agendada ação da medicação.",
+        "de" : "Das Datum/die Uhrzeit, an dem die Aktion mit dem Arzneimittel eingeplant war.",
+        "sv" : "Den tidpunkt då medicineringsåtgärden var planerad att inträffa.",
+        "zh-cn" : "当初所排程/安排的开展药物治疗行动的日期时间。",
+        "en" : "The datetime at which the medication action was scheduled to occur."
+      },
+      "annotations" : {
+        "comment" : "Used to compare variance from actual action time where this is not readily calculable from the original instruction."
+      },
+      "aqlPath" : "/description[at0017]/items[at0043]/value",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ]
+    }, {
+      "id" : "restart_date_time",
+      "name" : "Restart date/time",
+      "localizedName" : "Restart date/time",
+      "rmType" : "DV_DATE_TIME",
+      "nodeId" : "at0154",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Restart date/time(en)",
+        "sl" : "*Restart date/time(en)",
+        "es-ar" : "*Restart date/time(en)",
+        "ru" : "*Restart date/time(en)",
+        "nb" : "Dato/tid for ny oppstart",
+        "pt-br" : "Data/hora do reinício",
+        "de" : "Datum/Uhrzeit des Neustarts",
+        "sv" : "Datum och tid för Omstart",
+        "zh-cn" : "重新开始日期/时间",
+        "en" : "Restart date/time"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*The date/time on which the medication course is set to restart, as per the \"Medication restart date/condition set\" pathway step.(en)",
+        "sl" : "*The date/time on which the medication course is set to restart, as per the \"Medication restart date/condition set\" pathway step.(en)",
+        "es-ar" : "*The date/time on which the medication course is set to restart, as per the \"Medication restart date/condition set\" pathway step.(en)",
+        "ru" : "*The date/time on which the medication course is set to restart, as per the \"Medication restart date/condition set\" pathway step.(en)",
+        "nb" : "Datoen eller tidspunktet når medisineringen skal startes opp igjen, i sammenheng med prosesstrinnet \"Vilkår satt for å sette medisineringen i gang igjen\".",
+        "pt-br" : "A data/hora na qual o curso da medicação está configurado para reiniciar, como a etapa \"Conjunto de condições para reinício da medicação\" do processo.",
+        "de" : "Das Datum/die Uhrzeit an dem die Arzneimittelbehandlung wieder begonnen wird, gemäß dem \"Verabreichung wurde ausgesetzt\"- Schritt.",
+        "sv" : "Datum/tid då läkemedelskuren är inställd på att starta om, enligt tidigare steget \"Administrationer avstängd\".",
+        "zh-cn" : "根据“已暂停的施用/给药”（Administrations suspended）路径步骤，设置重新开始药物治疗过程的日期/时间。",
+        "en" : "The date/time on which the medication course is set to restart, as per the \"Administrations suspended\" pathway step."
+      },
+      "annotations" : {
+        "comment" : "For example: 2017-10-29"
+      },
+      "aqlPath" : "/description[at0017]/items[at0154]/value",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ]
+    }, {
+      "id" : "restart_criterion",
+      "name" : "Restart criterion",
+      "localizedName" : "Restart criterion",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0155",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Restart criterion(en)",
+        "sl" : "*Restart criterion(en)",
+        "es-ar" : "*Restart criterion(en)",
+        "ru" : "*Restart criterion(en)",
+        "nb" : "Kriterium for ny oppstart",
+        "pt-br" : "Critério do reinício",
+        "de" : "Kriterium des Neustarts",
+        "sv" : "Omstart av kriterium",
+        "zh-cn" : "重新开始的评判准则",
+        "en" : "Restart criterion"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*The criterion which triggers the medication course to restart, as per the \"Medication restart date/condition set\" pathway step.(en)",
+        "sl" : "*The criterion which triggers the medication course to restart, as per the \"Medication restart date/condition set\" pathway step.(en)",
+        "es-ar" : "*The criterion which triggers the medication course to restart, as per the \"Medication restart date/condition set\" pathway step.(en)",
+        "ru" : "*The criterion which triggers the medication course to restart, as per the \"Medication restart date/condition set\" pathway step.(en)",
+        "nb" : "Kriterium for når medisineringen skal startes opp igjen, i sammenheng med prosesstrinnet \"Vilkår satt for å sette medisineringen i gang igjen\".",
+        "pt-br" : "O critério que desencadeia o reinício do curso da medicação, como uma etapa \"Conjunto de condições para reinício da medicação\" do processo.",
+        "de" : "Das Kriterium, das den Neustart der Arzneimittelbehandlung auslöst, gemäß dem Schritt \"Verabreichung wurde ausgesetzt\".",
+        "sv" : "kriterium som triggar igång så att läkemedelskuren startas om enligt steget \"Administrationer avstängd\".",
+        "zh-cn" : "根据“已暂停的施用/给药”（Administrations suspended）路径步骤，用于触发药物治疗过程重新开始的评判准则/标准。",
+        "en" : "The criterion which triggers the medication course to restart, as per the \"Administrations suspended\" pathway step."
+      },
+      "annotations" : {
+        "comment" : "For example: \"On day 2 after surgery\"."
+      },
+      "aqlPath" : "/description[at0017]/items[at0155]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "reason",
+      "name" : "Reason",
+      "localizedName" : "Reason",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0021",
+      "min" : 0,
+      "max" : -1,
+      "localizedNames" : {
+        "ar-sy" : "*Reason(en)",
+        "sl" : "*Reason(en)",
+        "es-ar" : "*Reason(en)",
+        "ru" : "*Reason(en)",
+        "nb" : "Årsak",
+        "pt-br" : "Motivo",
+        "de" : "Begründung",
+        "sv" : "Orsak",
+        "zh-cn" : "原因",
+        "en" : "Reason"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*Reason that the pathway step for the identified medication was carried out.(en)",
+        "sl" : "*Reason that the pathway step for the identified medication was carried out.(en)",
+        "es-ar" : "*Reason that the pathway step for the identified medication was carried out.(en)",
+        "ru" : "*Reason that the pathway step for the identified medication was carried out.(en)",
+        "nb" : "Årsak til at det aktuelle prosesstrinnet ble utført.",
+        "pt-br" : "Motivo pelo qual a etapa para determinada medicação foi realizada.",
+        "de" : "Begründung, warum der Prozessschritt für das identifizierte Arzneimittel durchgeführt wurde.",
+        "sv" : "Anledningen till att vägsteget för det identifierade läkemedlet genomfördes.",
+        "zh-cn" : "关于执行所标识用药/药物治疗路径步骤的原因。",
+        "en" : "Reason that the pathway step for the identified medication was carried out."
+      },
+      "annotations" : {
+        "comment" : "For example: 'Postponed - Patient not avalable at administration time', 'Cancelled - Adverse reaction'. Note: This is not the reason for the medication instruction, but rather the specific reason that a care step was carried out, and will often be used to document some variance from the original order."
+      },
+      "aqlPath" : "/description[at0017]/items[at0021]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "administration_details",
+      "name" : "Administration details",
+      "localizedName" : "Administration details",
+      "rmType" : "CLUSTER",
+      "nodeId" : "at0140",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Administration details(en)",
+        "sl" : "*Administration details(en)",
+        "es-ar" : "*Administration details(en)",
+        "ru" : "*Administration details(en)",
+        "nb" : "Administreringsdetaljer",
+        "pt-br" : "Detalhes da administração",
+        "de" : "Details zur Verabreichung",
+        "sv" : "Administrationsinformation",
+        "zh-cn" : "施用/给药详情",
+        "en" : "Administration details"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*Details of body site and administration of the medication.(en)",
+        "sl" : "*Details of body site and administration of the medication.(en)",
+        "es-ar" : "*Details of body site and administration of the medication.(en)",
+        "ru" : "*Details of body site and administration of the medication.(en)",
+        "nb" : "Detaljer om administrering av legemiddelet.",
+        "pt-br" : "Detalhes do local do corpo e administração da medicação.",
+        "de" : "Details über die Körperstelle und über die Verabreichung des Arzneimittels.",
+        "sv" : "Detaljer om lokalisation (hur tas i kroppen) och administrering av medicinen.",
+        "zh-cn" : "关于当前药物治疗的身体部位和施用/给药情况的详情。",
+        "en" : "Details of body site and administration of the medication."
+      },
+      "aqlPath" : "/description[at0017]/items[at0140]",
+      "children" : [ {
+        "id" : "route",
+        "name" : "Route",
+        "localizedName" : "Route",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0147",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "ar-sy" : "*Route(en)",
+          "sl" : "*Route(en)",
+          "es-ar" : "*Route(en)",
+          "ru" : "*Route(en)",
+          "nb" : "Administreringsvei",
+          "pt-br" : "Via",
+          "de" : "Verabreichungsweg",
+          "sv" : "Väg",
+          "zh-cn" : "途径",
+          "en" : "Route"
+        },
+        "localizedDescriptions" : {
+          "ar-sy" : "*The route by which the ordered item was, or is to be, administered into the subject's body.(en)",
+          "sl" : "*The route by which the ordered item was, or is to be, administered into the subject's body.(en)",
+          "es-ar" : "*The route by which the ordered item was, or is to be, administered into the subject's body.(en)",
+          "ru" : "*The route by which the ordered item was, or is to be, administered into the subject's body.(en)",
+          "nb" : "Administreringsveien som skal eller ble brukt for legemiddelet.",
+          "pt-br" : "A via pela qual o item prescrito foi, ou deve ser, administrado no corpo do indivíduo.",
+          "de" : "Die Angabe darüber, auf welche Art das verordnete Arzneimittel am Körper des Patienten angewendet wird.",
+          "sv" : "Beskriver genom vilken väg den beställda artikeln ska tas eller ska tas in i anatomisk lokalisation.",
+          "zh-cn" : "已经或预定将医嘱所开立的用药项施用于服务对象身体时所采用的途径。又称为施用途径或用药途径。",
+          "en" : "The route by which the ordered item was, or is to be, administered into the subject's body."
+        },
+        "annotations" : {
+          "comment" : "Comment: For example: 'oral', 'intravenous', or 'topical'. Coding of the route with a terminology is preferred, where possible. Multiple potential routes may be specified."
+        },
+        "aqlPath" : "/description[at0017]/items[at0140]/items[at0147]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "body_site",
+        "name" : "Body site",
+        "localizedName" : "Body site",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0141",
+        "min" : 0,
+        "max" : 1,
+        "localizedNames" : {
+          "ar-sy" : "*Body site(en)",
+          "sl" : "*Body site(en)",
+          "es-ar" : "*Body site(en)",
+          "ru" : "*Body site(en)",
+          "nb" : "Anatomisk lokalisering",
+          "pt-br" : "Local do corpo",
+          "de" : "Körperstelle",
+          "sv" : "Anatomisk lokalisation",
+          "zh-cn" : "身体部位",
+          "en" : "Body site"
+        },
+        "localizedDescriptions" : {
+          "ar-sy" : "*Structured description of the site of administration of the ordered item.(en)",
+          "sl" : "*Structured description of the site of administration of the ordered item.(en)",
+          "es-ar" : "*Structured description of the site of administration of the ordered item.(en)",
+          "ru" : "*Structured description of the site of administration of the ordered item.(en)",
+          "nb" : "Strukturert beskrivelse av hvor i kroppen det ordinerte produktet skal administreres eller ble administrert.",
+          "pt-br" : "Descrição estruturada do local de administração do item prescrito.",
+          "de" : "Strukturierte Beschreibung der Körperstelle, an der das Arzneimittel angewendet wird.",
+          "sv" : "Strukturerad beskrivning av administrering av den beställda artikeln/medicin",
+          "zh-cn" : "关于医嘱所开立用药项的施用/给药部位的结构化描述。",
+          "en" : "Structured description of the site of administration of the ordered item."
+        },
+        "annotations" : {
+          "comment" : "For example: 'left upper arm', 'intravenous catheter right hand'. \r\nCoding of the body site with a terminology is preferred, where possible."
+        },
+        "aqlPath" : "/description[at0017]/items[at0140]/items[at0141]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      }, {
+        "id" : "administration_method",
+        "name" : "Administration method",
+        "localizedName" : "Administration method",
+        "rmType" : "DV_TEXT",
+        "nodeId" : "at0143",
+        "min" : 0,
+        "max" : -1,
+        "localizedNames" : {
+          "ar-sy" : "*Administration method(en)",
+          "sl" : "*Administration method(en)",
+          "es-ar" : "*Administration method(en)",
+          "ru" : "*Administration method(en)",
+          "nb" : "Administreringsmetode",
+          "pt-br" : "Método de administração",
+          "de" : "Methode der Verabreichung",
+          "sv" : "Administrations metod",
+          "zh-cn" : "施用/给药方法",
+          "en" : "Administration method"
+        },
+        "localizedDescriptions" : {
+          "ar-sy" : "*The technique or device by which the ordered item was, or is to be, administered.(en)",
+          "sl" : "*The technique or device by which the ordered item was, or is to be, administered.(en)",
+          "es-ar" : "*The technique or device by which the ordered item was, or is to be, administered.(en)",
+          "ru" : "*The technique or device by which the ordered item was, or is to be, administered.(en)",
+          "nb" : "Metoden legemiddelet ble administrert eller skal administreres ved.",
+          "pt-br" : "A técnica ou dispositivo pelo qual o item foi, ou deve ser, administrado.",
+          "de" : "Die Technik oder das Gerät mit dem das verschriebene Arzneimittel verabreicht wird oder werden soll.",
+          "sv" : "Tekniken eller anordningen som den beställda artikeln administrerades eller ska administreras.",
+          "zh-cn" : "已经或预定施用医嘱所开立的用药项时所采用的技术方法或装置/器械/设备。",
+          "en" : "The technique or device by which the ordered item was, or is to be, administered."
+        },
+        "annotations" : {
+          "comment" : "Comment: For example: ' via Z-track injection'; 'via nebuliser'. Coding of the method with a terminology is preferred, where possible."
+        },
+        "aqlPath" : "/description[at0017]/items[at0140]/items[at0143]/value",
+        "inputs" : [ {
+          "type" : "TEXT"
+        } ]
+      } ]
+    }, {
+      "id" : "patient_guidance",
+      "name" : "Patient guidance",
+      "localizedName" : "Patient guidance",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0033",
+      "min" : 0,
+      "max" : -1,
+      "localizedNames" : {
+        "ar-sy" : "*Patient guidance(en)",
+        "sl" : "*Patient guidance(en)",
+        "es-ar" : "*Patient guidance(en)",
+        "ru" : "*Patient guidance(en)",
+        "nb" : "Pasientinstruksjoner",
+        "pt-br" : "Orientação ao paciente",
+        "de" : "Patientenanweisung",
+        "sv" : "Patientvägledning",
+        "zh-cn" : "患者指导",
+        "en" : "Patient guidance"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*Any guidance, instructions or advice given to the subject of care or personal carer at the time of the pathway step.(en)",
+        "sl" : "*Any guidance, instructions or advice given to the subject of care or personal carer at the time of the pathway step.(en)",
+        "es-ar" : "*Any guidance, instructions or advice given to the subject of care or personal carer at the time of the pathway step.(en)",
+        "ru" : "*Any guidance, instructions or advice given to the subject of care or personal carer at the time of the pathway step.(en)",
+        "nb" : "Enhver instruksjon som gis til pasienten eller en omsorgsperson når prosesstrinnet utføres.",
+        "pt-br" : "Quaisquer orientações, instruções ou conselhos dados ao sujeito do cuidado ou cuidador no momento",
+        "de" : "Jede Anweisung, Anleitung oder Empfehlung, die dem Patienten oder der Pflegekraft zum Zeitpunkt eines Prozessschrittes übermittelt wird.",
+        "sv" : "All vägledning, instruktioner eller råd som ges till ämnet vård eller personlig vårdperson vid tidpunkten för vägsteget.",
+        "zh-cn" : "为照护服务对象（患者）或具体照护人员所提供的任何关于特定路径步骤时的指导[意见]、操作指南/使用说明/指示或建议/忠告。",
+        "en" : "Any guidance, instructions or advice given to the subject of care or personal carer at the time of the pathway step."
+      },
+      "annotations" : {
+        "comment" : "For example: 'Avoid grapefruit' , 'Take at least 2 hours before bedtime', 'Take with food'. May be coded with a terminology when clinically appropriate."
+      },
+      "aqlPath" : "/description[at0017]/items[at0033]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "double-checked",
+      "name" : "Double-checked?",
+      "localizedName" : "Double-checked?",
+      "rmType" : "DV_BOOLEAN",
+      "nodeId" : "at0149",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Double-checked?(en)",
+        "sl" : "*Double-checked?(en)",
+        "es-ar" : "*Double-checked?(en)",
+        "ru" : "*Double-checked?(en)",
+        "nb" : "Dobbeltkontrollert?",
+        "pt-br" : "Dupla checagem?",
+        "de" : "Nachkontrolliert?",
+        "sv" : "Dubbelkollade?",
+        "zh-cn" : "复核情况",
+        "en" : "Double-checked?"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*The action step has been checked by a separate individual.(en)",
+        "sl" : "*The action step has been checked by a separate individual.(en)",
+        "es-ar" : "*The action step has been checked by a separate individual.(en)",
+        "ru" : "*The action step has been checked by a separate individual.(en)",
+        "nb" : "Prosesstrinnet har blitt kontrollert av en annen person enn den som primært utfører det.",
+        "pt-br" : "Uma ação que foi checada por outro indivíduo.",
+        "de" : "Der Prozessschritt wurde durch eine unabhängige Person überprüft.",
+        "sv" : "Vägsteget har kontrollerats av en separat person.\r\n",
+        "zh-cn" : "另一不同的人员已经检查核对了这一路径步骤。",
+        "en" : "The pathway step has been checked by a separate individual."
+      },
+      "annotations" : {
+        "comment" : "Details of the individual performing the double-check can be carried in the Reference Model element \"Participation\"."
+      },
+      "aqlPath" : "/description[at0017]/items[at0149]/value",
+      "inputs" : [ {
+        "type" : "BOOLEAN"
+      } ]
+    }, {
+      "id" : "sequence_number",
+      "name" : "Sequence number",
+      "localizedName" : "Sequence number",
+      "rmType" : "DV_COUNT",
+      "nodeId" : "at0025",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Sequence number(en)",
+        "sl" : "*Sequence number(en)",
+        "es-ar" : "*Sequence number(en)",
+        "ru" : "*Sequence number(en)",
+        "nb" : "Sekvensnummer",
+        "pt-br" : "Número sequencial",
+        "de" : "Sequenznummer",
+        "sv" : "Sekvensnummer",
+        "zh-cn" : "顺序编号",
+        "en" : "Sequence number"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*The sequence number specific to the activity being recorded.(en)",
+        "sl" : "*The sequence number specific to the activity being recorded.(en)",
+        "es-ar" : "*The sequence number specific to the activity being recorded.(en)",
+        "ru" : "*The sequence number specific to the activity being recorded.(en)",
+        "nb" : "Sekvensnummeret for den spesifikke handlingen som blir registrert.",
+        "pt-br" : "O número sequencial específico da atividade registrada.",
+        "de" : "Die spezifische Sequenznummer des Prozessschritts wird erfasst.",
+        "sv" : "Sekvensnumret som är specifikt för sökvägen",
+        "zh-cn" : "专门针对当前所记录的路径步骤的顺序编号/序列号/序号。",
+        "en" : "The sequence number specific to the pathway step being recorded."
+      },
+      "annotations" : {
+        "comment" : "For example: Vaccine sequence number."
+      },
+      "aqlPath" : "/description[at0017]/items[at0025]/value",
+      "inputs" : [ {
+        "type" : "INTEGER"
+      } ]
+    }, {
+      "id" : "comment",
+      "name" : "Comment",
+      "localizedName" : "Comment",
+      "rmType" : "DV_TEXT",
+      "nodeId" : "at0024",
+      "min" : 0,
+      "max" : 1,
+      "localizedNames" : {
+        "ar-sy" : "*Comment(en)",
+        "sl" : "*Comment(en)",
+        "es-ar" : "*Comment(en)",
+        "ru" : "*Comment(en)",
+        "nb" : "Kommentar",
+        "pt-br" : "Comentário",
+        "de" : "Kommentar",
+        "sv" : "Kommentar",
+        "zh-cn" : "备注",
+        "en" : "Comment"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*Additional narrative about the activity or care pathway step not captured in other fields, including details of any variance between the intended action and the action actually performed.(en)",
+        "sl" : "*Additional narrative about the activity or care pathway step not captured in other fields, including details of any variance between the intended action and the action actually performed.(en)",
+        "es-ar" : "*Additional narrative about the activity or care pathway step not captured in other fields, including details of any variance between the intended action and the action actually performed.(en)",
+        "ru" : "*Additional narrative about the activity or care pathway step not captured in other fields, including details of any variance between the intended action and the action actually performed.(en)",
+        "nb" : "Ytterligere fritekstdetaljer om aktiviteten eller prosesstrinnet som ikke representeres i andre elementer, inkludert detaljer om varians mellom den planlagte handlingen og handlingen som faktisk ble utført.",
+        "pt-br" : "Narrativa adicional sobre a atividade ou etapa do fluxo de cuidado não capturada em outros campos, incluindo detalhes de quaisquer variáveis entre a ação pretendida e a ação realmente realizada.",
+        "de" : "Zur Dokumentation von zusätzlichen Schilderungen über die Aktivitäten oder den Prozessschritt, wenn sie noch nicht in anderen Feldern erfasst wurden. Dabei sollen Einzelheiten zu Abweichungen zwischen durchzuführender Aktion und tatsächlich durchgeführter Aktion erfasst werden.",
+        "sv" : "Ytterligare redogörelse för aktiviteten eller sökvägen som inte har registrerats i andra fält, inklusive information om eventuell avvikelse mellan den avsedda åtgärden och den faktiska utförda åtgärden.",
+        "zh-cn" : "额外关于其他字段之中并未采集的，关于相应活动或路径步骤的文本叙述型说明，包括关于预期行动与实际所执行的行动之间的任何差异的详情。",
+        "en" : "Additional narrative about the activity or pathway step not captured in other fields, including details of any variance between the intended action and the action actually performed."
+      },
+      "annotations" : {
+        "comment" : "For example: 'Patient was in radiology department', 'Accidental injection into blood vessel during IM administration'."
+      },
+      "aqlPath" : "/description[at0017]/items[at0024]/value",
+      "inputs" : [ {
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "order_id",
+      "name" : "Order ID",
+      "localizedName" : "Order ID",
+      "rmType" : "DV_IDENTIFIER",
+      "nodeId" : "at0103",
+      "min" : 0,
+      "max" : -1,
+      "localizedNames" : {
+        "ar-sy" : "*Order ID(en)",
+        "sl" : "*Order ID(en)",
+        "es-ar" : "*Order ID(en)",
+        "ru" : "*Order ID(en)",
+        "nb" : "OrdineringsID",
+        "pt-br" : "Identificação da solicitação",
+        "de" : "ID der Verordnung",
+        "sv" : "Order ID",
+        "zh-cn" : "医嘱标识符",
+        "en" : "Order ID"
+      },
+      "localizedDescriptions" : {
+        "ar-sy" : "*Unique identifier for the medication order.(en)",
+        "sl" : "*Unique identifier for the medication order.(en)",
+        "es-ar" : "*Unique identifier for the medication order.(en)",
+        "ru" : "*Unique identifier for the medication order.(en)",
+        "nb" : "Identifikatoren for den opprinnelige ordineringen.",
+        "pt-br" : "Identificador único para a solicitação de medicação.",
+        "de" : "Eindeutige ID der Arzneimittelverordnung.",
+        "sv" : "Unik identifierare för läkemedelsbeställningen.",
+        "zh-cn" : "药物/用药医嘱的唯一性标识符。",
+        "en" : "Unique identifier for the medication order."
+      },
+      "annotations" : {
+        "comment" : "Comment: This data element allows for multiple occurrences to be defined more explicitly at run-time, if required."
+      },
+      "aqlPath" : "/protocol[at0030]/items[at0103]/value",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "type",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "issuer",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "assigner",
+        "type" : "TEXT"
+      } ]
+    }, {
+      "id" : "time",
+      "name" : "Time",
+      "rmType" : "DV_DATE_TIME",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/time",
+      "inputs" : [ {
+        "type" : "DATETIME"
+      } ],
+      "inContext" : true
+    }, {
+      "id" : "language",
+      "name" : "Language",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/language",
+      "inContext" : true
+    }, {
+      "id" : "encoding",
+      "name" : "Encoding",
+      "rmType" : "CODE_PHRASE",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/encoding",
+      "inContext" : true
+    }, {
+      "id" : "subject",
+      "name" : "Subject",
+      "rmType" : "PARTY_PROXY",
+      "min" : 1,
+      "max" : 1,
+      "aqlPath" : "/subject",
+      "inputs" : [ {
+        "suffix" : "id",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_scheme",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "id_namespace",
+        "type" : "TEXT"
+      }, {
+        "suffix" : "name",
+        "type" : "TEXT"
+      } ],
+      "inContext" : true
+    } ]
+  }
+}
